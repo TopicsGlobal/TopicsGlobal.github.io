@@ -258,6 +258,23 @@
   </p>
 </div>
 
+<!-- gc-v2 -->
 <script data-goatcounter="https://topicsglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://topicsglobal.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:"Segoe UI",Arial,sans-serif;';
+      el.textContent = total ? ('Total visits: ' + d.count.trim()) : (d.count.trim() + ' views');
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
 </body>
 </html>
