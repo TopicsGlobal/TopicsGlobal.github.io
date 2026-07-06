@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 모닝 브리프 — 2026-07-02 (목)</title>
+<style>
+  :root{
+    --bg:#0E1116; --card:#161B22; --card2:#1B222C; --line:#242C37;
+    --text:#E6EDF3; --sub:#8B949E; --accent:#D4A843;
+    --up:#F87171; --down:#60A5FA; --flat:#9CA3AF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    line-height:1.6; padding:20px 14px 40px;
+  }
+  .wrap{max-width:860px; margin:0 auto;}
+  header{border-bottom:2px solid var(--accent); padding-bottom:16px; margin-bottom:24px;}
+  header h1{font-size:1.7rem; letter-spacing:-0.5px;}
+  header h1 span{color:var(--accent);}
+  header .date{color:var(--sub); font-size:0.9rem; margin-top:4px;}
+  section{margin-bottom:32px;}
+  h2{
+    font-size:1.05rem; color:var(--accent); margin-bottom:12px;
+    padding-left:10px; border-left:3px solid var(--accent);
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:10px;
+  }
+  /* 헤드라인 */
+  .headline li{
+    list-style:none; background:var(--card); border:1px solid var(--line);
+    border-radius:10px; padding:12px 16px; margin-bottom:8px; font-size:0.98rem;
+  }
+  .headline li b{color:var(--accent); margin-right:8px;}
+  /* 뉴스 카드 */
+  .news h3{font-size:1rem; margin-bottom:6px;}
+  .news p{font-size:0.92rem; color:var(--text); margin-bottom:8px;}
+  .why{font-size:0.88rem; color:#C9B27C; margin-bottom:6px;}
+  .why::before{content:"왜 중요한가 · "; color:var(--accent); font-weight:600;}
+  .src{font-size:0.78rem; color:var(--sub);}
+  /* 지수/그리드 */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px;}
+  .grid4{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px;}
+  .idx{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; text-align:center;}
+  .idx .name{font-size:0.85rem; color:var(--sub);}
+  .idx .val{font-size:1.25rem; font-weight:700; margin:4px 0;}
+  .idx .chg{font-size:0.92rem; font-weight:600;}
+  .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--flat);}
+  .note{font-size:0.78rem; color:var(--sub); margin-top:8px;}
+  /* 기업 그리드 */
+  .stock{background:var(--card2); border:1px solid var(--line); border-radius:8px; padding:10px 12px;}
+  .stock .tk{font-size:0.8rem; color:var(--sub);}
+  .stock .nm{font-size:0.95rem; font-weight:600;}
+  .stock .pc{font-size:0.95rem; font-weight:700; margin-top:2px;}
+  .stock .is{font-size:0.8rem; color:var(--sub); margin-top:4px;}
+  .comment{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:10px; padding:12px 16px; font-size:0.92rem; margin-top:12px;}
+  /* 매크로 */
+  .macro .idx .val{font-size:1.1rem;}
+  /* 지켜볼 것 */
+  .watch li{
+    list-style:none; background:var(--card); border:1px solid var(--line);
+    border-radius:10px; padding:12px 16px; margin-bottom:8px; font-size:0.92rem;
+  }
+  .watch li b{color:var(--text);}
+  .watch .when{color:var(--accent); font-size:0.82rem; font-weight:600;}
+  footer{
+    border-top:1px solid var(--line); margin-top:36px; padding-top:14px;
+    font-size:0.78rem; color:var(--sub); text-align:center;
+  }
+  @media (max-width:480px){ header h1{font-size:1.4rem;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🌐 글로벌 <span>모닝 브리프</span></h1>
+  <div class="date">2026-07-02 (목) 오전 5:00 KST 발행 · 국제 정세 &amp; 미국 증시</div>
+</header>
+
+<!-- ① 오늘의 헤드라인 -->
+<section>
+  <h2>① 오늘의 헤드라인</h2>
+  <ul class="headline">
+    <li><b>1</b>나스닥, 3분기 첫 거래일에 <span class="down">-0.66%</span> — 상반기 급등한 반도체주에 차익실현 매물, 마이크론은 10%대 급락.</li>
+    <li><b>2</b>USMCA(북미무역협정) 갱신 시한(7/1)이 연장 없이 경과 — 트럼프 행정부는 재협상을 택해 2조 달러 규모 북미 교역에 불확실성.</li>
+    <li><b>3</b>오늘 밤 미국 6월 고용보고서(컨센서스 +10만~11.5만 명, 실업률 4.3%)와 테슬라 2분기 인도량 발표 — 이번 주 최대 이벤트.</li>
+  </ul>
+</section>
+
+<!-- ② 국제 정세 뉴스 -->
+<section class="news">
+  <h2>② 국제 정세 뉴스</h2>
+
+  <div class="card">
+    <h3>USMCA 갱신 시한 경과 — 미국, 연장 대신 재협상 선택</h3>
+    <p>2조 달러 규모 북미무역협정(USMCA)의 공동 갱신 시한인 7월 1일이 연장 합의 없이 지나갔다. 트럼프 행정부는 협정을 자동 연장하는 대신 "더 나은 조건"을 위한 추가 협상을 이어가겠다는 입장이다. 별도로, 2월 IEEPA 관세 위헌 판결 이후 도입된 10% 보편 수입 부가관세(섹션 122)는 의회가 연장하지 않으면 7월 24일 만료된다.</p>
+    <div class="why">멕시코·캐나다 공급망에 걸친 자동차·전자 업종과 대미 수출국 전반의 통상 리스크가 3분기 내내 변수로 남는다.</div>
+    <div class="src">출처: Washington Post, Atlantic Council</div>
+  </div>
+
+  <div class="card">
+    <h3>우크라이나, 스웨덴 그리펜 E 16대 구매 계약 — EU는 44.4억 달러 추가 지원</h3>
+    <p>젤렌스키 대통령은 스웨덴산 그리펜 E 전투기 16대 구매 계약 체결을 발표했고, EU는 우크라이나 방위 강화를 위해 44억 달러 이상을 추가 집행했다. 우크라이나 보안국(SBU)은 크림반도 사키 공군기지의 러시아 전투기 격납고를 드론으로 타격했다. 러시아는 7월 1일부터 핀란드·에스토니아·라트비아 접경 철도 통행 일부를 중단했다.</p>
+    <div class="why">서방의 장기 군사지원 구조가 굳어지는 가운데 러시아-발트·북유럽 접경의 긴장이 물류·에너지 경로로 번질 수 있다.</div>
+    <div class="src">출처: Kyiv Independent, Russia Matters</div>
+  </div>
+
+  <div class="card">
+    <h3>이란, 미국과 고위급 회담 배제 — 핵협상 교착 지속</h3>
+    <p>이란 수석 협상대표는 미국이 기존 양해각서(MOU)를 준수하기 전까지 고위급 회담은 없다고 선을 그었다. 미·이란 협상 교착이 길어지면서 중동 정세의 불확실성이 다시 커지는 모습이다.</p>
+    <div class="why">협상 결렬 위험은 유가와 중동 지정학 리스크 프리미엄에 직결된다 — 최근 유가 하향 안정 흐름의 잠재적 반전 요인.</div>
+    <div class="src">출처: Democracy Now</div>
+  </div>
+
+  <div class="card">
+    <h3>네타냐후 "남부 레바논 주둔 계속" — 이스라엘·터키 관계도 악화</h3>
+    <p>네타냐후 총리는 남부 레바논 주둔 병력을 방문해 점령 지속 방침을 밝혔다. 같은 시기 이스라엘 내각은 오스만 제국의 아르메니아인 학살을 제노사이드로 규정하는 안을 승인했는데, 이는 터키와의 관계 악화를 반영한 조치로 해석된다.</p>
+    <div class="why">레바논 전선의 장기화와 이스라엘-터키 갈등은 동지중해 안보 구도와 에너지 협력에 부담을 준다.</div>
+    <div class="src">출처: Democracy Now</div>
+  </div>
+
+  <div class="card">
+    <h3>베네수엘라 연쇄 강진 — 건물 5만 8천 채 이상 피해</h3>
+    <p>6월 24일 베네수엘라를 강타한 연쇄 지진의 피해가 계속 집계되고 있다. 위성사진 분석 결과 5만 8천 채 이상의 건물이 손상된 것으로 나타났으며, 경제 위기가 겹친 상황이라 복구가 쉽지 않을 전망이다.</p>
+    <div class="why">주요 산유국의 인프라 타격은 원유 공급 차질과 중남미 난민·인도지원 이슈로 이어질 수 있다.</div>
+    <div class="src">출처: Democracy Now</div>
+  </div>
+
+  <div class="card">
+    <h3>콩고민주공화국 에볼라 사망 300명 넘어</h3>
+    <p>콩고민주공화국의 에볼라 확산으로 사망자가 300명을 넘어서며 최근 수십 년 사이 가장 치명적인 발병 사례로 기록될 가능성이 커졌다.</p>
+    <div class="why">확산 억제 실패 시 아프리카 역내 이동·교역 제한과 국제 보건 대응 부담이 커진다.</div>
+    <div class="src">출처: Democracy Now</div>
+  </div>
+</section>
+
+<!-- ③ 미국 증시 -->
+<section>
+  <h2>③ 미국 증시 (7/1 현지 마감)</h2>
+  <div class="grid">
+    <div class="idx">
+      <div class="name">S&amp;P 500</div>
+      <div class="val">7,483.23</div>
+      <div class="chg down">▼ -0.22%</div>
+    </div>
+    <div class="idx">
+      <div class="name">나스닥 종합</div>
+      <div class="val">26,040.03</div>
+      <div class="chg down">▼ -0.66%</div>
+    </div>
+    <div class="idx">
+      <div class="name">다우존스</div>
+      <div class="val">52,305.24</div>
+      <div class="chg flat">-13.96p (-0.03%) 보합</div>
+    </div>
+  </div>
+
+  <div class="grid4" style="margin-top:14px;">
+    <div class="stock">
+      <div class="tk">NVDA</div><div class="nm">엔비디아</div>
+      <div class="pc down">▼ 1~2%대 하락</div>
+      <div class="is">반도체 차익실현 매물에 동반 약세</div>
+    </div>
+    <div class="stock">
+      <div class="tk">AVGO</div><div class="nm">브로드컴</div>
+      <div class="pc down">▼ 1~2%대 하락</div>
+      <div class="is">칩 섹터 매도세에 동반 하락</div>
+    </div>
+    <div class="stock">
+      <div class="tk">MU</div><div class="nm">마이크론</div>
+      <div class="pc down">▼ 10%대 급락</div>
+      <div class="is">연초 이후 +260% 급등 뒤 차익실현</div>
+    </div>
+    <div class="stock">
+      <div class="tk">TSLA</div><div class="nm">테슬라</div>
+      <div class="pc flat">확인 불가</div>
+      <div class="is">6/29 +8% 급등($411.84) 후 오늘 밤 Q2 인도량 발표 대기</div>
+    </div>
+    <div class="stock">
+      <div class="tk">AAPL</div><div class="nm">애플</div>
+      <div class="pc flat">확인 불가</div>
+      <div class="is">당일 등락 데이터 미확인</div>
+    </div>
+    <div class="stock">
+      <div class="tk">MSFT</div><div class="nm">마이크로소프트</div>
+      <div class="pc flat">확인 불가</div>
+      <div class="is">당일 등락 데이터 미확인</div>
+    </div>
+    <div class="stock">
+      <div class="tk">GOOGL</div><div class="nm">알파벳</div>
+      <div class="pc flat">확인 불가</div>
+      <div class="is">당일 등락 데이터 미확인</div>
+    </div>
+    <div class="stock">
+      <div class="tk">AMZN / META</div><div class="nm">아마존 · 메타</div>
+      <div class="pc flat">확인 불가</div>
+      <div class="is">당일 등락 데이터 미확인</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <b>특징주 &amp; 시장 코멘트</b> — 2020년 이후 최고 분기를 마감한 직후, 3분기 첫날은 상반기 80% 이상 급등한 반도체주에 대한 차익실현으로 출발했다. 마이크론과 샌디스크가 각각 10% 이상 급락하며 낙폭을 주도했고, 매도세가 나스닥 전반을 눌렀다. 다만 네드데이비스리서치는 이를 "반도체에서 다른 경기민감 업종으로의 건강한 로테이션"으로 평가했으며, 시장의 시선은 오늘 밤 고용보고서로 이동하고 있다.
+  </div>
+</section>
+
+<!-- ④ 매크로 스냅샷 -->
+<section class="macro">
+  <h2>④ 원자재 · 환율 · 금리 스냅샷</h2>
+  <div class="grid4">
+    <div class="idx">
+      <div class="name">브렌트유</div>
+      <div class="val">$72.25</div>
+      <div class="chg down">▼ -0.96%</div>
+    </div>
+    <div class="idx">
+      <div class="name">WTI</div>
+      <div class="val">$70.39</div>
+      <div class="chg flat">6/30 시가 기준</div>
+    </div>
+    <div class="idx">
+      <div class="name">원/달러</div>
+      <div class="val">약 1,555원</div>
+      <div class="chg up">1,550~1,560원대 (7/1 장중)</div>
+    </div>
+    <div class="idx">
+      <div class="name">미 10년물 금리</div>
+      <div class="val">4.47%</div>
+      <div class="chg down">▼ 4.5% 터치 후 반락</div>
+    </div>
+    <div class="idx">
+      <div class="name">금 (온스)</div>
+      <div class="val">$4,090 부근</div>
+      <div class="chg up">▲ 약 +2% (장중 기준)</div>
+    </div>
+  </div>
+  <div class="note">※ 유가·환율·금은 검색 시점의 최근치 기준이며, 원/달러는 7/1 서울환시 장중 수준으로 정확한 종가는 확인 불가.</div>
+</section>
+
+<!-- ⑤ 오늘 지켜볼 것 -->
+<section>
+  <h2>⑤ 오늘 지켜볼 것</h2>
+  <ul class="watch">
+    <li><span class="when">7/2 (목) 21:30 KST</span><br><b>미국 6월 고용보고서</b> — 비농업 고용 컨센서스 +10만~11.5만 명(5월 +17.2만), 실업률 4.3% 유지 전망. 6월 FOMC에서 워시 의장이 연내 금리 <b>인상</b> 가능성을 시사한 만큼, 강한 고용은 금리 부담으로 직결될 수 있다.</li>
+    <li><span class="when">7/2 (목)</span><br><b>테슬라 2분기 인도량 발표</b> — 월가 컨센서스 약 40.6만 대(골드만삭스는 42만 대로 상향). 수요 회복이 진짜인지 가늠할 핵심 지표.</li>
+    <li><span class="when">7/3 (금)</span><br><b>미국 증시 휴장</b> — 독립기념일(7/4 토요일) 대체 휴장. 오늘 밤이 이번 주 마지막 온전한 거래일.</li>
+    <li><span class="when">7월 중</span><br><b>통상 이벤트</b> — 섹션 122 보편관세(10%) 7/24 만료를 앞둔 의회 연장 논의, USTR 301조(강제노동·과잉설비) 최종 결정, USMCA 재협상 경과.</li>
+  </ul>
+</section>
+
+<footer>
+  본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.<br>
+  자료 출처: CNBC · TheStreet · Washington Post · Kyiv Independent · Democracy Now · Trading Economics · Fortune · Kiplinger · Yahoo Finance 등
+</footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/e3l4DeGl_2A" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>

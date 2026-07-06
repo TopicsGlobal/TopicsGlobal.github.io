@@ -29,6 +29,24 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+      # Pages deployment intermittently fails with "Deployment failed,
+      # try again later" (frequent with this repo's multiple daily
+      # pushes) - retry twice with a backoff before giving up.
       - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - name: Wait before retry
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+      - name: Deploy to GitHub Pages (retry 1)
+        id: deployment2
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - name: Wait before second retry
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        run: sleep 120
+      - name: Deploy to GitHub Pages (retry 2)
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
         uses: actions/deploy-pages@v4

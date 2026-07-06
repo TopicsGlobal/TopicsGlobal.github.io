@@ -1,73 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>U.S. Daily Brief</title>
-<meta name="description" content="AI-curated U.S. news and markets briefing — Morning, Market Close and Evening editions every day (ET)">
+<title>데일리 브리프 — 글로벌 정세·시황 & 종목분석</title>
+<meta name="description" content="AI가 매일 자동 발행하는 글로벌 정세·시황 브리핑과 코스피·코스닥·나스닥 랜덤 종목 심층 분석">
 <style>
-  :root { --bg:#0E1116; --card:#161B22; --fg:#E6EDF3; --muted:#8B949E; --accent:#4F8CFF; --line:#21262D; }
+  :root { --bg:#0E1116; --card:#161B22; --fg:#E6EDF3; --muted:#8B949E; --accent:#4F8CFF; --green:#34D399; --violet:#A78BFA; --line:#21262D; }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--bg); color:var(--fg); font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.6; }
-  .wrap { max-width:720px; margin:0 auto; padding:40px 20px 60px; }
+  body { background:var(--bg); color:var(--fg); font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+  .layout { display:flex; gap:40px; max-width:1060px; margin:0 auto; padding:40px 20px 60px; }
+  aside { width:210px; flex-shrink:0; position:sticky; top:40px; align-self:flex-start; }
+  aside .brand { font-size:1.05rem; font-weight:800; letter-spacing:-0.3px; padding:0 14px 14px; }
+  aside .brand a { color:var(--fg); text-decoration:none; }
+  .sect { font-size:0.7rem; color:#565D66; letter-spacing:1.6px; font-weight:700; margin:16px 0 4px; padding-left:14px; }
+  .snav a { display:block; padding:8px 14px; border-radius:10px; color:var(--muted); text-decoration:none; font-size:0.93rem; font-weight:600; }
+  .snav a:hover { color:var(--fg); background:var(--card); }
+  .snav a.on { color:var(--accent); background:rgba(79,140,255,0.09); }
+  .snav a.sub2 { padding-left:28px; font-size:0.87rem; font-weight:500; }
+  .snav a.yt { color:#F87171; }
+  main { flex:1; min-width:0; }
   h1 { font-size:1.9rem; letter-spacing:-0.5px; }
-  .sub { color:var(--muted); margin:6px 0 28px; font-size:0.95rem; }
-  .latest { display:block; background:linear-gradient(135deg,#1a2233,#161B22); border:1px solid var(--accent);
-            border-radius:14px; padding:22px 24px; text-decoration:none; color:var(--fg); margin-bottom:36px; }
-  .latest:hover { background:#1c2536; }
-  .latest .tag { color:var(--accent); font-size:0.8rem; font-weight:700; letter-spacing:1px; }
-  .latest .date { font-size:1.35rem; font-weight:700; margin-top:4px; }
-  .latest .go { color:var(--muted); font-size:0.9rem; margin-top:6px; }
-  h2 { font-size:1.05rem; color:var(--muted); font-weight:600; margin-bottom:12px; }
-  ul.archive { list-style:none; }
-  ul.archive li { border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; }
-  ul.archive a { display:block; padding:13px 6px; color:var(--fg); text-decoration:none; }
-  ul.archive a:hover { color:var(--accent); }
-  ul.archive a.yt { color:#F87171; font-size:0.85rem; flex-shrink:0; }
-  ul.archive a.yt:hover { color:#fca5a5; }
-  footer { margin-top:44px; color:var(--muted); font-size:0.8rem; border-top:1px solid var(--line); padding-top:16px; }
+  .sub { color:var(--muted); margin:8px 0 30px; font-size:0.97rem; }
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:26px; }
+  .cat { display:block; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px;
+         text-decoration:none; color:var(--fg); }
+  .cat:hover { border-color:var(--ac); }
+  .cat .tag { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:1px; color:var(--ac);
+              border:1px solid var(--ac); border-radius:999px; padding:2px 10px; margin-bottom:10px; }
+  .cat h3 { font-size:1.15rem; margin-bottom:6px; }
+  .cat p { color:var(--muted); font-size:0.88rem; }
+  .cat .go { color:var(--ac); font-size:0.85rem; margin-top:10px; font-weight:600; }
+  .info { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px; margin-bottom:14px; }
+  .info h2 { font-size:1.02rem; margin-bottom:10px; }
+  .info ul { list-style:none; }
+  .info li { display:flex; gap:12px; padding:7px 0; border-bottom:1px solid var(--line); font-size:0.92rem; }
+  .info li:last-child { border-bottom:0; }
+  .info .t { color:var(--accent); font-weight:700; flex-shrink:0; width:118px; font-variant-numeric:tabular-nums; }
+  .info .d { color:var(--muted); }
+  footer { margin-top:36px; color:var(--muted); font-size:0.8rem; border-top:1px solid var(--line); padding-top:16px; }
+  @media (max-width:860px) {
+    .layout { flex-direction:column; gap:18px; }
+    aside { position:static; width:100%; }
+    aside .brand { padding-bottom:8px; }
+    .sect { display:none; }
+    .snav { display:flex; flex-wrap:wrap; gap:6px; }
+    .snav a, .snav a.sub2 { padding:7px 14px; border:1px solid var(--line); border-radius:999px; font-size:0.85rem; }
+    .cards { grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>U.S. Daily Brief</h1>
-  <p class="sub">Morning &middot; Market Close &middot; Evening (ET) — the news and market moves that matter to American readers, three times a day, on one page</p>
+<div class="layout">
+  <aside>
+    <div class="brand"><a href="./">데일리 브리프</a></div>
+    <nav class="snav">
+      <div class="sect">MENU</div>
+      <a class="on" href="./">홈</a>
+      <a href="briefs/">글로벌 정세 · 시황</a>
+      <a href="stocks/">종목분석</a>
+      <div class="sect">종목분석 카테고리</div>
+      <a class="sub2" href="stocks/kospi/">코스피</a>
+      <a class="sub2" href="stocks/kosdaq/">코스닥</a>
+      <a class="sub2" href="stocks/nasdaq/">나스닥</a>
+      <div class="sect">CHANNEL</div>
+      <a class="yt" href="https://www.youtube.com/@dailytopicskorea">&#9654; YouTube 쇼츠</a>
+    </nav>
+  </aside>
+  <main>
+    <h1>데일리 브리프</h1>
+    <p class="sub">AI가 사람의 개입 없이 매일 자동으로 수집·분석·발행하는 글로벌 정세 브리핑과 종목 심층 분석 아카이브입니다.
+    모든 글은 발행 시각 기준의 공개 데이터를 바탕으로 작성됩니다.</p>
 
-  <a class="latest" href="briefs/brief-en-2026-07-05-close.html">
-    <div class="tag">LATEST</div>
-    <div class="date">Jul 5, 2026 (Sun) &middot; Market Close</div>
-    <div class="go">Read the latest brief →</div>
-  </a>
+    <div class="cards">
+      <a class="cat" href="briefs/" style="--ac:var(--accent)">
+        <span class="tag">DAILY ×3</span>
+        <h3>글로벌 정세 · 시황</h3>
+        <p>밤사이 국제 뉴스와 미국 증시, 오전·오후 정세와 아시아·유럽 증시를 한 페이지로 요약하는 브리핑. 매일 3회 발행됩니다.</p>
+        <div class="go">브리핑 보러 가기 →</div>
+      </a>
+      <a class="cat" href="stocks/" style="--ac:var(--green)">
+        <span class="tag">DAILY ×3종목</span>
+        <h3>종목분석</h3>
+        <p>코스피 · 코스닥 · 나스닥에서 매일 1종목씩 무작위 추첨해 기업 가치와 투자 적합도를 차트와 함께 진단하는 리포트입니다.</p>
+        <div class="go">리포트 보러 가기 →</div>
+      </a>
+    </div>
 
-  <h2>Past briefs</h2>
-  <ul class="archive">
-    <li><a href="briefs/brief-en-2026-07-05-close.html">Jul 5, 2026 (Sun) &middot; Market Close</a> <a class="yt" href="https://youtu.be/R50ZfZp9CfU">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-05-morning.html">Jul 5, 2026 (Sun) &middot; Morning</a> <a class="yt" href="https://youtu.be/0H-Pr4_-hHA">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-04-evening.html">Jul 4, 2026 (Sat) &middot; Evening</a> <a class="yt" href="https://youtu.be/xxsPXK4IMaU">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-04-close.html">Jul 4, 2026 (Sat) &middot; Market Close</a> <a class="yt" href="https://youtu.be/vO8e6W11L9o">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-03-evening.html">Jul 3, 2026 (Fri) &middot; Evening</a> <a class="yt" href="https://youtu.be/sInRdJbB91s">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-03-close.html">Jul 3, 2026 (Fri) &middot; Market Close</a> <a class="yt" href="https://youtu.be/MGl4eqI3EBc">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-03-morning.html">Jul 3, 2026 (Fri) &middot; Morning</a> <a class="yt" href="https://youtu.be/9MTb8oJpgzs">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-02-evening.html">Jul 2, 2026 (Thu) &middot; Evening</a> <a class="yt" href="https://youtu.be/FEXd_HtWf8E">&#9654; Short</a></li>
-    <li><a href="briefs/brief-en-2026-07-02-close.html">Jul 2, 2026 (Thu) &middot; Market Close</a> <a class="yt" href="https://youtu.be/qaKDOmByDV0">&#9654; Short</a></li>
-  </ul>
+    <div class="info">
+      <h2>발행 스케줄 (KST)</h2>
+      <ul>
+        <li><span class="t">매일 05:00</span><span class="d">새벽 브리핑 — 밤사이 국제 뉴스 + 미국 증시 마감</span></li>
+        <li><span class="t">매일 08:00</span><span class="d">종목분석 — 코스피·코스닥·나스닥 랜덤 각 1종목 심층 리포트</span></li>
+        <li><span class="t">매일 12:00</span><span class="d">정오 브리핑 — 오전 정세 + 아시아 증시</span></li>
+        <li><span class="t">매일 18:00</span><span class="d">저녁 브리핑 — 오후 정세 + 아시아 마감 · 유럽 개장</span></li>
+      </ul>
+    </div>
 
-  <footer>
-    Every brief on this site is an AI-generated summary and must not be used as the basis for investment decisions.<br>
-    Last updated: 2026-07-05 4:05 PM ET
-  </footer>
+    <div class="info">
+      <h2>이 사이트에 대해</h2>
+      <p style="color:var(--muted);font-size:0.92rem">
+        데이터 수집부터 분석, 글 작성, 발행까지 전 과정이 자동화 파이프라인으로 운영됩니다.
+        브리핑은 주요 외신·시장 데이터를 교차 확인해 작성되며, 종목분석은 거래소 공시 데이터와 증권 정보 API를 기반으로
+        밸류에이션 · 수익성 · 성장성 · 재무안정성 · 주주환원 5개 축을 점수화합니다.
+        주요 소식은 <a href="https://www.youtube.com/@dailytopicskorea" style="color:#F87171">YouTube 쇼츠</a>로도 발행됩니다.
+      </p>
+    </div>
+
+    <footer>
+      본 사이트의 모든 콘텐츠는 AI가 자동 생성한 정보 제공 목적의 자료이며, 특정 종목의 매수·매도 추천이 아니고
+      투자 판단의 근거로 사용할 수 없습니다.
+    </footer>
+  </main>
 </div>
 <!-- gc-v2 -->
-<script data-goatcounter="https://topicsglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 (function(){
-  fetch('https://topicsglobal.goatcounter.com/counter/TOTAL.json')
+  fetch('https://sylee0215.goatcounter.com/counter/TOTAL.json')
     .then(function(r){ return r.ok ? r.json() : null })
     .then(function(d){
       if (!d || !d.count) return;
       var el = document.createElement('div');
-      el.style.cssText = 'max-width:720px;margin:14px auto 28px;padding:0 20px;text-align:center;color:#8B949E;font-size:0.8rem;';
-      el.textContent = 'Total visits: ' + d.count.trim();
+      el.style.cssText = 'max-width:1060px;margin:0 auto 28px;padding:0 20px;text-align:center;color:#8B949E;font-size:0.8rem;';
+      el.textContent = '전체 방문 ' + d.count.trim() + '회';
       document.body.appendChild(el);
     })
     .catch(function(){});

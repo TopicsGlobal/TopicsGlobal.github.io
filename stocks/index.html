@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>종목분석</title>
+<meta name="description" content="매일 코스피 · 코스닥 · 나스닥에서 1종목씩 무작위 추첨해 기업 가치와 투자 적합도를 진단합니다">
+<style>
+  :root { --bg:#0E1116; --card:#161B22; --fg:#E6EDF3; --muted:#8B949E; --accent:#4F8CFF; --line:#21262D; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--fg); font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.6; }
+  .layout { display:flex; gap:40px; max-width:1060px; margin:0 auto; padding:40px 20px 60px; }
+  aside { width:210px; flex-shrink:0; position:sticky; top:40px; align-self:flex-start; }
+  aside .brand { font-size:1.05rem; font-weight:800; letter-spacing:-0.3px; padding:0 14px 14px; }
+  aside .brand a { color:var(--fg); text-decoration:none; }
+  .sect { font-size:0.7rem; color:#565D66; letter-spacing:1.6px; font-weight:700; margin:16px 0 4px; padding-left:14px; }
+  .snav a { display:block; padding:8px 14px; border-radius:10px; color:var(--muted); text-decoration:none; font-size:0.93rem; font-weight:600; }
+  .snav a:hover { color:var(--fg); background:var(--card); }
+  .snav a.on { color:var(--accent); background:rgba(79,140,255,0.09); }
+  .snav a.sub2 { padding-left:28px; font-size:0.87rem; font-weight:500; }
+  .snav a.yt { color:#F87171; }
+  main { flex:1; min-width:0; }
+  h1 { font-size:1.7rem; letter-spacing:-0.5px; }
+  .sub { color:var(--muted); margin:6px 0 26px; font-size:0.93rem; }
+  h2 { font-size:1.05rem; color:var(--muted); font-weight:600; margin:30px 0 12px; }
+  .card { display:block; background:var(--card); border:1px solid var(--line); border-radius:14px;
+          padding:18px 20px; text-decoration:none; color:var(--fg); margin-bottom:12px; }
+  .card:hover { border-color:var(--accent); }
+  .badge { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:1px;
+           border:1px solid; border-radius:999px; padding:2px 10px; margin-bottom:8px; }
+  .card .nm { font-size:1.15rem; font-weight:700; }
+  .card .nm small { color:var(--muted); font-weight:500; margin-left:6px; }
+  .card .vd { color:var(--muted); font-size:0.88rem; margin-top:4px; }
+  ul.archive { list-style:none; }
+  ul.archive li { border-bottom:1px solid var(--line); }
+  ul.archive a { display:flex; justify-content:space-between; gap:12px; padding:13px 6px; color:var(--fg); text-decoration:none; }
+  ul.archive a:hover { color:var(--accent); }
+  ul.archive .d { color:var(--muted); font-size:0.85rem; flex-shrink:0; }
+  footer { margin-top:44px; color:var(--muted); font-size:0.8rem; border-top:1px solid var(--line); padding-top:16px; }
+  @media (max-width:860px) {
+    .layout { flex-direction:column; gap:18px; }
+    aside { position:static; width:100%; }
+    aside .brand { padding-bottom:8px; }
+    .sect { display:none; }
+    .snav { display:flex; flex-wrap:wrap; gap:6px; }
+    .snav a, .snav a.sub2 { padding:7px 14px; border:1px solid var(--line); border-radius:999px; font-size:0.85rem; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand"><a href="../">데일리 브리프</a></div>
+    <nav class="snav">
+      <div class="sect">MENU</div>
+      <a class="" href="../">홈</a>
+      <a class="" href="../briefs/">글로벌 정세 · 시황</a>
+      <a class=" on" href="../stocks/">종목분석</a>
+      <div class="sect">종목분석 카테고리</div>
+      <a class="sub2" href="../stocks/kospi/">코스피</a><a class="sub2" href="../stocks/kosdaq/">코스닥</a><a class="sub2" href="../stocks/nasdaq/">나스닥</a>
+      <div class="sect">CHANNEL</div>
+      <a class="yt" href="https://www.youtube.com/@dailytopicskorea">&#9654; YouTube 쇼츠</a>
+    </nav>
+  </aside>
+  <main>
+  <h1>종목분석</h1>
+  <p class="sub">매일 코스피 · 코스닥 · 나스닥에서 1종목씩 무작위 추첨해 기업 가치와 투자 적합도를 진단합니다</p>
+<h2 style="margin-top:0">오늘의 리포트 — 2026-07-06</h2>
+<a class="card" href="kospi/2026-07-06-006120-sk-discovery.html"><span class="badge" style="color:#4F8CFF;border-color:#4F8CFF">KOSPI</span><div class="nm">SK디스커버리<small>006120</small></div><div class="vd">종합 63점 · 중립+ (배당 가치주)</div></a>
+<a class="card" href="kosdaq/2026-07-06-060720-kh-vatec.html"><span class="badge" style="color:#34D399;border-color:#34D399">KOSDAQ</span><div class="nm">KH바텍<small>060720</small></div><div class="vd">종합 68점 · 관심 (낙폭과대 실적주)</div></a>
+<a class="card" href="nasdaq/2026-07-06-hqy-healthequity.html"><span class="badge" style="color:#A78BFA;border-color:#A78BFA">NASDAQ</span><div class="nm">HealthEquity<small>HQY</small></div><div class="vd">종합 62점 · 매수 관심 (성장 모멘텀)</div></a>
+
+  <footer>
+    본 사이트의 모든 보고서는 공개 데이터를 AI가 자동 수집·분석한 정보 제공 목적의 자료이며,
+    특정 종목의 매수·매도 추천이 아니고 투자 판단의 근거로 사용할 수 없습니다.<br>
+    마지막 업데이트: 2026-07-06 08:32 KST
+  </footer>
+  </main>
+</div>
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>

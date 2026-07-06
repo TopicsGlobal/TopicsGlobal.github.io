@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 브리프 — 저녁판 | 2026-07-05 (일)</title>
+<style>
+  :root{
+    --bg:#0E1116; --card:#161B22; --card2:#1B222C; --line:#262D38;
+    --text:#E6EDF3; --sub:#8B949E; --accent:#D4A94E;
+    --up:#F87171; --down:#60A5FA; --flat:#9CA3AF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    line-height:1.6; font-size:15px;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:20px 14px 40px;}
+  header{padding:18px 4px 14px; border-bottom:1px solid var(--line); margin-bottom:22px;}
+  header h1{font-size:1.45rem; letter-spacing:-0.5px;}
+  header h1 .ed{color:var(--accent);}
+  header .meta{color:var(--sub); font-size:0.85rem; margin-top:6px;}
+  .notice{
+    background:var(--card2); border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:8px; padding:10px 14px; font-size:0.85rem; color:var(--sub); margin-bottom:22px;
+  }
+  section{margin-bottom:30px;}
+  h2{
+    font-size:1.02rem; color:var(--accent); margin-bottom:12px;
+    padding-bottom:6px; border-bottom:1px solid var(--line); letter-spacing:-0.3px;
+  }
+  /* 헤드라인 */
+  .headline{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px;}
+  .headline ol{list-style:none; counter-reset:h;}
+  .headline li{counter-increment:h; padding:8px 0; display:flex; gap:12px; align-items:flex-start;}
+  .headline li + li{border-top:1px solid var(--line);}
+  .headline li::before{
+    content:counter(h); flex:0 0 auto; width:24px; height:24px; border-radius:50%;
+    background:var(--card2); border:1px solid var(--line); color:var(--accent);
+    font-size:0.8rem; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:2px;
+  }
+  /* 뉴스 카드 */
+  .news{display:grid; gap:12px;}
+  .ncard{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px;}
+  .ncard h3{font-size:0.98rem; margin-bottom:8px; letter-spacing:-0.3px;}
+  .ncard .tag{
+    display:inline-block; font-size:0.7rem; color:var(--accent); border:1px solid var(--line);
+    background:var(--card2); border-radius:4px; padding:1px 7px; margin-bottom:8px; vertical-align:middle;
+  }
+  .ncard .tag.new{color:#7EE787;}
+  .ncard p{color:var(--text); font-size:0.9rem; margin-bottom:8px;}
+  .ncard .why{font-size:0.85rem; color:var(--sub); border-top:1px dashed var(--line); padding-top:8px;}
+  .ncard .why b{color:var(--accent); font-weight:600;}
+  .ncard .src{font-size:0.75rem; color:var(--sub); margin-top:8px;}
+  /* 지수 카드 그리드 */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;}
+  .mcard{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:13px 15px;}
+  .mcard .name{font-size:0.8rem; color:var(--sub); margin-bottom:4px;}
+  .mcard .val{font-size:1.15rem; font-weight:700; letter-spacing:-0.5px;}
+  .mcard .chg{font-size:0.85rem; font-weight:600; margin-top:2px;}
+  .mcard .note{font-size:0.72rem; color:var(--sub); margin-top:5px;}
+  .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--flat);}
+  .comment{
+    background:var(--card2); border:1px solid var(--line); border-radius:10px;
+    padding:13px 16px; font-size:0.88rem; color:var(--text); margin-top:12px;
+  }
+  .comment b{color:var(--accent);}
+  /* 오늘 밤 지켜볼 것 */
+  .watch{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px 18px;}
+  .watch li{list-style:none; padding:11px 0; display:flex; gap:12px; align-items:flex-start; font-size:0.9rem;}
+  .watch li + li{border-top:1px solid var(--line);}
+  .watch .t{
+    flex:0 0 auto; min-width:88px; font-size:0.75rem; color:var(--accent);
+    background:var(--card2); border:1px solid var(--line); border-radius:5px;
+    padding:2px 8px; text-align:center; margin-top:2px;
+  }
+  .watch .d{color:var(--sub); font-size:0.82rem;}
+  footer{
+    margin-top:34px; padding-top:14px; border-top:1px solid var(--line);
+    color:var(--sub); font-size:0.75rem; text-align:center;
+  }
+  @media (max-width:480px){
+    .wrap{padding:14px 10px 32px;}
+    header h1{font-size:1.25rem;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>글로벌 브리프 <span class="ed">— 저녁판</span></h1>
+    <div class="meta">2026-07-05 (일) · 한국시간(KST) 오후 6시 발행 · 오전 5시/낮 12시 브리핑 이후 업데이트</div>
+  </header>
+
+  <div class="notice">
+    오늘은 <b>일요일</b>로 한국·일본·중화권·유럽 증시가 모두 휴장했습니다. 시장 수치는 <b>금요일(7/3) 확정 마감치</b> 기준으로 정리했으며,
+    미국 증시는 독립기념일 대체휴일로 금요일(7/3)에도 휴장해 마지막 거래일은 목요일(7/2)입니다.
+    미 지수 선물은 KST 월요일 오전 7시(미 동부 일요일 오후 6시)에 거래가 재개됩니다.
+  </div>
+
+  <section>
+    <h2>① 저녁의 헤드라인</h2>
+    <div class="headline">
+      <ol>
+        <li>이란 하메네이 국장(國葬) 이틀째 — 군부는 "피의 복수" 공언, 미·이란 비핵화 협상은 장례 기간(7/4~9) 일주일 중단 확정. 도하 간접협상은 "긍정적 진전" 후 재개 시점이 관건.</li>
+        <li>OPEC+ 7개 핵심 산유국, 오늘(7/5) 8월 증산 폭 결정 회의 — 4~7월 연속 증산 뒤 다섯 번째 증산 여부가 오늘 밤 유가의 최대 변수 (결과는 검색 시점 기준 미발표).</li>
+        <li>지난주 롤러코스터를 탄 한국 증시는 금요일 코스피 8,088.34(+5.76%) 급반등으로 마감 — 미 6월 고용 부진발 금리 인상 지연 기대가 반도체 투매를 되돌림. 주말 휴장 후 월요일 재개장.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>② 오후 국제 뉴스</h2>
+    <div class="news">
+
+      <div class="ncard">
+        <span class="tag">지정학 · 중동</span><span class="tag new">오전 대비 새 진전</span>
+        <h3>하메네이 국장 이틀째… 이란군 총사령관 "복수" 공언, 미·이란 협상은 1주 중단</h3>
+        <p>2월 말 미·이스라엘 합동 공습으로 사망한 하메네이 전 최고지도자의 장례(7/4~9)가 이틀째를 맞아 테헤란 대모살라에 대규모 인파가 몰렸고, 군중은 보복을 요구하는 구호를 이어갔다. 이란 육군 총사령관 아미르 하타미 소장은 "최고지도자의 피를 반드시 갚겠다"고 공언했다.</p>
+        <p>오전 브리핑 대비 새로운 점: 미국이 장례 기간 비핵화 협상을 <b>일주일간 공식 중단</b>하기로 한 사실과, 이번 주 도하 간접협상이 "긍정적 진전"을 이뤘으며 장례 후 "가능한 가장 이른 시점"에 재개된다는 양측 입장이 확인됐다.</p>
+        <div class="why"><b>왜 중요한가</b> — 장례 기간 이란 내 강경 여론이 결집하면 협상 재개 동력이 약해지고, 이는 유가·안전자산에 직결되는 중동 리스크의 핵심 변수다.</div>
+        <div class="src">출처: CNN, CBS News, Fox News</div>
+      </div>
+
+      <div class="ncard">
+        <span class="tag">에너지 · 유가</span><span class="tag new">오늘 예정 이벤트</span>
+        <h3>OPEC+ 핵심 7개국, 오늘 8월 증산 결정 회의… 다섯 달 연속 증산 여부 주목</h3>
+        <p>사우디·러시아 등 자발적 감산 참여 7개국이 오늘(7/5) 회의를 열어 8월 생산 목표를 결정한다. 이들은 4~6월 합산 약 60만 배럴/일 증산에 이어 7월에도 18만8천 배럴/일 증산을 결정한 바 있어, 이번에도 비슷한 규모의 증산이 이어질지가 초점이다. 회의 결과는 이 브리핑 검색 시점 기준 아직 발표되지 않았다.</p>
+        <div class="why"><b>왜 중요한가</b> — 결과가 오늘 밤 발표되면 월요일 아침 아시아 유가·에너지주가 가장 먼저 반응하는 첫 재료가 된다. 유가는 이란전 이전 수준으로 되돌아온 상태라 증산 폭에 민감하다.</div>
+        <div class="src">출처: OPEC 사무국, CNBC, Al Jazeera</div>
+      </div>
+
+      <div class="ncard">
+        <span class="tag">지정학 · 우크라이나</span><span class="tag new">오전 대비 새 진전</span>
+        <h3>키이우 대규모 공습 사망자 31명으로 늘어… 크렘린 "젤렌스키가 모스크바로 오라"</h3>
+        <p>7월 4일 러시아가 미사일 74발과 장거리 드론 496기를 동원해 감행한 키이우 집중 공습의 사망자가 최소 31명, 부상자는 100명 이상으로 늘었다. 우크라이나는 러시아 벨고로드의 전력·수도 기반시설을 미사일로 타격하며 맞대응했다.</p>
+        <p>새로운 진전: 러시아가 전사자 시신 인도를 위한 콘스탄티니우카 일시 휴전을 제안하는 한편, 크렘린이 정상회담 장소로 <b>"젤렌스키가 모스크바로 와야 한다"</b>는 입장을 내놨다. 젤렌스키 대통령은 7/4 트럼프 대통령과 통화해 전황과 종전 외교를 논의했다.</p>
+        <div class="why"><b>왜 중요한가</b> — 대규모 공습과 정상회담 장소 신경전이 겹치며 종전 협상의 단기 성사 기대가 후퇴하고 있다.</div>
+        <div class="src">출처: Al Jazeera, Kyiv Independent</div>
+      </div>
+
+      <div class="ncard">
+        <span class="tag">지정학 · 중국</span>
+        <h3>중국군, 숙군(肅軍) 후 상장 2명 승진… 시진핑 '충성 재편' 마무리 수순</h3>
+        <p>중국군이 반부패 숙청으로 수뇌부 공백이 생긴 가운데 장성 2명을 상장으로 승진시켰다. 2022년 이후 100명 이상의 고위 장교가 낙마한 사상 최대 규모 숙군의 마무리이자 지도부 개편의 신호탄으로 해석된다. 분석가들은 최근 숙청된 장유샤 중앙군사위 부주석 계열의 충성 구도를 시진핑 주석 직할로 재편하려는 조치로 본다.</p>
+        <div class="why"><b>왜 중요한가</b> — 군 지휘부 재편은 대만해협·남중국해 등 아시아 안보 리스크 평가와 직결되는 변수다.</div>
+        <div class="src">출처: NPR, CSIS</div>
+      </div>
+
+      <div class="ncard">
+        <span class="tag">외교 · 유럽</span>
+        <h3>교황 레오 14세, 람페두사 방문길… "미국은 이민자 환대하라" 이례적 메시지</h3>
+        <p>교황 레오 14세가 '미국 건국 250주년' 리버티 메달을 화상으로 수락하면서 미국에 이민자 포용을 촉구한 뒤, 유럽 이민 관문인 이탈리아 람페두사섬으로 향했다. 유럽에 더 많은 이민자 수용을 요구할 예정이어서 미국·유럽 각국의 강경 이민정책과 정면으로 부딪치는 행보다.</p>
+        <div class="why"><b>왜 중요한가</b> — 이민 문제는 미국 중간선거의 해와 유럽 각국 정치 지형을 흔드는 핵심 쟁점으로, 첫 미국 출신 교황의 개입은 정치적 파급력이 크다.</div>
+        <div class="src">출처: Fox News, CBS News</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>③ 아시아 증시 마감 <span style="color:var(--sub); font-weight:400; font-size:0.8rem;">— 주말 휴장, 금요일(7/3) 확정 마감 기준</span></h2>
+    <div class="grid">
+      <div class="mcard">
+        <div class="name">코스피 (7/3 마감)</div>
+        <div class="val">8,088.34</div>
+        <div class="chg up">▲ +5.76%</div>
+        <div class="note">7/2 급락(약 -6%) 후 급반등</div>
+      </div>
+      <div class="mcard">
+        <div class="name">코스닥 (7/3 마감)</div>
+        <div class="val">844.70</div>
+        <div class="chg down">▼ -2%대</div>
+        <div class="note">AI 밸류에이션 부담 지속</div>
+      </div>
+      <div class="mcard">
+        <div class="name">닛케이 225 (7/3 마감)</div>
+        <div class="val">69,744</div>
+        <div class="chg up">▲ +1.47%</div>
+        <div class="note">+1,010.92p</div>
+      </div>
+      <div class="mcard">
+        <div class="name">항셍 (7/3 마감)</div>
+        <div class="val">23,350.03</div>
+        <div class="chg up">▲ +1.28%</div>
+        <div class="note">아시아 반등 동조</div>
+      </div>
+      <div class="mcard">
+        <div class="name">상하이종합 (7/3 마감)</div>
+        <div class="val">4,044</div>
+        <div class="chg up">▲ +0.37%</div>
+        <div class="note">소폭 상승 마감</div>
+      </div>
+    </div>
+    <div class="comment">
+      <b>한국 시장 코멘트</b> — 지난주 코스피는 반도체발 급등락으로 장중 거래중단(서킷브레이커)까지 겪는 극심한 변동성 장세였다. 수요일(7/1) 8,303.41(-2.04%), 목요일(7/2) 8,000선 붕괴 급락 뒤, 금요일에는 미 6월 고용 부진으로 연준의 금리 인상 지연 기대가 살아나며 +5.76% 급반등해 한 주를 마쳤다.
+      특징주는 <b>삼성전자(+8.2%)</b>와 <b>SK하이닉스(+10.9%)</b> 등 대형 반도체주로, 저가 매수세가 유입되며 반등을 주도했다. 다만 외국인 순매도가 이어졌고 성장주 중심의 코스닥은 하락해 온기가 고르지 못했다.
+    </div>
+  </section>
+
+  <section>
+    <h2>④ 유럽 개장 · 미 선물 <span style="color:var(--sub); font-weight:400; font-size:0.8rem;">— 일요일 휴장, 금요일 마감 및 재개 일정</span></h2>
+    <div class="grid">
+      <div class="mcard">
+        <div class="name">STOXX 600 (7/3 마감)</div>
+        <div class="val">사상 최고</div>
+        <div class="chg up">▲ +0.7%</div>
+        <div class="note">장중 652.35 터치, 4주 연속 상승</div>
+      </div>
+      <div class="mcard">
+        <div class="name">독일 DAX (7/3 마감)</div>
+        <div class="val">사상 최고 경신</div>
+        <div class="chg up">▲ +0.8%</div>
+        <div class="note">월요일 KST 오후 4시대 재개장</div>
+      </div>
+      <div class="mcard">
+        <div class="name">영국 FTSE 100 (7/3 마감)</div>
+        <div class="val">10,679.03</div>
+        <div class="chg up">▲ +0.2%</div>
+        <div class="note">주간 상승 마감</div>
+      </div>
+      <div class="mcard">
+        <div class="name">S&amp;P 500 · 나스닥 선물</div>
+        <div class="val flat">거래 재개 전</div>
+        <div class="chg flat">— 휴장</div>
+        <div class="note">KST 월요일 오전 7시 재개. 미 현물은 7/2가 마지막 거래일(7/3 독립기념일 대체휴일)</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>⑤ 원자재 · 환율 · 금리 스냅샷 <span style="color:var(--sub); font-weight:400; font-size:0.8rem;">— 주말 직전 마지막 확인치 기준</span></h2>
+    <div class="grid">
+      <div class="mcard">
+        <div class="name">WTI 유가</div>
+        <div class="val">$68 안팎</div>
+        <div class="chg flat">이란전 이전 수준 복귀</div>
+        <div class="note">7/2 $68.11 출발 기준. 7/3 확정 종가 확인 불가</div>
+      </div>
+      <div class="mcard">
+        <div class="name">브렌트 유가 (7/3)</div>
+        <div class="val">$72 안팎</div>
+        <div class="chg flat">— 보합권</div>
+        <div class="note">OPEC+ 회의 대기</div>
+      </div>
+      <div class="mcard">
+        <div class="name">원/달러 환율 (7/3)</div>
+        <div class="val">약 1,553원</div>
+        <div class="chg up">▲ 원화 약세</div>
+        <div class="note">전일 1,539.93원 대비 상승. 외국인 주식 매도·달러 수요 영향</div>
+      </div>
+      <div class="mcard">
+        <div class="name">미 10년물 금리 (7/2)</div>
+        <div class="val">4.47~4.49%</div>
+        <div class="chg down">▼ 하락(가격 상승)</div>
+        <div class="note">고용 부진에 장중 4.5% 테스트 후 반락. 7/3 미국 휴장</div>
+      </div>
+      <div class="mcard">
+        <div class="name">금 (7/2)</div>
+        <div class="val">$4,050~4,100</div>
+        <div class="chg up">▲ +1.3% 내외</div>
+        <div class="note">금리 인상 지연 기대에 강세. 확정 종가 확인 불가</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>⑥ 오늘 밤 지켜볼 것</h2>
+    <div class="watch">
+      <ul>
+        <li>
+          <span class="t">오늘 밤</span>
+          <div><b>OPEC+ 8월 증산 결정 발표</b><br><span class="d">7개 핵심 산유국 회의 결과. 증산 폭이 시장 예상(전월 수준 18만~20만 배럴/일 안팎)을 벗어나면 월요일 아시아 개장부터 유가·에너지주·원/달러에 파장.</span></div>
+        </li>
+        <li>
+          <span class="t">월 07:00 KST</span>
+          <div><b>미 지수 선물 거래 재개 — 연휴 이후 첫 가격 반영</b><br><span class="d">목요일 약한 고용지표와 주말 사이 이란·우크라이나·OPEC+ 뉴스가 한꺼번에 반영되는 첫 시세. 아시아 월요일장의 방향타.</span></div>
+        </li>
+        <li>
+          <span class="t">이번 주 초</span>
+          <div><b>미·이란 협상 재개 시점 관련 발신</b><br><span class="d">장례 기간(~7/9) 중 이란 지도부·군부의 수위 높은 발언이 나올 경우 지정학 리스크 재부각 가능. 협상 재개 일정 공지 여부 주목.</span></div>
+        </li>
+        <li>
+          <span class="t">수 7/8 (KST 목 새벽)</span>
+          <div><b>FOMC 6월 의사록 공개 — 워시 신임 의장 체제 첫 의사록</b><br><span class="d">에너지발 인플레이션에 '동결'로 대응한 6월 회의의 내부 논의 공개. 이번 주 경제지표가 얇고 2분기 실적 시즌은 7월 중순부터라, 주중 최대 이벤트.</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.<br>
+    글로벌 브리프 저녁판 · 2026-07-05 (일) 18:00 KST 발행
+  </footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/KtAm6blWql0" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
