@@ -19,6 +19,8 @@
   .snav a.on { color:var(--accent); background:rgba(79,140,255,0.09); }
   .snav a.sub2 { padding-left:28px; font-size:0.87rem; font-weight:500; }
   .snav a.yt { color:#F87171; }
+  .snav a.ig { color:#E1306C; }
+  .snav a.nv { color:#03C75A; }
   main { flex:1; min-width:0; }
   h1 { font-size:1.7rem; letter-spacing:-0.5px; }
   .sub { color:var(--muted); margin:6px 0 26px; font-size:0.93rem; }
@@ -31,11 +33,19 @@
   .card .nm { font-size:1.15rem; font-weight:700; }
   .card .nm small { color:var(--muted); font-weight:500; margin-left:6px; }
   .card .vd { color:var(--muted); font-size:0.88rem; margin-top:4px; }
+  .cardwrap { position:relative; }
+  .shorts { position:absolute; top:16px; right:16px; display:inline-flex; align-items:center; gap:5px;
+            font-size:0.8rem; font-weight:700; color:#F87171; text-decoration:none;
+            border:1px solid #F87171; border-radius:999px; padding:4px 12px; background:rgba(248,113,113,0.10); }
+  .shorts:hover { background:rgba(248,113,113,0.22); }
   ul.archive { list-style:none; }
-  ul.archive li { border-bottom:1px solid var(--line); }
-  ul.archive a { display:flex; justify-content:space-between; gap:12px; padding:13px 6px; color:var(--fg); text-decoration:none; }
-  ul.archive a:hover { color:var(--accent); }
+  ul.archive li { border-bottom:1px solid var(--line); display:flex; align-items:center; gap:10px; }
+  ul.archive a.row { flex:1; min-width:0; display:flex; justify-content:space-between; gap:12px; padding:13px 6px; color:var(--fg); text-decoration:none; }
+  ul.archive a.row:hover { color:var(--accent); }
   ul.archive .d { color:var(--muted); font-size:0.85rem; flex-shrink:0; }
+  ul.archive .slink { flex-shrink:0; color:#F87171; font-size:0.8rem; font-weight:700; text-decoration:none;
+                      border:1px solid #F87171; border-radius:999px; padding:4px 11px; background:rgba(248,113,113,0.10); }
+  ul.archive .slink:hover { background:rgba(248,113,113,0.22); }
   footer { margin-top:44px; color:var(--muted); font-size:0.8rem; border-top:1px solid var(--line); padding-top:16px; }
   @media (max-width:860px) {
     .layout { flex-direction:column; gap:18px; }
@@ -60,6 +70,8 @@
       <a class="sub2" href="../stocks/kospi/">코스피</a><a class="sub2" href="../stocks/kosdaq/">코스닥</a><a class="sub2" href="../stocks/nasdaq/">나스닥</a>
       <div class="sect">CHANNEL</div>
       <a class="yt" href="https://www.youtube.com/@dailytopicskorea">&#9654; YouTube 쇼츠</a>
+      <a class="ig" href="https://www.instagram.com/brief.global.kr">&#128247; Instagram</a>
+      <a class="nv" href="https://blog.naver.com/topicsglobal">&#128215; 네이버 블로그</a>
     </nav>
   </aside>
   <main>
@@ -69,19 +81,19 @@
 <a class="card" href="kospi/2026-07-07-138040.html"><span class="badge" style="color:#4F8CFF;border-color:#4F8CFF">KOSPI</span><div class="nm">메리츠금융지주<small>138040</small></div><div class="vd">종합 64점 · 관심 (저평가 고ROE 금융주)</div></a>
 <a class="card" href="kospi/2026-07-07-042700.html"><span class="badge" style="color:#4F8CFF;border-color:#4F8CFF">KOSPI</span><div class="nm">한미반도체<small>042700</small></div><div class="vd">종합 61점 · 관심 (고평가 성장주)</div></a>
 <a class="card" href="kosdaq/2026-07-07-251970.html"><span class="badge" style="color:#34D399;border-color:#34D399">KOSDAQ</span><div class="nm">펌텍코리아<small>251970</small></div><div class="vd">종합 61점 · 관심 (낙폭과대 가치주)</div></a>
-<a class="card" href="kosdaq/2026-07-07-064760.html"><span class="badge" style="color:#34D399;border-color:#34D399">KOSDAQ</span><div class="nm">티씨케이<small>064760</small></div><div class="vd">종합 66점 · 중립 (고평가 우량 성장주)</div></a>
+<div class="cardwrap"><a class="card" href="kosdaq/2026-07-07-064760.html"><span class="badge" style="color:#34D399;border-color:#34D399">KOSDAQ</span><div class="nm">티씨케이<small>064760</small></div><div class="vd">종합 66점 · 중립 (고평가 우량 성장주)</div></a><a class="shorts" href="https://youtu.be/ab_-WK31NLE" target="_blank" rel="noopener">&#9654; 쇼츠</a></div>
 <a class="card" href="nasdaq/2026-07-07-rcat-red-cat-holdings-inc.html"><span class="badge" style="color:#A78BFA;border-color:#A78BFA">NASDAQ</span><div class="nm">Red Cat Holdings, Inc.<small>RCAT</small></div><div class="vd">종합 28점 · 유보 (고위험 테마 성장주)</div></a>
 <a class="card" href="nasdaq/2026-07-07-airg-airgain-inc.html"><span class="badge" style="color:#A78BFA;border-color:#A78BFA">NASDAQ</span><div class="nm">Airgain, Inc.<small>AIRG</small></div><div class="vd">종합 26점 · 유보 (적자 턴어라운드 기대주)</div></a>
 <h2>지난 리포트</h2>
 <ul class="archive">
-  <li><a href="kospi/2026-07-06-006120-sk-discovery.html"><span><b style="color:#4F8CFF;font-size:0.78rem">KOSPI</b> SK디스커버리 — 종합 63점 · 중립+ (배당 가치주)</span><span class="d">2026-07-06</span></a></li>
-  <li><a href="kosdaq/2026-07-06-060720-kh-vatec.html"><span><b style="color:#34D399;font-size:0.78rem">KOSDAQ</b> KH바텍 — 종합 68점 · 관심 (낙폭과대 실적주)</span><span class="d">2026-07-06</span></a></li>
-  <li><a href="nasdaq/2026-07-06-hqy-healthequity.html"><span><b style="color:#A78BFA;font-size:0.78rem">NASDAQ</b> HealthEquity — 종합 62점 · 매수 관심 (성장 모멘텀)</span><span class="d">2026-07-06</span></a></li>
+  <li><a class="row" href="kospi/2026-07-06-006120-sk-discovery.html"><span><b style="color:#4F8CFF;font-size:0.78rem">KOSPI</b> SK디스커버리 — 종합 63점 · 중립+ (배당 가치주)</span><span class="d">2026-07-06</span></a><a class="slink" href="https://youtu.be/k0Ygv6oor4I" target="_blank" rel="noopener">&#9654; 쇼츠</a></li>
+  <li><a class="row" href="kosdaq/2026-07-06-060720-kh-vatec.html"><span><b style="color:#34D399;font-size:0.78rem">KOSDAQ</b> KH바텍 — 종합 68점 · 관심 (낙폭과대 실적주)</span><span class="d">2026-07-06</span></a><a class="slink" href="https://youtu.be/cl99SfdoNjA" target="_blank" rel="noopener">&#9654; 쇼츠</a></li>
+  <li><a class="row" href="nasdaq/2026-07-06-hqy-healthequity.html"><span><b style="color:#A78BFA;font-size:0.78rem">NASDAQ</b> HealthEquity — 종합 62점 · 매수 관심 (성장 모멘텀)</span><span class="d">2026-07-06</span></a><a class="slink" href="https://youtu.be/BhcGdbX2c6Q" target="_blank" rel="noopener">&#9654; 쇼츠</a></li>
 </ul>
   <footer>
     본 사이트의 모든 보고서는 공개 데이터를 AI가 자동 수집·분석한 정보 제공 목적의 자료이며,
     특정 종목의 매수·매도 추천이 아니고 투자 판단의 근거로 사용할 수 없습니다.<br>
-    마지막 업데이트: 2026-07-07 20:01 KST
+    마지막 업데이트: 2026-07-08 09:02 KST
   </footer>
   </main>
 </div>
