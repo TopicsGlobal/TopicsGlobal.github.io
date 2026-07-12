@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 브리프 — 저녁판 | 2026-07-12 (일)</title>
+<style>
+  :root{
+    --bg:#0E1116; --card:#161B22; --card2:#1B2129; --line:#262D37;
+    --text:#E6EDF3; --body:#D8DEE6; --muted:#8B949E; --muted2:#A8B3BE;
+    --up:#F87171; --down:#60A5FA; --flat:#9CA3AF; --accent:#F0B429;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--body);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  @media (max-width:480px){ body{font-size:16px;} }
+  .wrap{max-width:860px; margin:0 auto; padding:28px 16px 48px;}
+
+  header{border-bottom:1px solid var(--line); padding-bottom:20px; margin-bottom:26px;}
+  .brand{font-size:14px; font-weight:700; letter-spacing:.12em; color:var(--accent); margin-bottom:6px;}
+  h1{font-size:32px; font-weight:800; color:var(--text); line-height:1.3;}
+  @media (max-width:480px){ h1{font-size:28px;} }
+  .pubinfo{margin-top:8px; color:var(--muted2); font-size:14.5px;}
+  .badge{display:inline-block; background:#2A2214; color:var(--accent); border:1px solid #4a3b16;
+    border-radius:6px; padding:1px 8px; font-size:13.5px; font-weight:700; margin-left:6px;}
+
+  .notice{
+    background:var(--card2); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:12px 16px; font-size:15px; color:var(--muted2); margin-bottom:28px;
+  }
+
+  section{margin-bottom:36px;}
+  h2{font-size:21px; font-weight:700; color:var(--text); margin-bottom:14px;
+     padding-left:12px; border-left:4px solid var(--accent); line-height:1.4;}
+  .h2sub{font-size:14px; font-weight:400; color:var(--muted); margin-left:6px;}
+
+  /* 헤드라인 */
+  .headline{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px;}
+  .headline ol{list-style:none; counter-reset:hl;}
+  .headline li{counter-increment:hl; display:flex; gap:12px; padding:10px 0; font-size:17.5px; color:var(--text);}
+  .headline li+li{border-top:1px solid var(--line);}
+  .headline li::before{
+    content:counter(hl); flex:none; width:28px; height:28px; border-radius:8px;
+    background:#2A2214; color:var(--accent); font-weight:800; font-size:15px;
+    display:flex; align-items:center; justify-content:center; margin-top:4px;
+  }
+
+  /* 차트 */
+  .chart-glance{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px;}
+  .cg-title{font-size:17px; font-weight:700; color:var(--text); margin-bottom:2px;}
+  .cg-note{font-size:13.5px; color:var(--muted); margin-bottom:14px;}
+  .cg-row{display:flex; align-items:center; gap:8px; padding:5px 0;}
+  .cg-label{flex:none; width:92px; font-size:14.5px; color:var(--muted2); text-align:right;}
+  .cg-track{flex:1; display:flex; height:22px; position:relative;}
+  .cg-half{flex:1; display:flex; align-items:center; position:relative;}
+  .cg-half.left{justify-content:flex-end; border-right:1px solid #3A424D;}
+  .cg-half.right{justify-content:flex-start;}
+  .cg-bar{height:16px; border-radius:3px; min-width:2px;}
+  .cg-bar.up{background:var(--up);}
+  .cg-bar.down{background:var(--down);}
+  .cg-val{font-size:13.5px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; padding:0 6px;}
+  .cg-val.up{color:var(--up);}
+  .cg-val.down{color:var(--down);}
+  .cg-axis{display:flex; margin-top:6px;}
+  .cg-axis span{flex:1; text-align:center; font-size:13.5px; color:var(--muted);}
+
+  /* 뉴스 카드 */
+  .news{display:grid; gap:14px;}
+  .ncard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px;}
+  .ntag{display:inline-block; font-size:13.5px; font-weight:700; border-radius:6px; padding:1px 8px; margin-bottom:8px;
+        background:#1E2A3A; color:#7FB4E8; border:1px solid #2C3E55;}
+  .ntag.new{background:#3A1A1A; color:#F0A0A0; border-color:#5a2828;}
+  .ncard h3{font-size:17.5px; font-weight:700; color:var(--text); line-height:1.5; margin-bottom:8px;}
+  .ncard p{font-size:16.5px; color:var(--body);}
+  .nwhy{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15.5px; color:var(--muted2);}
+  .nwhy b{color:var(--accent); font-weight:700;}
+  .nsrc{margin-top:8px; font-size:13.5px; color:var(--muted);}
+
+  /* 지수/매크로 카드 그리드 */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;}
+  .mcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px;}
+  .mname{font-size:14.5px; font-weight:700; color:var(--muted2); margin-bottom:4px;}
+  .mval{font-size:25px; font-weight:800; color:var(--text); font-variant-numeric:tabular-nums; line-height:1.3;}
+  @media (max-width:480px){ .mval{font-size:23px;} }
+  .mchg{font-size:15.5px; font-weight:700; font-variant-numeric:tabular-nums; margin-top:2px;}
+  .mchg.up{color:var(--up);} .mchg.down{color:var(--down);} .mchg.flat{color:var(--flat);}
+  .msub{font-size:13.5px; color:var(--muted); margin-top:4px;}
+  .minibar{height:6px; border-radius:3px; background:#232A33; margin-top:10px; overflow:hidden; position:relative;}
+  .minibar i{display:block; height:100%; border-radius:3px;}
+  .minibar i.up{background:var(--up);} .minibar i.down{background:var(--down);}
+
+  .comment{background:var(--card2); border:1px solid var(--line); border-radius:10px;
+    padding:14px 18px; margin-top:14px; font-size:16.5px; color:var(--body);}
+  .comment b{color:var(--text);}
+
+  /* 오늘 밤 지켜볼 것 */
+  .watch{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 20px;}
+  .watch li{list-style:none; display:flex; gap:12px; padding:13px 0; font-size:16.5px;}
+  .watch li+li{border-top:1px solid var(--line);}
+  .wtime{flex:none; width:118px; font-size:14.5px; font-weight:700; color:var(--accent);
+         font-variant-numeric:tabular-nums; padding-top:2px;}
+  .wbody b{color:var(--text);}
+  .wbody .wsub{display:block; font-size:14.5px; color:var(--muted2); margin-top:2px;}
+
+  footer{border-top:1px solid var(--line); margin-top:40px; padding-top:18px;
+    font-size:13.5px; color:var(--muted); line-height:1.8;}
+  footer a{color:var(--muted2);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">GLOBAL BRIEF</div>
+    <h1>글로벌 브리프 — 저녁판</h1>
+    <div class="pubinfo">2026-07-12 (일) 오후 6시 발행 · 한국 시간(KST) 기준 <span class="badge">하루 3회 중 3번째</span></div>
+  </header>
+
+  <div class="notice">
+    ⚠ 오늘은 <b>일요일로 국내외 증시·외환·선물시장이 모두 휴장</b>입니다. 본 보고서의 시장 수치는 모두
+    <b>금요일(7/10) 확정 마감치</b>이며, 오후 시간대에는 중동발 지정학 뉴스가 집중적으로 쏟아졌습니다.
+    미 지수 선물은 내일(월) 오전 7시(KST) 재개장 시점에 이번 주말 사태를 처음 반영합니다.
+  </div>
+
+  <!-- ① 저녁의 헤드라인 -->
+  <section>
+    <h2>① 저녁의 헤드라인</h2>
+    <div class="headline">
+      <ol>
+        <li>이란이 오늘 오후 미군 3차 대규모 공습(약 140개 표적)에 맞서 카타르·UAE·바레인·쿠웨이트·요르단 등 걸프 전역의 미군 연계 시설을 일제 공격 — 알우데이드 기지 피격, 휴전 사실상 붕괴.</li>
+        <li>호르무즈 해협 통항이 하루 130여 척에서 22척 수준으로 급감, 사실상 마비 — 브렌트유는 주간 +4.7%로 $76 부근에서 마감했고, 월요일 아시아 개장 시 유가·환율 변동성 경계.</li>
+        <li>주말 휴장 속 금요일 코스피는 기관 매수에 +2.52% 오른 7,475.94로 마감, SK하이닉스는 미국 역사상 최대 외국기업 상장($265억) 나스닥 데뷔 첫날 +13% 기록.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 오늘의 시장 한눈에 (다이버징 바 차트) -->
+  <div class="chart-glance">
+    <div class="cg-title">오늘의 시장 한눈에</div>
+    <div class="cg-note">주말 휴장 — 금요일(7/10) 마감 기준 등락률(%) · 좌측 파랑=하락 / 우측 빨강=상승</div>
+
+    <div class="cg-row">
+      <div class="cg-label">코스닥</div>
+      <div class="cg-track">
+        <div class="cg-half left"></div>
+        <div class="cg-half right"><span class="cg-bar up" style="width:100%"></span><span class="cg-val up">+5.47%</span></div>
+      </div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-label">코스피</div>
+      <div class="cg-track">
+        <div class="cg-half left"></div>
+        <div class="cg-half right"><span class="cg-bar up" style="width:46%"></span><span class="cg-val up">+2.52%</span></div>
+      </div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-label">닛케이225</div>
+      <div class="cg-track">
+        <div class="cg-half left"></div>
+        <div class="cg-half right"><span class="cg-bar up" style="width:22%"></span><span class="cg-val up">+1.20%</span></div>
+      </div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-label">항셍</div>
+      <div class="cg-track">
+        <div class="cg-half left"></div>
+        <div class="cg-half right"><span class="cg-bar up" style="width:11%"></span><span class="cg-val up">+0.60%</span></div>
+      </div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-label">S&amp;P 500</div>
+      <div class="cg-track">
+        <div class="cg-half left"></div>
+        <div class="cg-half right"><span class="cg-bar up" style="width:8%"></span><span class="cg-val up">+0.42%</span></div>
+      </div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-label">금(현물)</div>
+      <div class="cg-track">
+        <div class="cg-half left"><span class="cg-val down">−0.06%</span><span class="cg-bar down" style="width:2%"></span></div>
+        <div class="cg-half right"></div>
+      </div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-label">상하이종합</div>
+      <div class="cg-track">
+        <div class="cg-half left"><span class="cg-val down">−1.00%</span><span class="cg-bar down" style="width:18%"></span></div>
+        <div class="cg-half right"></div>
+      </div>
+    </div>
+    <div class="cg-axis"><span>◀ 하락</span><span>0%</span><span>상승 ▶</span></div>
+  </div>
+
+  <!-- ② 오후 국제 뉴스 -->
+  <section style="margin-top:36px;">
+    <h2>② 오후 국제 뉴스 <span class="h2sub">한국 시간 12일 낮 이후 새로 나온 소식</span></h2>
+    <div class="news">
+
+      <div class="ncard">
+        <span class="ntag new">지정학 · 오후 속보</span>
+        <h3>이란, 카타르·UAE·바레인 등 걸프 전역 미군 연계 시설 일제 공격</h3>
+        <p>이란이 일요일 카타르·바레인·UAE에 미사일·드론 공격을 단행하고, 쿠웨이트·요르단·오만의 미군 연계 시설도 타격했다고 주장했다. 걸프 최대 미군 기지인 카타르 알우데이드 공군기지에 탄도미사일이 떨어져 전투기 정비시설과 지휘통제시설이 피해를 입었으며, UAE는 방공망을 가동해 요격에 나섰다.</p>
+        <div class="nwhy"><b>왜 중요한가</b> — 미·이란 충돌이 걸프 산유국 전체로 확전되면서 원유 공급망과 역내 미군 태세가 동시에 흔들리는 국면.</div>
+        <div class="nsrc">출처: Euronews · Arab News · The Times of Israel</div>
+      </div>
+
+      <div class="ncard">
+        <span class="ntag new">안보 · 진전</span>
+        <h3>미국, 이란에 3차 대규모 공습 — 트럼프 "휴전은 끝났다"</h3>
+        <p>미군이 호르무즈 해협에서 키프로스 선적 컨테이너선이 이란 혁명수비대의 공격을 받은 데 대한 보복으로 이란 내 약 140개 군사 표적을 타격하는 이번 주 세 번째 대규모 공습을 단행했다. 트럼프 대통령은 이란과의 잠정 휴전이 "끝났다"고 선언했다. <b>낮 브리핑 이후 새로운 것</b>: 어제 상선 피격에 그쳤던 상황이 오늘 오후 미국의 3차 공습 → 이란의 걸프 다국적 보복으로 격상됐다.</p>
+        <div class="nwhy"><b>왜 중요한가</b> — 휴전 붕괴가 공식화되며 장기 소모전 리스크가 커졌고, 월요일 글로벌 시장의 위험회피 강도를 좌우할 핵심 변수.</div>
+        <div class="nsrc">출처: Arab News · The National</div>
+      </div>
+
+      <div class="ncard">
+        <span class="ntag">에너지 · 유가</span>
+        <h3>호르무즈 해협 통항 사실상 마비 — "유가 추가 변동성" 경고</h3>
+        <p>로이즈리스트 인텔리전스에 따르면 미국이 조정한 오만 연안 항로를 위치신호를 켠 채 통과한 대형 선박이 화요일 이후 전무하며, 해협 하루 통항 선박은 전쟁 전 130여 척에서 최근 22척까지 급감했다. 전 세계 원유의 약 20%가 지나는 길목이 사실상 막히면서, 애널리스트들은 주말 사태로 다음 주 유가의 추가 변동성을 경고하고 있다. 브렌트유는 전쟁 전 대비 약 5% 높은 $76 부근에서 한 주를 마쳤다.</p>
+        <div class="nwhy"><b>왜 중요한가</b> — 원유 수입의 대부분을 중동 항로에 의존하는 한국에는 유가·운임·환율을 동시에 자극하는 직접 리스크.</div>
+        <div class="nsrc">출처: Al Jazeera · New York Times(DNYUZ)</div>
+      </div>
+
+      <div class="ncard">
+        <span class="ntag">외교</span>
+        <h3>걸프 국가·이집트, 일제 규탄 속 중재 외교 가속</h3>
+        <p>UAE·카타르·이집트가 이란의 공격과 확전을 규탄하며 자제를 촉구했고, 걸프 정상들은 협상 재개를 위한 외교 접촉을 강화하고 있다. 피격 당사국들이 즉각적 군사 대응보다 중재 쪽에 무게를 두고 있다는 점이 특징이다.</p>
+        <div class="nwhy"><b>왜 중요한가</b> — 걸프 산유국들이 참전 대신 중재를 택하면 확전 속도를 늦출 수 있어, 유가 상단을 제어할 거의 유일한 완충 장치.</div>
+        <div class="nsrc">출처: Asharq Al-Awsat · Euronews</div>
+      </div>
+
+      <div class="ncard">
+        <span class="ntag">보건</span>
+        <h3>콩고민주공화국 에볼라, 기존 발병지 밖으로 확산 신호</h3>
+        <p>콩고민주공화국에서 기존 발병 중심지인 이투리주 밖의 미발생 지역들에서 새로운 에볼라 의심 사례가 보고됐다. 방역 당국의 통제선을 넘어 유행이 확산되고 있다는 신호로 해석된다.</p>
+        <div class="nwhy"><b>왜 중요한가</b> — 확산세가 국경을 넘으면 국제 공중보건 비상사태 논의로 이어질 수 있는 사안.</div>
+        <div class="nsrc">출처: NPR</div>
+      </div>
+
+      <div class="ncard">
+        <span class="ntag">정치</span>
+        <h3>말레이시아 조호르주 선거, 집권 연립 바리산 나시오날 과반 확보</h3>
+        <p>말레이시아 남부 조호르주 선거에서 바리산 나시오날(BN) 연합이 과반 의석을 확보해 주정부를 구성하게 됐다. 싱가포르와 접한 경제 요충지에서 집권 연정의 기반이 재확인됐다.</p>
+        <div class="nwhy"><b>왜 중요한가</b> — 조호르-싱가포르 경제특구 등 역내 투자 프로젝트의 정책 연속성 가늠자.</div>
+        <div class="nsrc">출처: CBS News · 현지 보도 종합</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ③ 아시아 증시 마감 -->
+  <section>
+    <h2>③ 아시아 증시 <span class="h2sub">주말 휴장 — 금요일(7/10) 확정 마감 기준</span></h2>
+    <div class="grid">
+      <div class="mcard">
+        <div class="mname">코스피</div>
+        <div class="mval">7,475.94</div>
+        <div class="mchg up">▲ +184.03 (+2.52%)</div>
+        <div class="minibar"><i class="up" style="width:46%"></i></div>
+      </div>
+      <div class="mcard">
+        <div class="mname">코스닥</div>
+        <div class="mval">837.43</div>
+        <div class="mchg up">▲ +43.43 (+5.47%)</div>
+        <div class="minibar"><i class="up" style="width:100%"></i></div>
+      </div>
+      <div class="mcard">
+        <div class="mname">닛케이 225</div>
+        <div class="mval">68,557.73</div>
+        <div class="mchg up">▲ +1.20%</div>
+        <div class="minibar"><i class="up" style="width:22%"></i></div>
+      </div>
+      <div class="mcard">
+        <div class="mname">항셍</div>
+        <div class="mval">24,175.12</div>
+        <div class="mchg up">▲ +0.60%</div>
+        <div class="minibar"><i class="up" style="width:11%"></i></div>
+      </div>
+      <div class="mcard">
+        <div class="mname">상하이종합</div>
+        <div class="mval">3,996.16</div>
+        <div class="mchg down">▼ −1.00%</div>
+        <div class="minibar"><i class="down" style="width:18%"></i></div>
+      </div>
+    </div>
+    <div class="comment">
+      <b>한국 시장 코멘트</b> — 금요일 코스피는 기관이 1조 1,319억 원을 순매수하며 2.52% 급등, 장중 7,704.93까지 오른 뒤 7,475.94에 마감했고 코스닥은 5.47% 폭등해 양 시장에 매수 사이드카가 발동됐다. 미 필라델피아 반도체지수 급등(+3.06%)과 <b>SK하이닉스 나스닥 ADR 상장</b> 기대가 반도체 투자심리를 되살린 것이 동력이었다. 특징주로는 <b>삼성전자</b>가 +2.52% 오른 28만 5,000원에 마감했고, <b>SK하이닉스</b>는 장중 4% 급등했다가 차익실현에 밀려 −0.27%(218만 원)로 되밀렸다 — 이후 뉴욕에서 ADR은 첫날 +13%($168.01)로 데뷔했다.
+    </div>
+  </section>
+
+  <!-- ④ 유럽 개장·미 선물 -->
+  <section>
+    <h2>④ 유럽 증시·미 선물 <span class="h2sub">주말 휴장 — 금요일(7/10) 마감 기준</span></h2>
+    <div class="grid">
+      <div class="mcard">
+        <div class="mname">독일 DAX</div>
+        <div class="mval">25,067.09</div>
+        <div class="mchg down">▼ −0.20%</div>
+        <div class="msub">금요일 마감</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">영국 FTSE 100</div>
+        <div class="mval">10,497</div>
+        <div class="mchg up">▲ +0.23%</div>
+        <div class="msub">금요일 마감</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">프랑스 CAC 40</div>
+        <div class="mval">8,338.97</div>
+        <div class="mchg up">▲ +0.15%</div>
+        <div class="msub">금요일 마감</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">S&amp;P 500 / 나스닥 선물</div>
+        <div class="mval" style="font-size:20px;">주말 휴장</div>
+        <div class="mchg flat">— 거래 없음</div>
+        <div class="msub">월(7/13) 오전 7시 KST 재개장 — 이란 사태 첫 반영</div>
+      </div>
+    </div>
+    <div class="comment">
+      금요일 현물 마감은 S&amp;P 500 <b>7,575.39 (+0.42%)</b>, 나스닥 <b>26,281.61 (+0.29%)</b>, 다우 <b>52,637.01 (+0.29%)</b>. 다만 이 수치는 주말 미·이란 3차 공습과 이란의 걸프 보복이 반영되기 <b>이전</b>의 가격이라는 점에 유의해야 한다.
+    </div>
+  </section>
+
+  <!-- ⑤ 원자재·환율·금리 스냅샷 -->
+  <section>
+    <h2>⑤ 원자재·환율·금리 스냅샷 <span class="h2sub">금요일(7/10) 종가 · 검색 시점 기준</span></h2>
+    <div class="grid">
+      <div class="mcard">
+        <div class="mname">WTI (배럴)</div>
+        <div class="mval">$71.2</div>
+        <div class="mchg up">▲ 주간 +3.5%</div>
+        <div class="msub">금요일은 소폭 하락, 주간 기준 상승</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">브렌트유 (배럴)</div>
+        <div class="mval">$75.5</div>
+        <div class="mchg up">▲ 주간 +4.7%</div>
+        <div class="msub">전쟁 전 대비 약 +5%, 리스크 프리미엄 지속</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">원/달러</div>
+        <div class="mval">1,499.15</div>
+        <div class="mchg flat">7/10 종가 (전일 대비 확인 불가)</div>
+        <div class="msub">1,500선 초입 — 지정학 리스크 반영 중</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">미 10년물 금리</div>
+        <div class="mval">4.56%</div>
+        <div class="mchg flat">7/10 종가 (전일 대비 확인 불가)</div>
+        <div class="msub">화요일 CPI 앞두고 관망</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">금 (트로이온스)</div>
+        <div class="mval">$4,121.05</div>
+        <div class="mchg down">▼ −0.06%</div>
+        <div class="msub">$4,100대 안착 — 안전자산 수요 견조</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ 오늘 밤 지켜볼 것 -->
+  <section>
+    <h2>⑥ 오늘 밤 지켜볼 것 <span class="h2sub">다음 새벽 브리핑(월 오전 5시) 전까지</span></h2>
+    <div class="watch">
+      <ul>
+        <li>
+          <div class="wtime">밤사이 수시</div>
+          <div class="wbody"><b>미·이란 확전 추가 움직임</b> — 이란의 걸프 공격에 대한 미국의 대응 수위, 호르무즈 해협 선박 피격 여부, 걸프 정상들의 중재 성과.
+            <span class="wsub">유가·안전자산의 주말 갭 방향을 결정할 최대 변수</span></div>
+        </li>
+        <li>
+          <div class="wtime">월 07:00 KST</div>
+          <div class="wbody"><b>미 지수 선물(S&amp;P 500·나스닥) 재개장</b> — 주말 사태를 반영하는 첫 가격. 아시아 월요일장 개장 심리를 좌우.
+            <span class="wsub">동시에 CME 원유·금 선물도 거래 재개</span></div>
+        </li>
+        <li>
+          <div class="wtime">월 뉴욕장</div>
+          <div class="wbody"><b>SK하이닉스 ADR, 정식 티커 'SKHY' 전환 후 이틀째 거래</b> — 데뷔 첫날 +13%($168.01) 이후 수급 지속 여부.
+            <span class="wsub">코스피 반도체주 단기 방향과 직결</span></div>
+        </li>
+        <li>
+          <div class="wtime">이번 주</div>
+          <div class="wbody"><b>화(7/14) 미국 6월 CPI</b> — 컨센서스는 헤드라인 3.9%로 둔화, 코어 2.9% 유지. 같은 주 <b>케빈 워시 신임 연준 의장의 취임 후 첫 의회 증언</b>과 대형 금융주 중심 2분기 어닝시즌 개막.
+            <span class="wsub">CPI 상회 시 연내 금리 인상 관측 강화 가능</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.<br>
+    주요 출처: Euronews, Arab News, The National, Al Jazeera, Asharq Al-Awsat, NPR, CBS News, 서울신문, 인포스탁데일리, 이데일리, CNBC, Bloomberg, Yahoo Finance, Trading Economics, Investing.com, Kiplinger, IG
+  </footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/1kZ7DHUrVK4" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
