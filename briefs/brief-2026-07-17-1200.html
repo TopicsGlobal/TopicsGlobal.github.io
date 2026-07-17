@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 브리프 — 정오판 | 2026-07-17 (금)</title>
+<style>
+  :root{
+    --bg:#0E1116; --card:#161B22; --card2:#1B222C; --line:#2A313C;
+    --text:#E6EDF3; --body:#D8DEE6; --muted:#9AA4B2; --dim:#8B949E;
+    --up:#F87171; --down:#60A5FA; --flat:#9AA4B2; --accent:#F0B429;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--bg); color:var(--body);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    font-size:17px; line-height:1.7; padding:20px 14px 40px;
+  }
+  .wrap{max-width:880px; margin:0 auto;}
+  .num{font-variant-numeric:tabular-nums;}
+  .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--flat);}
+
+  /* 헤더 */
+  header{border-bottom:2px solid var(--line); padding-bottom:18px; margin-bottom:26px;}
+  .brand{display:inline-block; background:var(--accent); color:#1A1200; font-size:13.5px; font-weight:800;
+    padding:3px 10px; border-radius:4px; letter-spacing:.06em; margin-bottom:10px;}
+  h1{color:#FFFFFF; font-size:32px; font-weight:800; line-height:1.3; letter-spacing:-.01em;}
+  .pubdate{color:var(--muted); font-size:14.5px; margin-top:6px;}
+
+  /* 섹션 */
+  section{margin-bottom:34px;}
+  h2{color:#FFFFFF; font-size:21px; font-weight:700; margin-bottom:14px; padding-left:12px;
+    border-left:4px solid var(--accent); line-height:1.4;}
+  .section-note{color:var(--muted); font-size:14px; margin:-8px 0 14px 16px;}
+
+  /* 헤드라인 */
+  .headline{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px;}
+  .headline ol{list-style:none; counter-reset:hl;}
+  .headline li{counter-increment:hl; display:flex; gap:14px; padding:10px 0; font-size:17.5px; line-height:1.65;}
+  .headline li+li{border-top:1px solid var(--line);}
+  .headline li::before{content:counter(hl); flex:0 0 30px; height:30px; border-radius:50%;
+    background:var(--card2); border:1px solid var(--line); color:var(--accent);
+    font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center; margin-top:4px;}
+  .headline b{color:var(--text);}
+
+  /* 다이버징 차트 */
+  .chart-glance{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 18px 14px; margin-top:14px;}
+  .chart-glance .cg-title{color:#FFFFFF; font-size:17.5px; font-weight:700; margin-bottom:2px;}
+  .chart-glance .cg-sub{color:var(--muted); font-size:13.5px; margin-bottom:14px;}
+  .cg-row{display:grid; grid-template-columns:minmax(96px,150px) 1fr minmax(64px,78px); align-items:center; gap:10px; padding:5px 0;}
+  .cg-name{color:var(--body); font-size:14.5px; text-align:right; line-height:1.35;}
+  .cg-name small{display:block; color:var(--muted); font-size:12px; font-weight:400;} /* 12px: 축 보조라벨 아님, 기준표기 */
+  .cg-track{position:relative; height:20px; background:var(--card2); border-radius:4px; overflow:hidden;}
+  .cg-track::before{content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background:var(--line); z-index:1;}
+  .cg-bar{position:absolute; top:3px; bottom:3px; border-radius:3px;}
+  .cg-bar.neg{right:50%; background:linear-gradient(90deg,#60A5FA,#3B82F6); border-radius:3px 0 0 3px;}
+  .cg-bar.pos{left:50%; background:linear-gradient(90deg,#EF4444,#F87171); border-radius:0 3px 3px 0;}
+  .cg-val{font-size:15px; font-weight:700;}
+  .cg-axis{display:grid; grid-template-columns:minmax(96px,150px) 1fr minmax(64px,78px); gap:10px; margin-top:6px;}
+  .cg-axis div{display:flex; justify-content:space-between; color:var(--dim); font-size:13.5px;}
+
+  /* 뉴스 카드 */
+  .news-list{display:grid; gap:14px;}
+  .news{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px;}
+  .tag{display:inline-block; font-size:13.5px; font-weight:700; color:var(--accent);
+    background:rgba(240,180,41,.1); border:1px solid rgba(240,180,41,.3); padding:1px 9px; border-radius:20px; margin-bottom:8px;}
+  .news h3{color:var(--text); font-size:18px; font-weight:700; line-height:1.5; margin-bottom:8px;}
+  .news p{font-size:16.5px; line-height:1.75; color:var(--body);}
+  .why{margin-top:10px; padding:9px 13px; background:var(--card2); border-left:3px solid var(--accent);
+    border-radius:0 6px 6px 0; font-size:15.5px; color:var(--body);}
+  .why b{color:var(--accent); font-weight:700;}
+  .src{margin-top:9px; color:var(--muted); font-size:13.5px;}
+
+  /* 지수 카드 그리드 */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px;}
+  .idx{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px;}
+  .idx .name{color:var(--text); font-size:15.5px; font-weight:700;}
+  .idx .basis{color:var(--muted); font-size:13.5px; margin-left:4px; font-weight:400;}
+  .idx .lvl{font-size:26px; font-weight:800; color:var(--text); margin-top:4px; line-height:1.3;}
+  .idx .chg{font-size:17px; font-weight:700; margin-top:2px;}
+  .minibar{height:8px; background:var(--card2); border-radius:4px; margin-top:10px; overflow:hidden;}
+  .minibar i{display:block; height:100%; border-radius:4px;}
+  .minibar .dn{background:#60A5FA;} .minibar .upc{background:#F87171;}
+  .idx .foot{color:var(--muted); font-size:13.5px; margin-top:8px; line-height:1.5;}
+  .closed-badge{display:inline-block; background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.35);
+    color:#93C5FD; font-size:13.5px; font-weight:700; padding:1px 9px; border-radius:20px; margin-left:6px;}
+  .comment{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin-top:12px; font-size:16.5px; line-height:1.75;}
+  .comment b{color:var(--text);}
+
+  /* 미 증시 소형 카드 */
+  .us-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px;}
+  .us{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:13px 16px;
+    display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .us .name{color:var(--body); font-size:15px; font-weight:700;}
+  .us .v{font-size:22px; font-weight:800; color:var(--text);}
+  .us .c{font-size:16px; font-weight:700;}
+
+  /* 매크로 스냅샷 */
+  .macro-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px;}
+  .mc{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:15px 17px;}
+  .mc .name{color:var(--muted); font-size:14px; font-weight:700;}
+  .mc .v{font-size:24px; font-weight:800; color:var(--text); margin-top:3px; line-height:1.35;}
+  .mc .d{font-size:15.5px; font-weight:700; margin-top:2px;}
+  .mc .foot{color:var(--muted); font-size:13.5px; margin-top:6px; line-height:1.5;}
+
+  /* 오후 체크리스트 */
+  .watch{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 20px;}
+  .watch li{list-style:none; display:flex; gap:12px; padding:13px 0; font-size:16.5px; line-height:1.7;}
+  .watch li+li{border-top:1px solid var(--line);}
+  .watch .t{flex:0 0 auto; color:var(--accent); font-weight:800; font-size:15px; white-space:nowrap; margin-top:2px; font-variant-numeric:tabular-nums;}
+  .watch b{color:var(--text);}
+
+  footer{margin-top:36px; padding-top:16px; border-top:1px solid var(--line);
+    color:var(--dim); font-size:13.5px; line-height:1.7;}
+
+  @media (max-width:520px){
+    body{font-size:16px; padding:14px 10px 32px;}
+    h1{font-size:30px;}
+    .cg-row{grid-template-columns:minmax(84px,110px) 1fr 62px;}
+    .idx .lvl{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="brand">글로벌 브리프</span>
+  <h1>정오판 — 오전 브리핑</h1>
+  <div class="pubdate">2026-07-17 (금) · 한국시간 낮 12:00 발행 · 오전 5시 새벽판 이후 업데이트 중심</div>
+</header>
+
+<!-- ① 정오의 헤드라인 -->
+<section>
+  <h2>① 정오의 헤드라인</h2>
+  <div class="headline">
+    <ol>
+      <li><span><b>미군, 이란 상대 6일 연속 야간 공습 완료</b> — CENTCOM이 오늘 오전(KST) 발표. 호르무즈 해협 통제를 둘러싼 공방이 이어지는 가운데 트럼프 대통령은 "곧 성과를 보게 될 것"이라며 협상 재개 가능성도 열어뒀습니다.</span></li>
+      <li><span><b>글로벌 반도체 매도세가 아시아 오전장을 강타</b> — 닛케이 3%대 급락, 키옥시아 -15%. 한국 증시는 제헌절 휴장으로 오늘의 급락장을 비껴갔지만, 월요일 개장 부담이 커졌습니다.</span></li>
+      <li><span><b>간밤 뉴욕은 TSMC발 칩 매도로 하락 마감</b>(나스닥 -1.47%) — 오늘 밤에는 미국 산업생산·미시간대 소비자심리(예비치)가 대기 중입니다.</span></li>
+    </ol>
+  </div>
+
+  <div class="chart-glance">
+    <div class="cg-title">오늘의 시장 한눈에</div>
+    <div class="cg-sub">등락률(%) 비교 — 0% 기준 좌측(파랑)=하락 / 우측(빨강)=상승 · 아시아 지수는 장중, 미 지수·원자재는 16일(현지) 마감 기준 · 한국 증시는 휴장으로 제외</div>
+    <div class="cg-row">
+      <div class="cg-name">닛케이 225<small>장중</small></div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:43.1%"></span></div>
+      <div class="cg-val down num">-3.45%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">금 (현물)<small>16일 마감</small></div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:19.1%"></span></div>
+      <div class="cg-val down num">-1.53%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">나스닥<small>16일 마감</small></div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:18.4%"></span></div>
+      <div class="cg-val down num">-1.47%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">S&amp;P 500<small>16일 마감</small></div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:6.4%"></span></div>
+      <div class="cg-val down num">-0.51%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">브렌트유<small>16일 마감</small></div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:4.6%"></span></div>
+      <div class="cg-val down num">-0.37%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">다우<small>16일 마감</small></div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:2.5%"></span></div>
+      <div class="cg-val down num">-0.20%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">WTI<small>16일 마감</small></div>
+      <div class="cg-track"><span class="cg-bar pos" style="width:0.8%"></span></div>
+      <div class="cg-val flat num">+0.04%</div>
+    </div>
+    <div class="cg-axis"><div></div><div><span>◀ 하락</span><span>0%</span><span>상승 ▶</span></div><div></div></div>
+  </div>
+</section>
+
+<!-- ② 오전 국제 뉴스 -->
+<section>
+  <h2>② 오전 국제 뉴스</h2>
+  <p class="section-note">한국시간 오늘 오전(05시 이후) 새로 나왔거나 크게 진전된 소식입니다.</p>
+  <div class="news-list">
+
+    <article class="news">
+      <span class="tag">지정학 · 호르무즈</span>
+      <h3>美 CENTCOM "이란 상대 6일 연속 야간 공습 완료" — 트럼프 "곧 성과 볼 것"</h3>
+      <p>미 중부사령부는 전투기·드론·군함으로 이란의 연안 감시·방공망·군수 기반시설 등 수십 개 표적을 정밀 타격하는 6일째 야간 공습을 마쳤다고 발표했습니다. 7월 7일 공습 재개 이후 누적 타격 표적은 300개를 넘어섰고, 트럼프 대통령은 대국민 연설에서 "이란에서 크게 이기고 있으며 곧 그 결실을 보게 될 것"이라고 말했습니다. 이란 측은 비공개 채널로 "상선 공격은 강경파 일탈이었다"며 협상 지속 의사를 전한 것으로 알려졌습니다.</p>
+      <div class="why"><b>왜 중요한가</b> — 세계 원유 물동량의 약 1/5이 지나는 호르무즈의 통제권 향방이 유가·해상운임·글로벌 인플레이션을 직접 좌우합니다.</div>
+      <div class="src">출처: CBS뉴스 · 이란인터내셔널 · 워싱턴포스트</div>
+    </article>
+
+    <article class="news">
+      <span class="tag">지정학 · 우크라이나</span>
+      <h3>러시아, 키이우 야간 대규모 공습 — 최소 19명 사망, 새 공세 본격화</h3>
+      <p>러시아가 새 공세를 확대하며 밤사이 키이우를 공습해 최소 19명이 숨진 것으로 오늘 오전 집계됐습니다. 젤렌스키 대통령은 "NATO가 미사일 요격 지원을 더 늘려야 한다"고 촉구했고, 크렘린은 트럼프 대통령의 대러 정책 선회를 평가절하하면서도 "전쟁이 더 길어질 수 있다"고 밝혔습니다. 사망자 집계 확대와 젤렌스키의 방공 지원 요구가 오전 중 새로 나온 내용입니다.</p>
+      <div class="why"><b>왜 중요한가</b> — 방공 지원 확대 여부를 놓고 NATO 내 균열이 다시 시험대에 오르며, 유럽 안보 리스크가 재부상하고 있습니다.</div>
+      <div class="src">출처: 워싱턴포스트</div>
+    </article>
+
+    <article class="news">
+      <span class="tag">산업 · 반도체</span>
+      <h3>TSMC '설비투자 확대 쇼크' 아시아로 확산 — 키옥시아 15% 폭락 겹악재</h3>
+      <p>TSMC가 호실적에도 지출 전망을 대폭 올려 잡으면서 촉발된 반도체 매도세가 오늘 오전 아시아 전반으로 번졌습니다. ASML과 TSMC의 장비 가격 분쟁 격화도 공급망 불안을 키우고 있습니다. 일본 키옥시아는 미 텍사스 연방 배심원단이 비아샛 특허 침해로 2억2,900만 달러 배상을 평결하면서 장중 15% 이상 폭락했고, 소프트뱅크도 7% 넘게 밀렸습니다.</p>
+      <div class="why"><b>왜 중요한가</b> — 코스피 시총의 약 절반을 차지하는 삼성전자·SK하이닉스가 월요일 개장 때 이 충격을 한꺼번에 반영해야 합니다.</div>
+      <div class="src">출처: CNBC · 트레이딩키 · 로이터</div>
+    </article>
+
+    <article class="news">
+      <span class="tag">기술 · AI</span>
+      <h3>알파벳 '제미나이 3.5 프로' 지연 보도 후폭풍 — AI 모멘텀 의구심 확산</h3>
+      <p>알파벳이 최상위 AI 모델 '제미나이 3.5 프로' 출시 일정에서 뒤처져 있다는 블룸버그 보도로 간밤 주가가 4% 넘게 급락했고, 오늘 오전에는 그 여파가 아시아 AI·반도체주 매도로 이어졌습니다. AI 인프라 투자 회수 시점에 대한 의구심이 다시 커지는 모습입니다.</p>
+      <div class="why"><b>왜 중요한가</b> — 올해 증시를 끌어온 AI 랠리의 핵심 전제(빅테크의 모델 경쟁·투자 지속)에 균열 신호가 나오는지 가늠하는 시금석입니다.</div>
+      <div class="src">출처: 블룸버그 · 야후파이낸스</div>
+    </article>
+
+    <article class="news">
+      <span class="tag">중앙은행 · 한국</span>
+      <h3>한은 2.75% 인상 후폭풍 — "연내 3.00% 추가 인상" 전망 확산</h3>
+      <p>어제 한국은행이 3년 반 만에 기준금리를 2.75%로 인상(만장일치)한 뒤, 오늘 오전에는 "연내 최소 한 차례 더 올려 3.00%에 이를 것"이라는 전망이 시장 컨센서스로 굳어지고 있습니다. 신임 총재의 "모든 회의가 라이브"라는 발언이 매파적으로 소화되고 있으며, 6월 소비자물가 3.2% 상승과 원화 약세가 배경입니다. 오늘은 서울 금융시장 휴장으로 국내 가격 반응은 월요일로 이연됩니다.</p>
+      <div class="why"><b>왜 중요한가</b> — 유가발 인플레이션에 맞선 긴축 재개가 대출금리·채권·성장주 밸류에이션 전반의 재조정을 예고합니다.</div>
+      <div class="src">출처: 블룸버그 · CNBC · 서울경제</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ③ 아시아 증시 오전장 -->
+<section>
+  <h2>③ 아시아 증시 오전장</h2>
+  <p class="section-note">한국·일본은 장중, 중화권은 개장 직후 기준 — 수치는 검색 시점 기준입니다.</p>
+  <div class="grid">
+    <div class="idx">
+      <div class="name">코스피 <span class="closed-badge">오늘 휴장</span></div>
+      <div class="lvl num">6,820.60</div>
+      <div class="chg down num">▼ -6.37% <span class="basis">(16일 마감)</span></div>
+      <div class="minibar"><i class="dn" style="width:91%"></i></div>
+      <div class="foot">제헌절 휴장. 전일 한은 금리 인상 + ASML·TSMC 분쟁 여파로 급락 마감</div>
+    </div>
+    <div class="idx">
+      <div class="name">코스닥 <span class="closed-badge">오늘 휴장</span></div>
+      <div class="lvl num">791.84</div>
+      <div class="chg down num">▼ -4.53% <span class="basis">(16일 마감)</span></div>
+      <div class="minibar"><i class="dn" style="width:65%"></i></div>
+      <div class="foot">제헌절 휴장. 전일 -37.59p 동반 급락</div>
+    </div>
+    <div class="idx">
+      <div class="name">닛케이 225</div>
+      <div class="lvl num">64,650 안팎</div>
+      <div class="chg down num">▼ -3.45% <span class="basis">(장중)</span></div>
+      <div class="minibar"><i class="dn" style="width:49%"></i></div>
+      <div class="foot">장중 한때 -3.77%. 반도체 급락 + 엔화 강세 이중고, 1개월래 최저</div>
+    </div>
+    <div class="idx">
+      <div class="name">항셍</div>
+      <div class="lvl num">24,213.44</div>
+      <div class="chg down num">▼ 급락 출발 <span class="basis">(개장가)</span></div>
+      <div class="foot">전일 25,000선 상회 마감(+1.55%, 5일 연속 상승) 후 개장 직후 급반락. 정확한 장중 등락률 확인 불가</div>
+    </div>
+    <div class="idx">
+      <div class="name">상하이종합</div>
+      <div class="lvl num">3,882</div>
+      <div class="chg down num">▼ -1.85% <span class="basis">(16일 마감)</span></div>
+      <div class="minibar"><i class="dn" style="width:26%"></i></div>
+      <div class="foot">오늘 개장 직후 시세 확인 불가. 반도체 차익실현 매물</div>
+    </div>
+  </div>
+  <div class="comment">
+    <b>한국 시장 코멘트</b> — 한국 증시는 제헌절 휴장으로 오늘의 아시아 반도체 급락장을 일단 비껴갔습니다. 다만 전일 <b>삼성전자·SK하이닉스</b>가 코스피 -6.37% 급락을 주도한 데 이어, 간밤 뉴욕 칩 매도와 오늘 닛케이 급락분까지 월요일 개장에 한꺼번에 반영될 수 있어 '이연된 변동성' 부담이 큽니다. 두 종목이 코스피 시총의 약 절반을 차지하는 구조라 미 반도체 업황 뉴스에 대한 지수 민감도가 어느 때보다 높습니다.
+  </div>
+</section>
+
+<!-- ④ 간밤 미국 증시 요약 -->
+<section>
+  <h2>④ 간밤 미국 증시 요약</h2>
+  <p class="section-note">7월 16일(현지) 확정 마감치 — 상세 분석은 새벽판 참고.</p>
+  <div class="us-grid">
+    <div class="us"><span class="name">S&amp;P 500</span><span class="v num">7,533.77</span><span class="c down num">▼ -0.51%</span></div>
+    <div class="us"><span class="name">나스닥</span><span class="v num">25,881.95</span><span class="c down num">▼ -1.47%</span></div>
+    <div class="us"><span class="name">다우</span><span class="v num">52,552.97</span><span class="c down num">▼ -0.20%</span></div>
+  </div>
+</section>
+
+<!-- ⑤ 원자재·환율·금리 스냅샷 -->
+<section>
+  <h2>⑤ 원자재·환율·금리 스냅샷</h2>
+  <div class="macro-grid">
+    <div class="mc">
+      <div class="name">WTI 원유</div>
+      <div class="v num">$79.63</div>
+      <div class="d flat num">▲ +0.04% (보합권)</div>
+      <div class="foot">16일(현지) 기준. 호르무즈 긴장에 1개월래 고점 부근</div>
+    </div>
+    <div class="mc">
+      <div class="name">브렌트유</div>
+      <div class="v num">$84.63</div>
+      <div class="d down num">▼ -0.37%</div>
+      <div class="foot">16일(현지) 기준. 3일 랠리 후 소폭 반락</div>
+    </div>
+    <div class="mc">
+      <div class="name">원/달러</div>
+      <div class="v num">1,493.74원</div>
+      <div class="d flat">전일比 확인 불가</div>
+      <div class="foot">역외 최근 호가 기준. 서울 외환시장 오늘 휴장</div>
+    </div>
+    <div class="mc">
+      <div class="name">미 10년물 금리</div>
+      <div class="v num">4.57%</div>
+      <div class="d flat">전일比 확인 불가</div>
+      <div class="foot">16일(현지) 마감 기준. 유가발 긴축 장기화 우려 반영</div>
+    </div>
+    <div class="mc">
+      <div class="name">금 (현물)</div>
+      <div class="v num">$3,998</div>
+      <div class="d down num">▼ -1.53%</div>
+      <div class="foot">16일(현지) 기준. 긴축 장기화 우려에 4,000달러 하회</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 오후 지켜볼 것 -->
+<section>
+  <h2>⑥ 오후 지켜볼 것</h2>
+  <ul class="watch">
+    <li><span class="t">오후~저녁</span><span><b>중화권 오후장 낙폭</b> — 개장 직후 급반락한 항셍이 낙폭을 키울지, 중국 2분기 GDP 부진(4.3%) 이후 커진 부양책 기대가 하단을 받칠지가 관건입니다.</span></li>
+    <li><span class="t">16:00</span><span><b>유럽 증시 개장</b> — TSMC 설비투자 쇼크와 ASML·TSMC 가격 분쟁을 유럽 반도체 장비주(ASML 등)가 어떻게 소화하는지가 오늘 밤 뉴욕의 예고편이 됩니다.</span></li>
+    <li><span class="t">21:30~22:15</span><span><b>미 6월 신규주택착공·수출입물가(21:30), 산업생산·설비가동률(22:15)</b> — 유가 급등이 실물·물가 지표에 얼마나 스며들었는지 확인하는 첫 관문입니다.</span></li>
+    <li><span class="t">23:00</span><span><b>미시간대 7월 소비자심리 예비치</b> — 특히 기대인플레이션 항목. 호르무즈발 유가 상승이 기대심리를 자극했다면 연준 긴축 장기화 베팅이 강해질 수 있습니다.</span></li>
+    <li><span class="t">상시</span><span><b>호르무즈 헤드라인 리스크</b> — 미·이란 협상 재개 신호 또는 7일째 공습 여부에 따라 유가·안전자산이 즉각 반응할 수 있습니다.</span></li>
+  </ul>
+</section>
+
+<footer>
+  본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.<br>
+  글로벌 브리프 — 정오판 · 2026-07-17 (금) 12:00 KST 발행
+</footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/AIdrmynrE1k" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
