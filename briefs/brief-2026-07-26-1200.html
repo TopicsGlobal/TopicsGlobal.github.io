@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 브리프 — 정오판 (2026-07-26)</title>
+<style>
+  :root{
+    --bg:#0E1116; --card:#161B22; --card2:#1B2230; --line:#2A313C;
+    --text:#E6EDF3; --body:#D8DEE6; --muted:#8B949E;
+    --up:#F87171; --down:#60A5FA; --flat:#8B949E; --accent:#E8B84B;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    color:var(--body); font-size:17px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:22px 18px 60px;}
+  .tnum{font-variant-numeric:tabular-nums;}
+  .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--flat);}
+
+  /* Header */
+  header{
+    border:1px solid var(--line); background:linear-gradient(180deg,#151B24,#12161C);
+    border-radius:16px; padding:22px 22px 20px; margin-bottom:22px;
+  }
+  .kicker{font-size:14px; letter-spacing:.14em; color:var(--accent); font-weight:700; text-transform:uppercase;}
+  h1{margin:8px 0 6px; font-size:32px; line-height:1.25; font-weight:800; color:#fff;}
+  .pub{color:var(--muted); font-size:14.5px; font-weight:600;}
+  .weekend-flag{
+    margin-top:14px; display:inline-block; background:rgba(232,184,75,.12);
+    border:1px solid rgba(232,184,75,.35); color:#F2D48A; font-size:14px; font-weight:600;
+    padding:8px 12px; border-radius:10px; line-height:1.55;
+  }
+
+  /* Section */
+  section{margin:30px 0 0;}
+  h2{
+    font-size:21px; font-weight:700; color:#fff; margin:0 0 4px;
+    display:flex; align-items:baseline; gap:10px;
+  }
+  h2 .no{color:var(--accent); font-size:18px; font-weight:800;}
+  .sub{color:var(--muted); font-size:14px; margin:0 0 16px;}
+
+  /* Headline block */
+  .headline{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:6px 4px;
+  }
+  .hl{display:flex; gap:14px; padding:14px 16px; border-bottom:1px solid var(--line);}
+  .hl:last-child{border-bottom:none;}
+  .hl .dot{flex:none; width:26px; height:26px; border-radius:8px; background:rgba(232,184,75,.14);
+    color:var(--accent); font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center;}
+  .hl p{margin:0; font-size:17px; color:var(--text);}
+  .hl b{color:#fff;}
+
+  /* Diverging chart */
+  .chart-glance{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 16px 14px;
+  }
+  .chart-glance .axis-note{color:var(--muted); font-size:13.5px; margin:0 0 14px; display:flex; justify-content:space-between;}
+  .dbar-row{display:grid; grid-template-columns:96px 1fr 1fr 66px; align-items:center; gap:7px; margin:9px 0;}
+  .dbar-name{font-size:15px; font-weight:600; color:var(--body); text-align:right; white-space:nowrap;}
+  .dbar-neg{display:flex; justify-content:flex-end; border-right:2px solid var(--line);}
+  .dbar-pos{display:flex; justify-content:flex-start;}
+  .dbar-fill{height:19px; border-radius:5px;}
+  .dbar-fill.neg{background:linear-gradient(90deg,#3B82F6,#60A5FA);}
+  .dbar-fill.pos{background:linear-gradient(90deg,#F87171,#EF4444);}
+  .dbar-val{font-size:15px; font-weight:700; text-align:left; white-space:nowrap;}
+  .center-legend{margin-top:12px; text-align:center; color:var(--muted); font-size:13.5px;}
+  .center-legend .s{color:var(--up); font-weight:700;} .center-legend .f{color:var(--down); font-weight:700;}
+
+  /* News cards */
+  .grid-news{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px;}
+  .ncard{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:17px 17px 15px; display:flex; flex-direction:column;}
+  .ntag{font-size:13.5px; font-weight:700; letter-spacing:.03em; color:var(--accent); margin-bottom:7px;}
+  .ncard h3{margin:0 0 8px; font-size:18px; font-weight:700; line-height:1.4; color:#fff;}
+  .ncard p{margin:0 0 12px; font-size:16px; color:var(--body);}
+  .why{margin-top:auto; background:var(--card2); border-left:3px solid var(--accent); border-radius:8px;
+    padding:9px 12px; font-size:15px; color:#E9EEF5;}
+  .why b{color:var(--accent);}
+  .src{margin-top:10px; color:var(--muted); font-size:13.5px; font-weight:600;}
+
+  /* Index cards */
+  .grid-idx{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:13px;}
+  .icard{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 16px;}
+  .icard .nm{font-size:15px; font-weight:600; color:var(--body);}
+  .icard .mkt{font-size:12.5px; color:var(--muted);}
+  .icard .val{font-size:27px; font-weight:800; color:#fff; margin:6px 0 2px; letter-spacing:-.01em;}
+  .icard .chg{font-size:17px; font-weight:700;}
+  .ibar{height:7px; border-radius:4px; background:#232A34; margin-top:11px; overflow:hidden; position:relative;}
+  .ibar > i{display:block; height:100%; border-radius:4px;}
+
+  .comment{margin-top:16px; background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:15px 17px; font-size:16px; color:var(--body);}
+  .comment b{color:#fff;}
+
+  /* US mini cards */
+  .grid-us{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:13px;}
+  .uscard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:13px 16px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .uscard .l .nm{font-size:15px; font-weight:700; color:#fff;}
+  .uscard .l .vv{font-size:20px; font-weight:800; color:#fff; margin-top:2px;}
+  .uscard .r{font-size:16px; font-weight:700; text-align:right; white-space:nowrap;}
+
+  /* Macro cards */
+  .grid-macro{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:13px;}
+  .mcard{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 16px;}
+  .mcard .nm{font-size:14.5px; color:var(--muted); font-weight:600;}
+  .mcard .val{font-size:25px; font-weight:800; color:#fff; margin:5px 0 3px;}
+  .mcard .chg{font-size:15.5px; font-weight:700;}
+
+  /* Watch list */
+  .watch{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:6px 4px;}
+  .witem{display:flex; gap:13px; padding:14px 16px; border-bottom:1px solid var(--line);}
+  .witem:last-child{border-bottom:none;}
+  .wt{flex:none; font-size:13px; font-weight:800; color:#0E1116; background:var(--accent);
+    border-radius:7px; padding:4px 9px; height:fit-content; letter-spacing:.02em;}
+  .witem p{margin:0; font-size:16px; color:var(--body);}
+  .witem b{color:#fff;}
+
+  footer{margin-top:34px; border-top:1px solid var(--line); padding-top:18px; color:var(--muted);
+    font-size:13.5px; line-height:1.65;}
+
+  @media (max-width:560px){
+    body{font-size:16px;}
+    .wrap{padding:16px 13px 48px;}
+    h1{font-size:27px;}
+    .dbar-row{grid-template-columns:78px 1fr 1fr 58px; gap:5px;}
+    .dbar-name{font-size:13.7px;}
+    .dbar-val{font-size:13.7px;}
+    .icard .val{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">글로벌 브리프 · 정오판</div>
+    <h1>정오의 세계 — 오전 브리핑</h1>
+    <div class="pub">2026년 7월 26일 (일) · 한국시간(KST) 낮 12시 발행 · 오전 5시 새벽판 이후 업데이트</div>
+    <div class="weekend-flag">📅 <b>오늘은 일요일 — 한국·일본·중화권·미국·유럽 증시 모두 휴장</b>입니다. 아래 지수 수치는 모두 직전 거래일 <b>7월 24일(금) 확정 마감치</b>이며, 시장 코멘트는 주말 새 전개와 다음 개장(월요일)을 겨냥한 것입니다. 유가·환율·금리는 검색 시점(금요일 종가권) 기준입니다.</div>
+  </header>
+
+  <!-- ① 헤드라인 -->
+  <section>
+    <h2><span class="no">①</span> 정오의 헤드라인</h2>
+    <p class="sub">주말 오전 기준, 지금 가장 중요한 3가지</p>
+    <div class="headline">
+      <div class="hl"><div class="dot">1</div><p><b>중동 긴장, 협상 기대로 급선회.</b> 중국이 파키스탄에 중재를 요청하며 미·이란 협상 재개 움직임이 나오자, 금요일 유가가 4~5% 급락(브렌트 $95선, WTI $88선). 지난주 브렌트 $100 돌파 랠리가 하루 만에 되돌려졌다.</p></div>
+      <div class="hl"><div class="dot">2</div><p><b>유럽 폭염·산불 재난 확대.</b> 프랑스·스페인에서 <b>26만7천여 명</b>이 대피, 프랑스 산불 피해 면적이 약 9만8천ha로 "사상 최대". 토요일 밤 지롱드(보르도 인근) 추가 대피령이 내려졌고, 오늘 파리 투르 드 프랑스 최종구간도 단축됐다.</p></div>
+      <div class="hl"><div class="dot">3</div><p><b>증시는 주말 휴장 — 관건은 월요일.</b> 금요일 아시아·한국 증시는 AI 관련주 매도와 유가 쇼크로 급락(코스피 −5.72%)했다. 주말 유가 급락과 협상 기대가 다음 개장에 어떻게 반영될지가 최대 변수다.</p></div>
+    </div>
+  </section>
+
+  <!-- 오늘의 시장 한눈에 -->
+  <section>
+    <h2>오늘의 시장 한눈에</h2>
+    <p class="sub">직전 거래일(7/24 금) 등락률 · 0% 기준 다이버징 · 한국 관례 색(상승=빨강 / 하락=파랑)</p>
+    <div class="chart-glance">
+      <div class="axis-note"><span>◀ 하락</span><span>0%</span><span>상승 ▶</span></div>
+
+      <div class="dbar-row">
+        <div class="dbar-name">코스피</div>
+        <div class="dbar-neg"><div class="dbar-fill neg" style="width:95%"></div></div>
+        <div class="dbar-pos"></div>
+        <div class="dbar-val down">−5.72%</div>
+      </div>
+      <div class="dbar-row">
+        <div class="dbar-name">코스닥</div>
+        <div class="dbar-neg"><div class="dbar-fill neg" style="width:89%"></div></div>
+        <div class="dbar-pos"></div>
+        <div class="dbar-val down">−5.32%</div>
+      </div>
+      <div class="dbar-row">
+        <div class="dbar-name">닛케이225</div>
+        <div class="dbar-neg"><div class="dbar-fill neg" style="width:45%"></div></div>
+        <div class="dbar-pos"></div>
+        <div class="dbar-val down">−2.70%</div>
+      </div>
+      <div class="dbar-row">
+        <div class="dbar-name">WTI 유가</div>
+        <div class="dbar-neg"><div class="dbar-fill neg" style="width:72%"></div></div>
+        <div class="dbar-pos"></div>
+        <div class="dbar-val down">−4.30%</div>
+      </div>
+      <div class="dbar-row">
+        <div class="dbar-name">항셍</div>
+        <div class="dbar-neg"><div class="dbar-fill neg" style="width:17%"></div></div>
+        <div class="dbar-pos"></div>
+        <div class="dbar-val down">−1.00%</div>
+      </div>
+      <div class="dbar-row">
+        <div class="dbar-name">나스닥</div>
+        <div class="dbar-neg"><div class="dbar-fill neg" style="width:11%"></div></div>
+        <div class="dbar-pos"></div>
+        <div class="dbar-val down">−0.64%</div>
+      </div>
+      <div class="dbar-row">
+        <div class="dbar-name">다우</div>
+        <div class="dbar-neg"></div>
+        <div class="dbar-pos"><div class="dbar-fill pos" style="width:8%"></div></div>
+        <div class="dbar-val up">+0.46%</div>
+      </div>
+
+      <div class="center-legend">막대 길이 = 등락률 크기(±6% = 최대) · <span class="s">빨강 상승</span> / <span class="f">파랑 하락</span> · 유가는 WTI 기준</div>
+    </div>
+  </section>
+
+  <!-- ② 오전 국제 뉴스 -->
+  <section>
+    <h2><span class="no">②</span> 오전 국제 뉴스</h2>
+    <p class="sub">주말(대략 KST 오전 05시 이후) 새로 나오거나 크게 진전된 이슈</p>
+    <div class="grid-news">
+
+      <div class="ncard">
+        <div class="ntag">지정학 · 에너지</div>
+        <h3>중국·파키스탄, 미·이란 협상 재개 중재 시동 → 유가 급락</h3>
+        <p>중국이 파키스탄에 중재를 공식 요청(7월 16일 다르 부총리 상하이 방문)하고, 양국이 즉각 휴전과 협상 재개를 촉구했다. 파키스탄은 이란 내무장관 방문 계기로 물밑 접촉을 넓혔다. <b>새로운 점:</b> 지난주 격화 일변도였던 흐름이 '외교 경로' 쪽으로 방향을 틀며 시장 심리를 바꿨다.</p>
+        <div class="why"><b>왜 중요한가</b> — 호르무즈발 에너지·물류 리스크의 향방을 좌우해 유가·아시아 증시의 다음 개장 방향을 결정한다.</div>
+        <div class="src">출처: The Asia Business Daily, IBTimes, Reuters(BOE Report 인용)</div>
+      </div>
+
+      <div class="ncard">
+        <div class="ntag">재난 · 기후</div>
+        <h3>프랑스·스페인 산불로 26만7천명 대피 … 프랑스 "사상 최대"</h3>
+        <p>폭염 속 대형 산불로 스페인에서 약 8만8천명이 대피·격리됐고, 프랑스는 토요일 밤 지롱드 최소 5개 마을에 추가 대피령을 발령했다. 프랑스 누적 소실 면적은 약 9만8천ha로 역대 최대. <b>새로운 점:</b> 마크롱이 EU에 지원을 요청하고 군 수송기를 투입했다.</p>
+        <div class="why"><b>왜 중요한가</b> — 관광·항공·농업 피해와 EU 재난 공조 부담이 커지고, 오늘 투르 드 프랑스 최종구간(133→89km 단축)까지 영향을 줬다.</div>
+        <div class="src">출처: Al Jazeera, CNBC, CNN, NBC News</div>
+      </div>
+
+      <div class="ncard">
+        <div class="ntag">안보 · 중동</div>
+        <h3>이란 "인프라 공격 시 이스라엘도 타격" 경고</h3>
+        <p>이란 최고안보기구 수장이 금요일 자국 기반시설이 공격받으면 이스라엘 타격을 포함해 대응하겠다고 밝혔다. 호르무즈 통항 선박 수는 목요일 34척으로 6월 28일 이후 최저를 기록했다. <b>새로운 점:</b> 협상론이 부상하는 와중에도 군사적 위협이 병존한다.</p>
+        <div class="why"><b>왜 중요한가</b> — 중재 기대와 확전 위험이 동시에 존재해, 유가·안전자산 변동성이 주말 헤드라인에 민감하게 반응한다.</div>
+        <div class="src">출처: CBS News (Live Updates)</div>
+      </div>
+
+      <div class="ncard">
+        <div class="ntag">통상 · 무역</div>
+        <h3>EU, 중국산 철강 무관세 쿼터 47% 축소 발효</h3>
+        <p>EU가 7월부터 무관세 철강 쿼터를 약 3,300만t→1,830만t으로 47% 줄이고 쿼터 초과 관세를 25%→50%로 2031년까지 인상했다. 소액 소포 3유로 부과도 함께 시행. <b>새로운 점:</b> 대중 무역 방어 조치가 '계획'에서 '발효' 단계로 넘어갔다.</p>
+        <div class="why"><b>왜 중요한가</b> — EU·중국 통상 갈등이 실물 단계로 진입, 철강·자동차 등 전략 업종의 공급망·조달 리스크를 키운다.</div>
+        <div class="src">출처: Al Jazeera, Handelsblatt(Reuters 인용)</div>
+      </div>
+
+      <div class="ncard">
+        <div class="ntag">외교 · 남미</div>
+        <h3>베네수엘라, ICC 탈퇴 UN에 통보</h3>
+        <p>베네수엘라 정부가 국제형사재판소(ICC) 탈퇴를 "번복 불가"로 UN에 통보했다. 플라센시아 외무장관은 ICC의 '글로벌 사우스 편향'을 이유로 들었다. 최근 대형 재난으로 5만8천여 채가 파손되고 이재민 약 1만8천명이 발생한 상황과도 맞물린다.</p>
+        <div class="why"><b>왜 중요한가</b> — 국제 사법질서에서 이탈하는 흐름의 한 축으로, 남미·글로벌 사우스 외교 지형 변화를 보여준다.</div>
+        <div class="src">출처: 해외뉴스 요약(Daum 국제 취합)</div>
+      </div>
+
+      <div class="ncard">
+        <div class="ntag">거시 · 국제기구</div>
+        <h3>IMF, 세계경제 전망 업데이트: "전쟁과 기술의 교차류"</h3>
+        <p>IMF가 7월 세계경제전망 업데이트에서 2026년 성장률 3.0%, 2027년 3.4%를 제시했다. 전쟁 충격이 에너지 수입국·취약국을 압박하는 반면, AI 수요가 기술 밸류체인 편입국을 끌어올리는 '불균등 회복'을 진단했다.</p>
+        <div class="why"><b>왜 중요한가</b> — 유가 급등과 AI 투자라는 두 힘이 국가별 성장 격차를 벌리는 구도를 공식 확인, 한국엔 양면적이다.</div>
+        <div class="src">출처: IMF World Economic Outlook Update (7월)</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ③ 아시아 증시 -->
+  <section>
+    <h2><span class="no">③</span> 아시아 증시 — 직전 거래일 마감</h2>
+    <p class="sub">일요일 휴장 · 아래는 <b>7/24(금) 확정 마감치</b> (오전 실황 아님) · 다음 개장은 7/27(월)</p>
+    <div class="grid-idx">
+
+      <div class="icard">
+        <div class="nm">코스피 <span class="mkt">· 한국</span></div>
+        <div class="val tnum">6,690.62</div>
+        <div class="chg down tnum">▼ 406.27 (−5.72%)</div>
+        <div class="ibar"><i class="down" style="width:96%; background:#60A5FA;"></i></div>
+      </div>
+
+      <div class="icard">
+        <div class="nm">코스닥 <span class="mkt">· 한국</span></div>
+        <div class="val tnum">748.22</div>
+        <div class="chg down tnum">▼ 42.06 (−5.32%)</div>
+        <div class="ibar"><i class="down" style="width:89%; background:#60A5FA;"></i></div>
+      </div>
+
+      <div class="icard">
+        <div class="nm">닛케이225 <span class="mkt">· 일본</span></div>
+        <div class="val tnum">64,611.15</div>
+        <div class="chg down tnum">▼ 약 2.70%</div>
+        <div class="ibar"><i class="down" style="width:45%; background:#60A5FA;"></i></div>
+      </div>
+
+      <div class="icard">
+        <div class="nm">항셍 <span class="mkt">· 홍콩</span></div>
+        <div class="val tnum">24,963.23</div>
+        <div class="chg down tnum">▼ 약 1.00%</div>
+        <div class="ibar"><i class="down" style="width:17%; background:#60A5FA;"></i></div>
+      </div>
+
+      <div class="icard">
+        <div class="nm">상하이종합 <span class="mkt">· 중국</span></div>
+        <div class="val tnum">3,814.20</div>
+        <div class="chg down tnum">▼ 약 1.60%</div>
+        <div class="ibar"><i class="down" style="width:27%; background:#60A5FA;"></i></div>
+      </div>
+
+    </div>
+    <div class="comment">
+      <b>한국 시장 코멘트</b> — 금요일 코스피·코스닥은 나란히 5%대 폭락하며 올해 최악의 하루를 보냈다. 브렌트유 $100 돌파에 따른 <b>에너지·인플레 부담</b>과 글로벌 <b>AI·반도체 관련주 매도</b>가 겹친 결과로, 닛케이도 소프트뱅크(−7.1%) 등 AI 투자 기업 급락에 2.7% 밀렸다. 주말 사이 유가가 4~5% 되돌려지고 협상 기대가 부상한 점은 <b>월요일 반등 재료</b>가 될 수 있으나, 중동 확전 위험이 남아 낙관은 이르다. (지수는 장중 아님 — 휴장일 확정 마감치)
+    </div>
+  </section>
+
+  <!-- ④ 미국 증시 -->
+  <section>
+    <h2><span class="no">④</span> 간밤 미국 증시 요약</h2>
+    <p class="sub">7/24(금) 확정 마감 · 상세 분석은 새벽판에서 다룸 (반복 생략)</p>
+    <div class="grid-us">
+      <div class="uscard">
+        <div class="l"><div class="nm">S&amp;P 500</div><div class="vv tnum">7,412</div></div>
+        <div class="r up tnum">▲ +0.05%</div>
+      </div>
+      <div class="uscard">
+        <div class="l"><div class="nm">나스닥</div><div class="vv tnum">24,976</div></div>
+        <div class="r down tnum">▼ −0.64%</div>
+      </div>
+      <div class="uscard">
+        <div class="l"><div class="nm">다우존스</div><div class="vv tnum">51,947</div></div>
+        <div class="r up tnum">▲ +0.46%</div>
+      </div>
+    </div>
+    <div class="comment">한 줄 요약 — 유가 하락에 다우는 반등, S&amp;P는 보합, 나스닥은 <b>기술주 캐펙스 우려·반도체 약세</b>로 소폭 하락하며 혼조 마감. 변동성 큰 한 주를 마무리했다.</div>
+  </section>
+
+  <!-- ⑤ 매크로 스냅샷 -->
+  <section>
+    <h2><span class="no">⑤</span> 원자재 · 환율 · 금리 스냅샷</h2>
+    <p class="sub">검색 시점(7/24 금 종가권) 기준 · 주말 현물시장 사실상 마감</p>
+    <div class="grid-macro">
+
+      <div class="mcard">
+        <div class="nm">WTI 유가 (배럴)</div>
+        <div class="val tnum">$88.27</div>
+        <div class="chg down tnum">▼ 약 −4.3% (전일 대비)</div>
+      </div>
+
+      <div class="mcard">
+        <div class="nm">브렌트유 (배럴)</div>
+        <div class="val tnum">$95.73</div>
+        <div class="chg down tnum">▼ 약 −4.9% (전일 대비)</div>
+      </div>
+
+      <div class="mcard">
+        <div class="nm">원/달러 환율</div>
+        <div class="val tnum">₩1,471.6</div>
+        <div class="chg up tnum">▼ 약 5원 (원화 강세)</div>
+      </div>
+
+      <div class="mcard">
+        <div class="nm">미 10년물 국채</div>
+        <div class="val tnum">4.69%</div>
+        <div class="chg flat">7/24 종가 · 전일 대비 변화 확인 불가</div>
+      </div>
+
+      <div class="mcard">
+        <div class="nm">금 (온스)</div>
+        <div class="val tnum">$4,052</div>
+        <div class="chg up tnum">▲ +0.06% (전일 대비)</div>
+      </div>
+
+    </div>
+    <p class="sub" style="margin-top:12px;">※ 유가는 협상 기대에 급락, 금은 안전자산 수요로 강보합. 환율은 달러 약세·원화 강세 방향(전일 종가 약 1,477원 → 1,471원대). 국채금리 전일 대비 변화폭은 확인되지 않아 표기하지 않음.</p>
+  </section>
+
+  <!-- ⑥ 오후 지켜볼 것 -->
+  <section>
+    <h2><span class="no">⑥</span> 오후~저녁 지켜볼 것</h2>
+    <p class="sub">일요일이라 예정된 경제지표 발표는 없음 — 주말 헤드라인과 다음 개장이 관건</p>
+    <div class="watch">
+      <div class="witem"><span class="wt">유가</span><p><b>미·이란 협상 재개 관련 주말 외신 헤드라인.</b> 중국·파키스탄 중재의 실제 진전 여부와 이란의 대응 톤이 월요일 유가 갭 방향을 좌우한다. 호르무즈 통항 선박 수 회복 여부도 체크.</p></div>
+      <div class="witem"><span class="wt">재난</span><p><b>프랑스·스페인 산불 진화·바람 상황과 EU 지원 규모.</b> 오늘 저녁 파리 투르 드 프랑스 피날레(단축 개최) 진행과 추가 대피령 발령 여부가 유럽發 뉴스흐름을 지배할 전망.</p></div>
+      <div class="witem"><span class="wt">개장</span><p><b>7/27(월) 아시아장 개장이 사실상 첫 반응.</b> 금요일 −5%대 급락 이후, 유가 급락·협상 기대를 반영한 반등이 나올지 vs. 확전 리스크로 추가 하락할지가 이번 주 첫 관문.</p></div>
+      <div class="witem"><span class="wt">주간</span><p><b>이번 주 예정 이벤트 사전 점검.</b> 주 후반 미국 주요 경제지표·중앙은행 관련 일정과 EU-중국 통상 후속 조치, 중동 협상 스케줄이 변동성의 축이 될 것. (구체 일정·시각은 별도 확인 필요)</p></div>
+    </div>
+  </section>
+
+  <footer>
+    본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준이며, 2026년 7월 26일은 주말(일요일)로 전 세계 증시가 휴장이어서 지수는 직전 거래일(7/24 금) 확정 마감치를 사용했습니다. 원자재·환율·금리는 금요일 종가권 값으로 실시간과 다를 수 있습니다.<br>
+    <span style="color:#6E7681;">글로벌 브리프 · 정오판 · 2026-07-26 (일) 12:00 KST 발행</span>
+  </footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/nE0MT8FM_6Q" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
