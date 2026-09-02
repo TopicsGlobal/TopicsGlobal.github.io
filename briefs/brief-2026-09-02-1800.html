@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 브리프 — 저녁판 · 2026-09-02</title>
+<style>
+  :root{
+    --bg:#0E1116;
+    --card:#161B22;
+    --card2:#1C232C;
+    --line:#2A313B;
+    --text:#E6EDF3;
+    --text2:#D8DEE6;
+    --muted:#8B949E;
+    --up:#F87171;
+    --down:#60A5FA;
+    --flat:#9AA4B2;
+    --accent:#FBBF24;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕","Apple SD Gothic Neo",sans-serif;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:26px 18px 60px;}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum";}
+
+  /* header */
+  header{
+    border-bottom:2px solid var(--line);
+    padding-bottom:20px;margin-bottom:30px;
+  }
+  .kicker{
+    display:inline-block;font-size:13.5px;font-weight:700;letter-spacing:.09em;
+    color:#0E1116;background:var(--accent);padding:3px 10px;border-radius:4px;margin-bottom:12px;
+  }
+  h1{
+    font-size:32px;font-weight:800;line-height:1.3;margin:0 0 10px;letter-spacing:-.02em;
+  }
+  .subtitle{font-size:15.5px;color:var(--muted);margin:0;}
+  .subtitle strong{color:var(--text2);font-weight:600;}
+
+  /* sections */
+  section{margin:0 0 40px;}
+  h2{
+    font-size:21px;font-weight:700;margin:0 0 16px;padding-left:12px;
+    border-left:4px solid var(--accent);line-height:1.4;
+  }
+  h2 .sec-sub{display:block;font-size:14px;font-weight:500;color:var(--muted);letter-spacing:0;}
+
+  /* headline list */
+  .headlines{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;margin:0;list-style:none;
+  }
+  .headlines li{
+    position:relative;padding-left:34px;margin:0 0 16px;font-size:17.5px;line-height:1.65;color:var(--text2);
+  }
+  .headlines li:last-child{margin-bottom:0;}
+  .headlines li b{color:var(--text);font-weight:700;}
+  .hl-n{
+    position:absolute;left:0;top:4px;width:24px;height:24px;border-radius:6px;
+    background:var(--card2);border:1px solid var(--line);
+    color:var(--accent);font-size:13.5px;font-weight:700;text-align:center;line-height:22px;
+  }
+
+  /* diverging chart */
+  .chart-glance{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 20px 16px;
+  }
+  .cg-title{font-size:17px;font-weight:700;margin:0 0 4px;}
+  .cg-note{font-size:13.5px;color:var(--muted);margin:0 0 18px;}
+  .cg-row{
+    display:grid;grid-template-columns:104px 1fr 78px;align-items:center;gap:10px;margin-bottom:11px;
+  }
+  .cg-name{font-size:14.5px;font-weight:600;color:var(--text2);text-align:right;line-height:1.35;}
+  .cg-track{
+    position:relative;height:24px;background:var(--card2);border-radius:4px;overflow:hidden;
+  }
+  .cg-track::after{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#3B434E;
+  }
+  .cg-bar{position:absolute;top:5px;height:14px;border-radius:3px;}
+  .cg-bar.neg{right:50%;background:linear-gradient(270deg,#60A5FA,#3B82F6);}
+  .cg-bar.pos{left:50%;background:linear-gradient(90deg,#F87171,#EF4444);}
+  .cg-val{font-size:15px;font-weight:700;text-align:left;}
+  .cg-axis{
+    display:grid;grid-template-columns:104px 1fr 78px;gap:10px;margin-top:6px;
+  }
+  .cg-axis-in{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);}
+  .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--flat);}
+
+  /* news cards */
+  .news-card{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;margin-bottom:14px;
+  }
+  .news-card h3{
+    font-size:18px;font-weight:700;margin:0 0 8px;line-height:1.45;color:var(--text);
+  }
+  .tag{
+    display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.04em;
+    padding:2px 8px;border-radius:4px;margin-right:8px;vertical-align:2px;
+    background:#2A313B;color:#C9D1D9;
+  }
+  .tag.hot{background:#3A1D1D;color:#FCA5A5;}
+  .tag.new{background:#1D2E3A;color:#93C5FD;}
+  .news-card p{margin:0 0 12px;font-size:16.5px;color:var(--text2);line-height:1.75;}
+  .why{
+    background:var(--card2);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;
+    padding:9px 14px;margin:0 0 10px;font-size:15.5px;color:var(--text2);
+  }
+  .why b{color:var(--accent);font-weight:700;}
+  .src{font-size:13.5px;color:var(--muted);margin:0;}
+
+  /* index cards */
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+  .icard{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  }
+  .icard .nm{font-size:14.5px;font-weight:600;color:var(--muted);margin:0 0 6px;}
+  .icard .vl{font-size:27px;font-weight:800;line-height:1.2;margin:0;letter-spacing:-.02em;}
+  .icard .ch{font-size:16px;font-weight:700;margin:4px 0 0;}
+  .icard .meta{font-size:13.5px;color:var(--muted);margin:6px 0 0;}
+  .minibar{
+    position:relative;height:8px;background:var(--card2);border-radius:3px;margin-top:11px;overflow:hidden;
+  }
+  .minibar::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#3B434E;}
+  .minibar span{position:absolute;top:0;height:8px;border-radius:3px;}
+  .minibar span.neg{right:50%;background:#60A5FA;}
+  .minibar span.pos{left:50%;background:#F87171;}
+
+  .comment{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;margin-top:14px;font-size:16.5px;color:var(--text2);
+  }
+  .comment b{color:var(--text);}
+
+  /* small macro cards */
+  .scard{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;
+  }
+  .scard .nm{font-size:14px;font-weight:600;color:var(--muted);margin:0 0 5px;}
+  .scard .vl{font-size:24px;font-weight:800;line-height:1.2;margin:0;letter-spacing:-.02em;}
+  .scard .ch{font-size:15px;font-weight:700;margin:3px 0 0;}
+  .scard .meta{font-size:13.5px;color:var(--muted);margin:5px 0 0;line-height:1.5;}
+  .na{color:var(--flat);font-weight:700;}
+
+  /* schedule */
+  .sched{list-style:none;margin:0;padding:0;}
+  .sched li{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 18px;margin-bottom:12px;
+    display:grid;grid-template-columns:112px 1fr;gap:14px;align-items:start;
+  }
+  .sched .tm{
+    font-size:15.5px;font-weight:800;color:var(--accent);line-height:1.45;
+  }
+  .sched .tm small{display:block;font-size:12.5px;font-weight:600;color:var(--muted);}
+  .sched .ds{font-size:16.5px;color:var(--text2);}
+  .sched .ds b{display:block;color:var(--text);font-weight:700;font-size:17px;margin-bottom:3px;}
+
+  footer{
+    margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:14px;color:var(--muted);line-height:1.7;
+  }
+  footer .disc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+
+  @media (max-width:560px){
+    body{font-size:16px;}
+    .wrap{padding:20px 14px 48px;}
+    h1{font-size:27px;}
+    h2{font-size:19.5px;}
+    .cg-row,.cg-axis{grid-template-columns:76px 1fr 64px;gap:7px;}
+    .cg-name{font-size:13.5px;}
+    .cg-val{font-size:14px;}
+    .icard .vl{font-size:24px;}
+    .sched li{grid-template-columns:1fr;gap:4px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="kicker">EVENING EDITION</span>
+  <h1>글로벌 브리프 — 저녁판</h1>
+  <p class="subtitle"><strong>2026년 9월 2일 (수) · 오후 6시 발행 (KST)</strong> · 낮 12시 브리핑 이후 오후 흐름과 아시아 마감 정리</p>
+</header>
+
+<!-- ① 헤드라인 -->
+<section>
+  <h2>① 저녁의 헤드라인</h2>
+  <ul class="headlines">
+    <li><span class="hl-n num">1</span><b>미군이 이틀 만에 이란을 재공습</b>하고 이란군 중앙사령부가 "파괴적·치명적 보복"을 예고하면서, 호르무즈 공급 차질 우려로 브렌트유가 배럴당 95달러선까지 올라섰다.</li>
+    <li><span class="hl-n num">2</span><b>유가발 인플레 공포가 글로벌 국채 투매로 번졌다.</b> 미 10년물이 장중 4.81%로 약 3년 만의 최고, 일본 10년물은 30년 만에 3%를 돌파했고 영국 30년물은 1998년 이후 최고인 5.856%를 찍었다.</li>
+    <li><span class="hl-n num">3</span><b>아시아 증시는 동반 급락.</b> 코스피가 <span class="down">3.99%</span> 빠진 6,562.72로 마감하며 외국인·기관이 4조 원 넘게 순매도했고, 닛케이도 <span class="down">2.85%</span> 밀렸다. 오후에는 우에다 BOJ 총재의 "9월 포함 매 회의 인상 논의" 발언이 더해졌다.</li>
+  </ul>
+</section>
+
+<!-- 다이버징 차트 -->
+<section>
+  <h2>오늘의 시장 한눈에<span class="sec-sub">확인된 자산 7종 등락률 · 0% 기준 좌(하락·파랑)/우(상승·빨강)</span></h2>
+  <div class="chart-glance">
+    <p class="cg-title">등락률 비교 (%)</p>
+    <p class="cg-note">지수는 마감 기준, WTI는 9월 1일(현지) 마감 기준, 금은 현물 기준. 확인되지 않은 항목은 차트에서 제외했습니다.</p>
+
+    <div class="cg-row">
+      <div class="cg-name">WTI 원유</div>
+      <div class="cg-track"><span class="cg-bar pos" style="width:50%"></span></div>
+      <div class="cg-val up num">+5.20%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">코스피</div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:38.4%"></span></div>
+      <div class="cg-val down num">−3.99%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">닛케이225</div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:27.4%"></span></div>
+      <div class="cg-val down num">−2.85%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">코스닥</div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:20.2%"></span></div>
+      <div class="cg-val down num">−2.10%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">항셍</div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:11.5%"></span></div>
+      <div class="cg-val down num">−1.20%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">금 (현물)</div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:11.5%"></span></div>
+      <div class="cg-val down num">−1.20%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">상하이종합</div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:9.3%"></span></div>
+      <div class="cg-val down num">−0.97%</div>
+    </div>
+    <div class="cg-row">
+      <div class="cg-name">원/달러</div>
+      <div class="cg-track"><span class="cg-bar neg" style="width:1.2%"></span></div>
+      <div class="cg-val down num">−0.12%</div>
+    </div>
+
+    <div class="cg-axis">
+      <div></div>
+      <div class="cg-axis-in num"><span>−5.2</span><span>0</span><span>+5.2</span></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ② 오후 국제 뉴스 -->
+<section>
+  <h2>② 오후 국제 뉴스<span class="sec-sub">낮 12시 브리핑 이후 새로 나왔거나 크게 진전된 사안</span></h2>
+
+  <div class="news-card">
+    <h3><span class="tag hot">지정학</span>미군, 이틀 만에 이란 재공습…이란 "파괴적·치명적 보복" 성명</h3>
+    <p>미 중부사령부가 이란 내 혁명수비대(IRGC) 표적 타격을 재개한 데 이어 민간공항까지 타격 대상에 포함된 것으로 전해졌다. 미군이 지난달 30일 호르무즈 해협 라라크섬의 IRGC 기뢰 설치용 로켓발사대를 때린 지 이틀 만이다. 이란군을 통합 지휘하는 하탐 알안비야 중앙사령부는 오후 성명에서 "시스탄 발루치스탄주와 호르모즈간주를 공습한 미국에 파괴적이고 치명적인 타격을 가하겠다"며 재보복을 예고했다.</p>
+    <div class="why"><b>왜 중요한가</b> — 확전이 호르무즈 물동량으로 직결되는 국면이어서, 유가·운임·중동 리스크 프리미엄이 동시에 재설정된다.</div>
+    <p class="src">출처: 머니투데이, 아시아경제</p>
+  </div>
+
+  <div class="news-card">
+    <h3><span class="tag hot">에너지</span>호르무즈서 유조선 2척 피격…원유 400만 배럴 발 묶여</h3>
+    <p>해상보안 컨설팅사 마리스크에 따르면 8월 31일 밤 오만 카사브 인근에서 'Sidr'와 'Senegal Prosperity' 두 척이 미상의 발사체에 피격됐다. 두 선박에는 원유 약 400만 배럴이 실려 있었다. 일부 외신이 피격선 중 하나를 한국 선박으로 보도했으나 해양수산부는 "한국 국적선은 아니다"라고 밝혔다.</p>
+    <div class="why"><b>왜 중요한가</b> — 해협 통항 자체가 위험자산화되면 보험료·용선료가 뛰고, 실제 봉쇄가 없어도 유가에 공급 프리미엄이 상시로 붙는다.</div>
+    <p class="src">출처: 아시아경제, 이데일리</p>
+  </div>
+
+  <div class="news-card">
+    <h3><span class="tag new">NEW</span><span class="tag">중앙은행</span>일본 10년물 30년 만에 3% 돌파…우에다 "9월 포함 매 회의서 인상 논의"</h3>
+    <p>오후 도쿄 채권시장에서 일본 10년물 국채 금리가 장중 3.015%까지 올라 1996년 이후 30년 만에 3% 선을 넘었다(종가 2.996%). 이날 재무성 10년물 입찰에서 최저 낙찰가격이 시장 예상을 밑돌며 최고 낙찰금리가 1996년 이후 처음 3%대로 뛴 것이 방아쇠였다. 우에다 가즈오 BOJ 총재는 G20 회의 후 기자회견에서 "다음 금융정책결정회의를 포함해 매 회의마다 면밀히 논의하겠다"고 밝혔고, 시장이 반영한 9월 인상 확률은 94%까지 올랐다. BOJ 회의는 9월 17~18일이다.</p>
+    <div class="why"><b>왜 중요한가</b> — 세계 최대 캐리트레이드 공급국의 금리가 정상화 구간에 들어서면, 글로벌 유동성 회수와 엔 강세 압력이 동시에 커진다.</div>
+    <p class="src">출처: 머니투데이, 한국경제, 헤럴드경제, 이투데이</p>
+  </div>
+
+  <div class="news-card">
+    <h3><span class="tag hot">금리</span>전 세계 국채시장 '매도 폭풍'…미·일·영·독 장기금리 동반 급등</h3>
+    <p>유가 급등발 인플레이션 우려가 국채 투매로 번졌다. 미 10년물은 4.799%로 마감한 뒤 장중 4.8122%까지 올라 약 3년 만의 최고치를 기록했고, 영국 30년물은 1998년 이후 최고인 5.856%에 도달했다. 독일·프랑스 30년물도 2011년 이후 최고 수준으로 치솟았다. 주요국의 재정 확대에 따른 국채 발행 증가가 구조적 배경으로 지목된다.</p>
+    <div class="why"><b>왜 중요한가</b> — 할인율이 동시에 뛰면 밸류에이션이 높은 AI·성장주부터 흔들린다. 오늘 아시아 급락의 직접적 트리거였다.</div>
+    <p class="src">출처: 헤럴드경제, 머니투데이</p>
+  </div>
+
+  <div class="news-card">
+    <h3><span class="tag">원자재</span>WTI 90달러·브렌트 95달러 육박…OPEC+ 회의는 9월 6일</h3>
+    <p>9월 1일(현지) WTI 10월물은 5.2% 오른 배럴당 90.22달러, 브렌트 11월물은 4.6% 상승한 94.65달러로 마감했다. 2일 아시아 시간대에는 브렌트가 95달러, WTI가 91달러를 웃도는 강세를 이어갔다. OPEC+는 앞서 9월 하루 18만8천 배럴 증산에 합의하며 자발적 감산 되돌림을 마무리했고 4분기 증산은 일시 중단하기로 했는데, 다음 회의가 9월 6일로 예정돼 있다.</p>
+    <div class="why"><b>왜 중요한가</b> — 4분기 증산 중단 방침이 유지되면 공급 완충판이 얇아진 상태로 지정학 리스크를 맞게 된다.</div>
+    <p class="src">출처: 아주경제, CNBC, 중앙이코노미뉴스</p>
+  </div>
+
+  <div class="news-card">
+    <h3><span class="tag">중국</span>중화권 이틀째 하락 속 방산주만 상한가 행진</h3>
+    <p>상하이종합이 0.97% 내리며 이틀 연속 하락했지만, 네이멍이지·젠서궁예·창청쥔궁 등 방산주는 상한가로 치솟았다. 상장 방산업체 80여 곳의 올 상반기 매출은 3,774억 위안으로 전년 대비 18.9%, 순이익은 247억 위안으로 32.9% 늘었다. 해외 수출 확대가 실적 개선의 축으로 꼽힌다.</p>
+    <div class="why"><b>왜 중요한가</b> — 중동 확전이 중국 방산 수출 사이클과 맞물리며, 증시 내부에서 '지정학 수혜' 섹터 로테이션이 뚜렷해지고 있다.</div>
+    <p class="src">출처: 아주경제</p>
+  </div>
+</section>
+
+<!-- ③ 아시아 증시 마감 -->
+<section>
+  <h2>③ 아시아 증시 마감<span class="sec-sub">2026-09-02 종가 기준 (항셍은 장 후반 기준)</span></h2>
+
+  <div class="grid-2">
+    <div class="icard">
+      <p class="nm">코스피 (KOSPI)</p>
+      <p class="vl num">6,562.72</p>
+      <p class="ch down num">▼ 273.08 (−3.99%)</p>
+      <div class="minibar"><span class="neg" style="width:38.4%"></span></div>
+      <p class="meta">외국인 1조 9,093억·기관 2조 4,330억 순매도</p>
+    </div>
+    <div class="icard">
+      <p class="nm">코스닥 (KOSDAQ)</p>
+      <p class="vl num">803.98</p>
+      <p class="ch down num">▼ 17.27 (−2.10%)</p>
+      <div class="minibar"><span class="neg" style="width:20.2%"></span></div>
+      <p class="meta">기관 2,320억 순매도 / 개인 1,727억 순매수</p>
+    </div>
+    <div class="icard">
+      <p class="nm">닛케이225 (일본)</p>
+      <p class="vl num">64,325.64</p>
+      <p class="ch down num">▼ 1,889.70 (−2.85%)</p>
+      <div class="minibar"><span class="neg" style="width:27.4%"></span></div>
+      <p class="meta">토픽스 4,181.86 (−2.40%)</p>
+    </div>
+    <div class="icard">
+      <p class="nm">항셍 (홍콩) · 장 후반</p>
+      <p class="vl num">25,026.30</p>
+      <p class="ch down num">▼ (−1.20%)</p>
+      <div class="minibar"><span class="neg" style="width:11.5%"></span></div>
+      <p class="meta">3거래일 연속 하락 · 장중 기준</p>
+    </div>
+    <div class="icard">
+      <p class="nm">상하이종합 (중국)</p>
+      <p class="vl num">3,941.39</p>
+      <p class="ch down num">▼ 38.50 (−0.97%)</p>
+      <div class="minibar"><span class="neg" style="width:9.3%"></span></div>
+      <p class="meta">선전성분 13,611.55 (−1.88%) · CSI300 4,547.96 (−1.38%)</p>
+    </div>
+    <div class="icard">
+      <p class="nm">대만 자취안</p>
+      <p class="vl num">46,441.72</p>
+      <p class="ch down num">▼ 784.00 (−1.67%)</p>
+      <div class="minibar"><span class="neg" style="width:16.1%"></span></div>
+      <p class="meta">기술주 투매 확산</p>
+    </div>
+  </div>
+
+  <div class="comment">
+    <b>한국 시장 마감 코멘트</b> — 코스피는 개장부터 갭 하락한 뒤 낙폭을 키워 6,560선까지 후퇴했다. 중동 확전과 유가·금리 동반 급등이라는 순수 대외 악재에, 외국인과 기관이 합쳐 4조 원 넘게 물량을 쏟아내며 지수를 눌렀다.<br>
+    업종별로는 <b>반도체 투톱이 지수 하락을 주도</b>했다. 삼성전자는 26만 1,000원대에서 25만 4,000원까지 밀렸고, SK하이닉스도 169만 3,000원대에서 2~3% 낙폭을 보이며 164만 원대로 내려앉았다. 금융·자동차·2차전지 등 대부분 업종이 동반 약세를 보인 가운데, 코스닥은 개인 순매수가 받치며 코스피보다 낙폭을 절반 수준으로 줄였다.
+  </div>
+</section>
+
+<!-- ④ 유럽 개장 · 미 선물 -->
+<section>
+  <h2>④ 유럽 개장 · 미 지수선물<span class="sec-sub">유럽은 한국시간 오후 5시 19분 장중 기준</span></h2>
+  <div class="grid-3">
+    <div class="scard">
+      <p class="nm">독일 DAX · 장중</p>
+      <p class="vl num">25,861.22</p>
+      <p class="ch down num">▼ −0.37%</p>
+      <p class="meta">장 초반 하락 출발</p>
+    </div>
+    <div class="scard">
+      <p class="nm">프랑스 CAC40 · 장중</p>
+      <p class="vl num">8,275.64</p>
+      <p class="ch down num">▼ −0.32%</p>
+      <p class="meta">유가·금리 부담 반영</p>
+    </div>
+    <div class="scard">
+      <p class="nm">영국 FTSE100 · 장중</p>
+      <p class="vl num">10,764.90</p>
+      <p class="ch down num">▼ −0.23%</p>
+      <p class="meta">30년물 금리 5.856% 부담</p>
+    </div>
+    <div class="scard">
+      <p class="nm">유로스톡스50</p>
+      <p class="vl na">확인 불가</p>
+      <p class="meta">검색 시점 기준 수치 미확인</p>
+    </div>
+    <div class="scard">
+      <p class="nm">S&amp;P500 선물</p>
+      <p class="vl na">확인 불가</p>
+      <p class="meta">발행 시점 장중 방향 미확인</p>
+    </div>
+    <div class="scard">
+      <p class="nm">나스닥100 선물</p>
+      <p class="vl na">확인 불가</p>
+      <p class="meta">발행 시점 장중 방향 미확인</p>
+    </div>
+  </div>
+  <div class="comment">
+    <b>참고</b> — 전날(9월 1일) 뉴욕 증시는 유가·금리 쌍끌이 충격에 3대 지수가 일제히 하락 마감했다. 다우는 0.79%, 나스닥은 1%가량 밀렸다. 미 지수선물의 <b>현재 방향은 검색으로 확인되지 않아 "확인 불가"로 표기</b>한다.
+  </div>
+</section>
+
+<!-- ⑤ 매크로 스냅샷 -->
+<section>
+  <h2>⑤ 원자재 · 환율 · 금리 스냅샷</h2>
+  <div class="grid-3">
+    <div class="scard">
+      <p class="nm">WTI 원유 (10월물)</p>
+      <p class="vl num">$90.22</p>
+      <p class="ch up num">▲ +5.20%</p>
+      <p class="meta">9/1 뉴욕 마감 기준<br>2일 아시아 장중 91달러 상회</p>
+    </div>
+    <div class="scard">
+      <p class="nm">브렌트유 (11월물)</p>
+      <p class="vl num">$94.65</p>
+      <p class="ch up num">▲ +4.60%</p>
+      <p class="meta">9/1 ICE 마감 기준<br>2일 아시아 장중 95달러 상회</p>
+    </div>
+    <div class="scard">
+      <p class="nm">원/달러 환율</p>
+      <p class="vl num">1,368.7원</p>
+      <p class="ch down num">▼ 1.7원 (−0.12%)</p>
+      <p class="meta">9/2 오후 3시 30분 기준<br>장중 1,360~1,370원대 혼조</p>
+    </div>
+    <div class="scard">
+      <p class="nm">미 10년물 국채금리</p>
+      <p class="vl num">4.799%</p>
+      <p class="ch up num">▲ 장중 4.8122%</p>
+      <p class="meta">약 3년 만의 최고치<br>4.8% 근접은 작년 1월 이후 처음</p>
+    </div>
+    <div class="scard">
+      <p class="nm">일본 10년물 국채금리</p>
+      <p class="vl num">2.996%</p>
+      <p class="ch up num">▲ 장중 3.015%</p>
+      <p class="meta">1996년 이후 30년 만에 3% 돌파</p>
+    </div>
+    <div class="scard">
+      <p class="nm">금 (현물)</p>
+      <p class="vl num">$4,393.89</p>
+      <p class="ch down num">▼ −1.20%</p>
+      <p class="meta">8월 19일 이후 최저<br>금 선물 $4,443.10 (−0.9%)</p>
+    </div>
+  </div>
+  <div class="comment">
+    <b>읽는 법</b> — 지정학 리스크에도 금이 밀린 것은 실질금리 급등이 안전자산 수요를 상쇄했기 때문이다. 원/달러가 소폭 하락(원화 강세)한 것도 달러 강세보다 금리·유가 충격이 전면에 선 하루였음을 보여준다. 참고로 영국 30년물은 5.856%로 1998년 이후 최고다.
+  </div>
+</section>
+
+<!-- ⑥ 오늘 밤 지켜볼 것 -->
+<section>
+  <h2>⑥ 오늘 밤 지켜볼 것<span class="sec-sub">오늘 밤~내일 새벽 (KST) · 다음 새벽 브리핑 전까지</span></h2>
+  <ul class="sched">
+    <li>
+      <div class="tm">20:15<small>ET 07:15</small></div>
+      <div class="ds"><b>미 ADP 민간고용 (8월)</b>시장 예상 4.8만 명, 전월 4.4만 명. 전날 지표들이 고용 둔화를 가리킨 만큼, 유가·금리 급등 국면에서 "둔화 확인"이 나올 경우 연준의 운신 폭을 둘러싼 논쟁이 재점화된다.</div>
+    </li>
+    <li>
+      <div class="tm">22:30<small>ET 09:30</small></div>
+      <div class="ds"><b>EIA 주간 원유 재고</b>직전 +0.095M배럴. 호르무즈 공급 차질 우려가 실제 재고 데이터로 확인되는지가 관건으로, 유가 추가 급등 시 국채 금리에 곧바로 전이된다.</div>
+    </li>
+    <li>
+      <div class="tm">익일 02:00<small>ET 13:00</small></div>
+      <div class="ds"><b>연준 베이지북</b>12개 연은 관할 지역의 경기·물가·고용 진단. 고유가가 기업 비용과 가격 전가에 어떻게 반영되고 있는지에 대한 현장 언어가 이번 회차의 핵심 체크포인트다.</div>
+    </li>
+    <li>
+      <div class="tm">상시<small>야간 전반</small></div>
+      <div class="ds"><b>중동 확전 헤드라인 및 호르무즈 통항 상황</b>이란 중앙사령부가 재보복을 예고한 상태여서, 야간 중 추가 공습·선박 피격 뉴스가 유가와 미 국채 금리를 동시에 움직일 수 있다. OPEC+ 회의는 9월 6일로 예정돼 있다.</div>
+    </li>
+  </ul>
+</section>
+
+<footer>
+  <div class="disc">
+    본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.
+  </div>
+  <p>글로벌 브리프 저녁판 · 2026-09-02 (수) 18:00 KST 발행 · 주요 출처: 머니투데이, 아시아경제, 이투데이, 헤럴드경제, 이데일리, 아주경제, 한국경제, Businesskorea, Investing.com, CNBC</p>
+</footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/RaDgCmeHOBo" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
