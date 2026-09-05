@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 브리프 — 저녁판 · 2026-09-05</title>
+<style>
+  :root{
+    --bg:#0E1116;
+    --card:#161B22;
+    --card2:#1B2129;
+    --line:#262D36;
+    --text:#E6EDF3;
+    --text2:#D8DEE6;
+    --muted:#8B949E;
+    --up:#F87171;
+    --down:#60A5FA;
+    --flat:#9AA4B0;
+    --accent:#E3B341;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:26px 18px 60px;}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+
+  /* ===== header ===== */
+  header.top{
+    border:1px solid var(--line);
+    background:linear-gradient(180deg,#1A222C 0%,#161B22 100%);
+    border-radius:16px;
+    padding:24px 22px;
+    margin-bottom:26px;
+  }
+  .kicker{
+    display:inline-block;
+    font-size:13.5px;
+    font-weight:700;
+    letter-spacing:.06em;
+    color:#0E1116;
+    background:var(--accent);
+    border-radius:999px;
+    padding:3px 12px;
+    margin-bottom:12px;
+  }
+  h1{
+    font-size:32px;
+    line-height:1.28;
+    font-weight:800;
+    margin:0 0 10px;
+    letter-spacing:-.01em;
+  }
+  .stamp{font-size:15px;color:var(--muted);margin:0;font-weight:600;}
+  .stamp strong{color:var(--text2);font-weight:700;}
+  .closed-note{
+    margin-top:14px;
+    padding:12px 14px;
+    border-left:3px solid var(--accent);
+    background:#1E242C;
+    border-radius:0 10px 10px 0;
+    font-size:15.5px;
+    color:var(--text2);
+    line-height:1.65;
+  }
+
+  /* ===== sections ===== */
+  section{margin:0 0 34px;}
+  h2{
+    font-size:21px;
+    font-weight:700;
+    margin:0 0 6px;
+    letter-spacing:-.01em;
+    display:flex;
+    align-items:baseline;
+    gap:9px;
+  }
+  h2 .no{color:var(--accent);font-size:19px;font-weight:800;}
+  .sub{font-size:14.5px;color:var(--muted);margin:0 0 16px;}
+  .rule{height:1px;background:var(--line);margin:0 0 16px;}
+
+  /* ===== headline list ===== */
+  ol.lead{list-style:none;margin:0;padding:0;}
+  ol.lead li{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:15px 17px 15px 52px;
+    margin-bottom:11px;
+    position:relative;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--text2);
+  }
+  ol.lead li b{color:#FFFFFF;font-weight:700;}
+  ol.lead li::before{
+    counter-increment:lead;
+    content:counter(lead);
+    position:absolute;left:16px;top:15px;
+    width:24px;height:24px;line-height:24px;
+    text-align:center;
+    border-radius:7px;
+    background:#2A323C;
+    color:var(--accent);
+    font-size:13.5px;font-weight:800;
+  }
+  ol.lead{counter-reset:lead;}
+
+  /* ===== diverging chart ===== */
+  .chart-glance{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 18px 16px;
+  }
+  .cg-title{font-size:18px;font-weight:700;margin:0 0 4px;}
+  .cg-sub{font-size:14px;color:var(--muted);margin:0 0 18px;}
+  .cg-row{margin-bottom:14px;}
+  .cg-name{
+    font-size:14.5px;
+    font-weight:700;
+    color:var(--text2);
+    margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  }
+  .cg-val{font-size:16px;font-weight:800;}
+  .cg-track{
+    position:relative;
+    height:22px;
+    background:#11161C;
+    border-radius:5px;
+    overflow:hidden;
+  }
+  .cg-zero{
+    position:absolute;left:50%;top:0;bottom:0;
+    width:1px;background:#3A434E;
+  }
+  .cg-bar{
+    position:absolute;top:4px;bottom:4px;
+    border-radius:3px;
+  }
+  .cg-bar.pos{left:50%;background:linear-gradient(90deg,#B94A4A 0%,var(--up) 100%);}
+  .cg-bar.neg{right:50%;background:linear-gradient(270deg,#3A6FA8 0%,var(--down) 100%);}
+  .cg-axis{
+    display:flex;justify-content:space-between;
+    font-size:13.5px;color:var(--muted);
+    margin-top:8px;padding-top:8px;border-top:1px solid var(--line);
+  }
+  .up{color:var(--up);}
+  .down{color:var(--down);}
+  .flat{color:var(--flat);}
+
+  /* ===== news cards ===== */
+  .news{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 18px 16px;
+    margin-bottom:14px;
+  }
+  .news .tag{
+    display:inline-block;
+    font-size:13.5px;font-weight:700;
+    color:#0E1116;background:#7FB2E5;
+    border-radius:5px;padding:1px 9px;margin-bottom:9px;
+  }
+  .news .tag.hot{background:#F0A0A0;}
+  .news .tag.new{background:#E3B341;}
+  .news h3{
+    font-size:18px;font-weight:700;line-height:1.5;
+    margin:0 0 9px;color:#FFFFFF;
+  }
+  .news p{margin:0 0 11px;font-size:16.5px;line-height:1.75;color:var(--text2);}
+  .why{
+    background:#1B2129;
+    border-left:3px solid var(--accent);
+    border-radius:0 9px 9px 0;
+    padding:10px 13px;
+    font-size:15.5px;line-height:1.65;
+    color:var(--text2);
+    margin:0 0 10px;
+  }
+  .why b{color:var(--accent);font-weight:700;}
+  .src{font-size:13.5px;color:var(--muted);margin:0;}
+
+  /* ===== index grid ===== */
+  .grid{display:grid;gap:12px;}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+  .idx{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:13px;
+    padding:15px 15px 13px;
+  }
+  .idx .nm{font-size:14.5px;font-weight:700;color:var(--muted);margin-bottom:4px;}
+  .idx .pt{font-size:27px;font-weight:800;line-height:1.2;letter-spacing:-.02em;}
+  .idx .ch{font-size:16px;font-weight:700;margin-top:2px;}
+  .idx .mini{
+    height:7px;background:#11161C;border-radius:4px;
+    margin-top:10px;position:relative;overflow:hidden;
+  }
+  .idx .mini i{position:absolute;top:0;bottom:0;left:0;border-radius:4px;display:block;}
+  .idx .mini i.pos{background:var(--up);}
+  .idx .mini i.neg{background:var(--down);}
+  .idx .note{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.55;}
+
+  .comment{
+    background:var(--card2);
+    border:1px solid var(--line);
+    border-radius:13px;
+    padding:16px 17px;
+    margin-top:13px;
+    font-size:16.5px;line-height:1.78;color:var(--text2);
+  }
+  .comment b{color:#FFFFFF;}
+
+  /* ===== macro cards ===== */
+  .macro{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:13px;
+    padding:15px;
+  }
+  .macro .nm{font-size:14.5px;font-weight:700;color:var(--muted);margin-bottom:5px;}
+  .macro .pv{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.25;}
+  .macro .dv{font-size:15.5px;font-weight:700;margin-top:3px;}
+  .macro .nt{font-size:13.5px;color:var(--muted);margin-top:7px;line-height:1.55;}
+  .na{color:var(--flat);font-weight:700;}
+
+  /* ===== watch list ===== */
+  .watch{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:13px;
+    padding:15px 16px;
+    margin-bottom:11px;
+    display:grid;
+    grid-template-columns:104px 1fr;
+    gap:4px 14px;
+  }
+  .watch .t{
+    font-size:14.5px;font-weight:800;color:var(--accent);
+    padding-top:2px;
+  }
+  .watch .b h4{font-size:17px;font-weight:700;margin:0 0 5px;color:#FFFFFF;line-height:1.5;}
+  .watch .b p{margin:0;font-size:15.5px;line-height:1.7;color:var(--text2);}
+  @media (max-width:560px){
+    .watch{grid-template-columns:1fr;}
+    .watch .t{padding-top:0;}
+  }
+
+  footer{
+    margin-top:40px;
+    border-top:1px solid var(--line);
+    padding-top:18px;
+    font-size:14px;
+    line-height:1.75;
+    color:var(--muted);
+  }
+  footer .disc{color:#A9B3BF;}
+
+  @media (max-width:560px){
+    body{font-size:16px;}
+    .wrap{padding:20px 14px 48px;}
+    h1{font-size:27px;}
+    h2{font-size:20px;}
+    .news h3{font-size:17px;}
+    .news p{font-size:16px;}
+    .idx .pt{font-size:24px;}
+    .macro .pv{font-size:22px;}
+    ol.lead li{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <span class="kicker">저녁판 · EVENING</span>
+    <h1>글로벌 브리프 — 저녁판</h1>
+    <p class="stamp num"><strong>2026년 9월 5일 (토) 오후 6시 KST</strong> 발행 · 오늘 낮 12시 브리핑 이후 업데이트</p>
+    <div class="closed-note">
+      <b>오늘은 토요일입니다.</b> 한국·일본·중화권·유럽·미국 증시와 미 지수선물은 모두 <b>휴장</b>이며, 오후 중 새로 형성된 시세는 없습니다.
+      따라서 ③~⑤ 시장 섹션은 <b>직전 거래일인 9월 4일(금) 확정 마감치</b>를 기준으로 정리했습니다.
+      ② 국제 뉴스는 오늘 오후(KST) 중 새로 나온 내용을 중심으로 담았습니다.
+    </div>
+  </header>
+
+  <!-- ① -->
+  <section>
+    <h2><span class="no">①</span> 저녁의 헤드라인</h2>
+    <p class="sub">오후에 새로 확인된 것 3줄 요약</p>
+    <div class="rule"></div>
+    <ol class="lead">
+      <li><b>미군, 카르그섬 인근 이란 유조선을 미사일로 타격</b> — 이란 매체 보도. 트럼프 대통령은 이란 지하 핵시설 <b>'곡괭이산(Pickaxe Mountain)'</b>을 "곧" 칠 수 있다고 재차 경고했습니다. 호르무즈 긴장이 주말에도 완화되지 않았습니다.</li>
+      <li><b>미 재무부, 이란 정부 연계 의혹으로 튀르키예 은행에 신규 제재</b>를 부과했습니다. 동시에 미 국방부는 이란전 <b>탄약 부족</b> 관련 언론 유출을 조사하며 합참 인원 약 50명을 거짓말탐지기 조사에 회부한 것으로 전해졌습니다.</li>
+      <li><b>시장의 무게중심은 '연준 인상'으로 이동</b> — 4일 발표된 8월 미 고용이 <b>16.2만 명</b>(예상 5.3만)으로 서프라이즈를 내며 9월 15~16일 FOMC 인상 확률이 <b>60%대</b>로 올라섰습니다. 미 디젤 평균가는 <b>갤런당 5.85달러</b>로 사상 최고를 찍었습니다.</li>
+    </ol>
+  </section>
+
+  <!-- 차트 -->
+  <section>
+    <div class="chart-glance">
+      <p class="cg-title">오늘의 시장 한눈에</p>
+      <p class="cg-sub num">직전 거래일(9월 4일 금) 등락률 · 0% 기준 좌(하락·파랑)/우(상승·빨강)</p>
+
+      <div class="cg-row">
+        <div class="cg-name"><span>코스닥</span><span class="cg-val up num">+2.95%</span></div>
+        <div class="cg-track"><div class="cg-zero"></div><div class="cg-bar pos" style="width:49.2%"></div></div>
+      </div>
+
+      <div class="cg-row">
+        <div class="cg-name"><span>항셍지수</span><span class="cg-val up num">+1.74%</span></div>
+        <div class="cg-track"><div class="cg-zero"></div><div class="cg-bar pos" style="width:29.0%"></div></div>
+      </div>
+
+      <div class="cg-row">
+        <div class="cg-name"><span>코스피</span><span class="cg-val up num">+1.64%</span></div>
+        <div class="cg-track"><div class="cg-zero"></div><div class="cg-bar pos" style="width:27.3%"></div></div>
+      </div>
+
+      <div class="cg-row">
+        <div class="cg-name"><span>닛케이 225</span><span class="cg-val up num">+1.26%</span></div>
+        <div class="cg-track"><div class="cg-zero"></div><div class="cg-bar pos" style="width:21.0%"></div></div>
+      </div>
+
+      <div class="cg-row">
+        <div class="cg-name"><span>상하이종합</span><span class="cg-val down num">−0.30%</span></div>
+        <div class="cg-track"><div class="cg-zero"></div><div class="cg-bar neg" style="width:5.0%"></div></div>
+      </div>
+
+      <div class="cg-row">
+        <div class="cg-name"><span>브렌트유</span><span class="cg-val down num">−0.31%</span></div>
+        <div class="cg-track"><div class="cg-zero"></div><div class="cg-bar neg" style="width:5.2%"></div></div>
+      </div>
+
+      <div class="cg-row">
+        <div class="cg-name"><span>원/달러 환율</span><span class="cg-val down num">−0.66%</span></div>
+        <div class="cg-track"><div class="cg-zero"></div><div class="cg-bar neg" style="width:11.0%"></div></div>
+      </div>
+
+      <div class="cg-axis num"><span>−3%</span><span>0%</span><span>+3%</span></div>
+      <p class="src" style="margin-top:10px;">※ 원/달러 하락은 원화 강세를 뜻합니다. 일간 변동률을 확인하지 못한 금·미 10년물은 차트에서 제외했습니다.</p>
+    </div>
+  </section>
+
+  <!-- ② -->
+  <section>
+    <h2><span class="no">②</span> 오후 국제 뉴스</h2>
+    <p class="sub">한국시간 오늘 오후 중 새로 나왔거나 크게 진전된 사안</p>
+    <div class="rule"></div>
+
+    <article class="news">
+      <span class="tag new">오늘 신규</span>
+      <h3>미군, 카르그섬 인근 이란 유조선 미사일 타격</h3>
+      <p>이란 매체는 카르그섬 인근을 항행하던 이란 유조선이 미군 미사일 여러 발을 맞았다고 보도했습니다. 미국은 앞서 이란의 호르무즈 상선 공격에 대한 보복으로 '유조선 대 유조선(tanker for tanker)' 방침을 승인한 바 있는데, 이번 타격은 그 연장선으로 읽힙니다.</p>
+      <p>호르무즈 해협은 2월 28일 미·이스라엘의 대이란 공습 개시 이후 이란혁명수비대(IRGC)의 통항 경고·기뢰 부설·선박 나포로 사실상 봉쇄 상태가 이어지고 있습니다.</p>
+      <div class="why"><b>왜 중요한가:</b> 해협 봉쇄가 '상선 공격 → 유조선 보복'의 상호 타격 국면으로 굳어지면 유가·해상운임·보험료의 구조적 상승 압력이 지속됩니다.</div>
+      <p class="src">출처: Al Jazeera(라이브블로그), 이란 국영매체, Axios</p>
+    </article>
+
+    <article class="news">
+      <span class="tag new">오늘 신규</span>
+      <h3>트럼프 "이란 '곡괭이산' 곧 타격할 수도"… 미국, 선박 공격 중단 전엔 대화 없다</h3>
+      <p>트럼프 대통령은 이란의 지하 핵시설 '곡괭이산(Pickaxe Mountain)'을 "매우 곧" 공격할 수 있다고 재차 경고했습니다. 7월 중순 처음 꺼냈던 위협을 다시 꺼내 든 것입니다.</p>
+      <p>밴스 부통령은 앞서 이란이 호르무즈 통항 상선에 대한 공격을 멈추기 전에는 테헤란과 협상할 계획이 없다고 못박았습니다. 협상 재개 기대가 다시 후퇴한 상태입니다.</p>
+      <div class="why"><b>왜 중요한가:</b> 핵시설 타격은 확전 사다리의 상단입니다. 외교 채널이 닫힌 채 위협만 반복되면 원유·금 등 위험 프리미엄이 주말 갭으로 반영될 수 있습니다.</div>
+      <p class="src">출처: Al Jazeera, CNBC</p>
+    </article>
+
+    <article class="news">
+      <span class="tag new">오늘 신규</span>
+      <h3>미 재무부, 이란 연계 혐의 튀르키예 은행 제재</h3>
+      <p>미국 재무부가 이란 정부와 연결된 것으로 의심되는 튀르키예 소재 은행에 새 제재를 부과했습니다. 군사 압박과 병행해 이란의 금융·석유 대금 우회 경로를 차단하려는 조치입니다.</p>
+      <div class="why"><b>왜 중요한가:</b> 제3국 금융기관으로 제재가 번지면 나토 회원국인 튀르키예와의 마찰, 신흥국 금융기관의 컴플라이언스 부담이라는 2차 파장이 생깁니다.</div>
+      <p class="src">출처: Al Jazeera(미 재무부 발표 인용)</p>
+    </article>
+
+    <article class="news">
+      <span class="tag hot">오늘 신규</span>
+      <h3>미 국방부, 합참 50여 명 거짓말탐지기 조사… '이란전 탄약 부족' 유출 추적</h3>
+      <p>뉴욕타임스 보도에 따르면 미 국방부가 언론 유출 조사를 위해 합동참모본부 인원 약 50명을 대상으로 거짓말탐지기 검사를 실시했습니다. 유출 내용에는 이란전 장기화로 핵심 탄약이 부족해졌다는 정보가 포함된 것으로 전해졌습니다.</p>
+      <div class="why"><b>왜 중요한가:</b> 미국의 전쟁 지속 능력에 대한 첫 구체적 균열 신호입니다. 방산 조달 확대 기대와 동시에, 협상 압박이 커질 수 있다는 상반된 해석을 낳습니다.</div>
+      <p class="src">출처: The New York Times, Al Jazeera</p>
+    </article>
+
+    <article class="news">
+      <span class="tag">전일 진전</span>
+      <h3>미 디젤 가격 사상 최고 5.85달러/갤런 — 에너지발 물가 재점화</h3>
+      <p>미국자동차협회(AAA) 집계 기준 미국 평균 디젤 가격이 갤런당 5.85달러로 사상 최고를 기록했습니다. 이란전에 따른 원유·정제 차질, 4년째 이어지는 러시아-우크라이나 전쟁, 계절적 수요가 겹친 결과입니다. 유럽 천연가스 선물도 3년 만의 최고 수준으로 올랐습니다.</p>
+      <p><b>오전 대비 새로운 점:</b> 단순 유가 상승이 아니라 <b>정제유(디젤) 병목</b>이라는 점이 부각됐다는 것입니다. 러시아는 미국에 이은 세계 2위 디젤 수출국입니다.</p>
+      <div class="why"><b>왜 중요한가:</b> 디젤은 화물·배송 원가에 직결돼 상품 물가 전반으로 전이됩니다. 연준의 인상 논리를 보강하는 방향으로 작동합니다.</div>
+      <p class="src">출처: NBC News, The Washington Times, Bloomberg</p>
+    </article>
+
+    <article class="news">
+      <span class="tag">전일 진전</span>
+      <h3>8월 고용 서프라이즈에 9월 인상 확률 60%대로 — 워시 연준의 '인상 딜레마'</h3>
+      <p>4일 발표된 미국 8월 비농업부문 고용은 <b>16.2만 명</b> 증가로 시장 예상(5.3만 명)을 크게 웃돌았고 실업률은 4.1%로 유지됐습니다. 이에 9월 15~16일 FOMC의 25bp 인상 확률이 금리선물 기준 60%대로 뛰었습니다.</p>
+      <p>케빈 워시 연준 의장은 잭슨홀에서 "여름 물가 지표가 예상보다 나았지만 기저 추세가 의미 있게 개선됐다고 보지 않는다"며 매파 기조를 분명히 했습니다. 반면 베선트 재무장관은 "공급 충격에 대고 금리를 올리진 않는다"며 견제했습니다.</p>
+      <div class="why"><b>왜 중요한가:</b> 유가발 공급 충격 국면에서 연준이 인상까지 밀어붙이면, 한국 증시엔 환율·외국인 수급 양쪽으로 부담입니다.</div>
+      <p class="src">출처: CNBC, TheStreet, Reuters, Federal Reserve</p>
+    </article>
+
+    <article class="news">
+      <span class="tag">주말 관전</span>
+      <h3>푸틴 "종전 합의 가능성 있다"… 우크라이나 "새로운 국면"</h3>
+      <p>푸틴 러시아 대통령은 3일 극동 경제포럼에서 종전 합의 도달 가능성을 언급하며 미국·중국 등 다수 국가가 평화적 해결을 지지할 준비가 돼 있다고 말했습니다. 젤렌스키 대통령 측은 미국 협상단의 양국 방문을 예고하며 "새로운 동력"을 기대했습니다.</p>
+      <p>다만 러시아는 돈바스 전역 할양을, 우크라이나는 접촉선 기준 협상을 고수해 핵심 쟁점은 그대로입니다.</p>
+      <div class="why"><b>왜 중요한가:</b> 러시아산 정제유 공급 정상화 기대와 직결됩니다. 지금 유가·디젤 프리미엄을 가장 크게 되돌릴 수 있는 변수입니다.</div>
+      <p class="src">출처: Reuters/US News, NBC News, Kyiv Post</p>
+    </article>
+  </section>
+
+  <!-- ③ -->
+  <section>
+    <h2><span class="no">③</span> 아시아 증시 마감</h2>
+    <p class="sub">오늘(토)은 전 시장 휴장 · 아래는 직전 거래일 9월 4일(금) 확정 마감치</p>
+    <div class="rule"></div>
+
+    <div class="grid g2">
+      <div class="idx">
+        <div class="nm">코스피 (KOSPI)</div>
+        <div class="pt num up">6,687.21</div>
+        <div class="ch num up">▲ 107.73 (+1.64%)</div>
+        <div class="mini"><i class="pos" style="width:55%"></i></div>
+        <div class="note">외국인 +4,793억 · 기관 +1조6,691억 순매수</div>
+      </div>
+      <div class="idx">
+        <div class="nm">코스닥 (KOSDAQ)</div>
+        <div class="pt num up">813.50</div>
+        <div class="ch num up">▲ 23.29 (+2.95%)</div>
+        <div class="mini"><i class="pos" style="width:98%"></i></div>
+        <div class="note">810선 회복 · 기술·성장주 동반 급반등</div>
+      </div>
+      <div class="idx">
+        <div class="nm">닛케이 225 (일본)</div>
+        <div class="pt num up">65,020.94</div>
+        <div class="ch num up">▲ +1.26%</div>
+        <div class="mini"><i class="pos" style="width:42%"></i></div>
+        <div class="note">포인트 변동폭 확인 불가</div>
+      </div>
+      <div class="idx">
+        <div class="nm">항셍지수 (홍콩)</div>
+        <div class="pt num up">25,650.87</div>
+        <div class="ch num up">▲ +1.74%</div>
+        <div class="mini"><i class="pos" style="width:58%"></i></div>
+        <div class="note">포인트 변동폭 확인 불가</div>
+      </div>
+      <div class="idx">
+        <div class="nm">상하이종합 (중국)</div>
+        <div class="pt num down">3,930.12</div>
+        <div class="ch num down">▼ −0.30%</div>
+        <div class="mini"><i class="neg" style="width:10%"></i></div>
+        <div class="note">아시아 주요 지수 중 유일한 하락</div>
+      </div>
+      <div class="idx">
+        <div class="nm">한국 거래일 특징</div>
+        <div class="pt num" style="font-size:22px;">반도체 주도</div>
+        <div class="ch num up">삼성전자 +2.20% · SK하이닉스 +3.20%</div>
+        <div class="mini"><i class="pos" style="width:64%"></i></div>
+        <div class="note">SK스퀘어 +6.12%, 삼성전기 +3.93% / 금융주는 약세</div>
+      </div>
+    </div>
+
+    <div class="comment">
+      <b>마감 코멘트.</b> 9월 4일 한국 증시는 오전 중 확산된 연준 매파 우려가 <b>월러 이사의 "물가 압력이 계속 완화되면 동결을 지지하겠다"</b>는 발언으로 진정되며 반도체 대형주 중심의 강한 반등을 그렸습니다.
+      외국인과 기관이 쌍끌이 순매수(합계 약 2조1,500억 원)에 나선 반면 개인은 3조7,224억 원을 순매도하며 차익 실현에 집중했습니다.
+      다만 <b>이날 밤 발표된 미국 8월 고용이 서프라이즈를 내면서 뉴욕 증시는 하락 반전</b>했다는 점이 중요합니다. 이 매파 재료는 아시아 시장에 아직 반영되지 않았고, 다음 거래일인 <b>9월 7일(월) 개장 갭</b>으로 넘어옵니다.
+    </div>
+  </section>
+
+  <!-- ④ -->
+  <section>
+    <h2><span class="no">④</span> 유럽 개장·미 선물</h2>
+    <p class="sub">토요일 전 시장 휴장 — 실시간 개장 흐름 없음 / 직전 거래일 마감 기준</p>
+    <div class="rule"></div>
+
+    <div class="grid g3">
+      <div class="idx">
+        <div class="nm">유로 STOXX 600 (9/4 종가)</div>
+        <div class="pt num up">약 650</div>
+        <div class="ch num up">▲ +0.2%</div>
+        <div class="mini"><i class="pos" style="width:7%"></i></div>
+        <div class="note">고금리 국면 평가 속 소폭 상승 마감</div>
+      </div>
+      <div class="idx">
+        <div class="nm">영국 FTSE 100 (9/4 종가)</div>
+        <div class="pt num flat">10,828.14</div>
+        <div class="ch num flat">— 사실상 보합</div>
+        <div class="mini"><i class="pos" style="width:2%;background:#9AA4B0;"></i></div>
+        <div class="note">시가 대비 4포인트 이내 마감</div>
+      </div>
+      <div class="idx">
+        <div class="nm">독일 DAX (9/4)</div>
+        <div class="pt num up" style="font-size:22px;">상승 마감</div>
+        <div class="ch num na">종가·등락률 확인 불가</div>
+        <div class="note">장중 내내 플러스권 유지로만 확인</div>
+      </div>
+      <div class="idx">
+        <div class="nm">S&amp;P 500 선물</div>
+        <div class="pt num na" style="font-size:22px;">거래 없음</div>
+        <div class="ch num na">확인 불가 (주말 휴장)</div>
+        <div class="note">CME 재개장: 한국시간 9/7(월) 오전 7시</div>
+      </div>
+      <div class="idx">
+        <div class="nm">나스닥 100 선물</div>
+        <div class="pt num na" style="font-size:22px;">거래 없음</div>
+        <div class="ch num na">확인 불가 (주말 휴장)</div>
+        <div class="note">CME 재개장: 한국시간 9/7(월) 오전 7시</div>
+      </div>
+      <div class="idx">
+        <div class="nm">미 증시 직전 마감 (9/4 현물)</div>
+        <div class="pt num down">7,718.60</div>
+        <div class="ch num down">▼ S&amp;P500 −0.38%</div>
+        <div class="mini"><i class="neg" style="width:13%"></i></div>
+        <div class="note">나스닥 26,506.99 (−0.29%) · 다우 53,414.25 (−271.86, −0.51%)</div>
+      </div>
+    </div>
+
+    <div class="comment">
+      <b>정리.</b> 9월 4일 유럽 증시는 소폭 상승으로 마감했지만, 같은 날 미국 고용 서프라이즈 이후 <b>뉴욕 3대 지수는 모두 하락 반전</b>하며 금리 재상승 부담을 먼저 반영했습니다.
+      즉 유럽은 '고용 발표 전', 미국은 '고용 발표 후' 가격입니다. 주말 사이 호르무즈 상황이 더 악화되지 않는다면, 다음 주 개장 시 유럽이 미국의 매파 반응을 따라잡는 흐름을 확인할 필요가 있습니다.
+    </div>
+  </section>
+
+  <!-- ⑤ -->
+  <section>
+    <h2><span class="no">⑤</span> 원자재·환율·금리 스냅샷</h2>
+    <p class="sub">9월 4일(금) 마감 또는 장 후반 기준</p>
+    <div class="rule"></div>
+
+    <div class="grid g3">
+      <div class="macro">
+        <div class="nm">WTI 원유</div>
+        <div class="pv num down">$91.20</div>
+        <div class="dv num down">▼ −0.11% (전일 대비)</div>
+        <div class="nt">배럴당 · 장중 $92선 부근에서 등락</div>
+      </div>
+      <div class="macro">
+        <div class="nm">브렌트유</div>
+        <div class="pv num down">$95.23</div>
+        <div class="dv num down">▼ −0.31% (전일 대비)</div>
+        <div class="nt">주간 기준으로는 약 <b>+8%</b> 급등 · 장중 한때 $97 돌파</div>
+      </div>
+      <div class="macro">
+        <div class="nm">원/달러 환율</div>
+        <div class="pv num down">1,350.4원</div>
+        <div class="dv num down">▼ −8.9원 (−0.66%)</div>
+        <div class="nt">9/4 오후 3시 30분 기준 · 원화 강세</div>
+      </div>
+      <div class="macro">
+        <div class="nm">미 10년물 국채금리</div>
+        <div class="pv num up">4.79%</div>
+        <div class="dv num up">▲ 약 +3bp (전일 대비)</div>
+        <div class="nt">고용 서프라이즈로 상승 · 2년물은 2025년 1월 이후 최고</div>
+      </div>
+      <div class="macro">
+        <div class="nm">금 (현물)</div>
+        <div class="pv num">$4,473.54</div>
+        <div class="dv num na">전일 대비 변화 확인 불가</div>
+        <div class="nt">온스당 · 9/4 장중 시세, $4,500 부근에서 등락</div>
+      </div>
+      <div class="macro">
+        <div class="nm">미국 디젤 평균가</div>
+        <div class="pv num up">$5.85</div>
+        <div class="dv num up">▲ 사상 최고 경신</div>
+        <div class="nt">갤런당 · AAA 집계, 9/4 기준</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ -->
+  <section>
+    <h2><span class="no">⑥</span> 오늘 밤 지켜볼 것</h2>
+    <p class="sub">토요일 밤~일요일, 그리고 다음 거래일 개장까지</p>
+    <div class="rule"></div>
+
+    <div class="watch">
+      <div class="t">9/6 (일)</div>
+      <div class="b">
+        <h4>OPEC+ 장관급 회의</h4>
+        <p>8월 회의에서 9월분 <b>일 18.8만 배럴 증산</b>으로 1.65백만 b/d 자발적 감산 롤백을 완료했고, 연말까지 쿼터 동결을 예고한 상태입니다. 호르무즈 차질이 길어지는 국면에서 <b>추가 증산 신호가 나오는지</b>가 유가의 주말 갭을 좌우합니다.</p>
+      </div>
+    </div>
+
+    <div class="watch">
+      <div class="t">주말 상시</div>
+      <div class="b">
+        <h4>호르무즈·이란 확전 여부</h4>
+        <p>미군의 이란 유조선 타격과 '곡괭이산' 타격 위협이 겹친 상태입니다. 주말 중 <b>핵시설 타격이나 대형 상선 피격</b>이 발생하면, 월요일 아시아 개장에서 유가·금 급등과 아시아 증시 갭하락으로 즉시 반영됩니다.</p>
+      </div>
+    </div>
+
+    <div class="watch">
+      <div class="t">9/7 (월) 07:00</div>
+      <div class="b">
+        <h4>CME 지수선물 재개장 (한국시간 기준)</h4>
+        <p>9월 4일 미 고용 서프라이즈의 매파 충격이 아직 아시아에 반영되지 않았습니다. 재개장 직후 <b>S&amp;P 500·나스닥 선물의 첫 방향</b>이 이날 코스피 시초가의 기준점이 됩니다.</p>
+      </div>
+    </div>
+
+    <div class="watch">
+      <div class="t">9/11 (금)</div>
+      <div class="b">
+        <h4>미국 8월 소비자물가(CPI) · 미 동부시간 오전 8시 30분</h4>
+        <p><b>9월 15~16일 FOMC를 닷새 앞둔 분기 최대 변수</b>입니다. 7월 PCE는 헤드라인 3.7%·근원 3.3%로 목표를 크게 웃돌았고, 여기에 유가·디젤 상승분이 얹힐지가 인상 여부를 사실상 결정합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="disc"><b>본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.</b></p>
+    <p>글로벌 브리프 저녁판 · 2026년 9월 5일(토) 오후 6시 KST 발행. 오늘은 주말로 전 시장이 휴장하여 시장 수치는 직전 거래일(9월 4일 금) 기준으로 작성했습니다. 검색으로 확인되지 않은 항목은 "확인 불가"로 표기했습니다.<br>
+    주요 출처: Al Jazeera · Reuters · CNBC · TheStreet · NBC News · Bloomberg · The New York Times · Washington Times · Trading Economics · Seoul Economic Daily · 머니투데이 · 파이낸셜뉴스 · 아시아경제 · 뉴스핌</p>
+  </footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/JDs82GHfDdU" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
