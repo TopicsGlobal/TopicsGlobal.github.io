@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 모닝 브리프 · 2026-09-11 (금)</title>
+<style>
+  :root{
+    --bg:#0E1116;
+    --card:#161B22;
+    --card2:#1B222C;
+    --line:#2A323D;
+    --text:#E6EDF3;
+    --text2:#D8DEE6;
+    --muted:#9AA6B2;
+    --up:#F87171;
+    --down:#60A5FA;
+    --flat:#9AA6B2;
+    --accent:#FBBF24;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",
+      "Apple SD Gothic Neo","Noto Sans KR",Roboto,sans-serif;
+    font-size:17px;
+    line-height:1.75;
+    letter-spacing:-0.01em;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:28px 18px 56px;}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+
+  /* ===== 헤더 ===== */
+  header.top{
+    border:1px solid var(--line);
+    background:linear-gradient(180deg,#171E27 0%,#141A22 100%);
+    border-radius:16px;
+    padding:26px 24px;
+    margin-bottom:26px;
+  }
+  .kicker{
+    font-size:14px;font-weight:700;letter-spacing:0.14em;
+    color:var(--accent);margin:0 0 8px;
+  }
+  h1{
+    margin:0 0 10px;
+    font-size:32px;line-height:1.28;font-weight:800;letter-spacing:-0.03em;
+    color:#F2F7FC;
+  }
+  .pubinfo{
+    margin:0;font-size:15px;color:var(--text2);font-weight:600;
+  }
+  .pubinfo span.dot{color:var(--muted);padding:0 7px;}
+
+  /* ===== 섹션 공통 ===== */
+  section{margin:34px 0 0;}
+  h2.sec{
+    font-size:21px;line-height:1.45;font-weight:700;letter-spacing:-0.02em;
+    margin:0 0 6px;color:#F2F7FC;
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  }
+  h2.sec .no{
+    color:var(--accent);font-size:19px;font-weight:800;
+  }
+  .sec-sub{
+    margin:0 0 16px;font-size:14.5px;color:var(--muted);font-weight:500;
+  }
+
+  /* ===== ① 헤드라인 ===== */
+  ol.head{
+    list-style:none;margin:0;padding:0;
+    display:grid;gap:12px;
+  }
+  ol.head li{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:12px;
+    padding:16px 18px 16px 16px;
+    font-size:17px;line-height:1.72;color:var(--text2);
+    display:flex;gap:13px;align-items:flex-start;
+  }
+  ol.head li b.n{
+    flex:0 0 auto;
+    display:inline-block;min-width:25px;height:25px;line-height:25px;
+    text-align:center;border-radius:7px;
+    background:#2A3340;color:var(--accent);
+    font-size:14px;font-weight:800;margin-top:3px;
+  }
+  ol.head li strong{color:#FFFFFF;font-weight:700;}
+
+  /* ===== 다이버징 바 차트 ===== */
+  .chart-glance{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 18px 16px;
+  }
+  .chart-glance .ch-title{
+    font-size:18px;font-weight:700;margin:0 0 4px;color:#F2F7FC;
+  }
+  .chart-glance .ch-note{
+    font-size:14px;color:var(--muted);margin:0 0 18px;
+  }
+  .ch-row{
+    display:grid;
+    grid-template-columns:104px 1fr 78px;
+    align-items:center;
+    gap:10px;
+    margin-bottom:11px;
+  }
+  .ch-name{
+    font-size:14.5px;font-weight:600;color:var(--text2);
+    text-align:right;line-height:1.35;
+  }
+  .ch-track{
+    position:relative;
+    height:26px;
+    background:#11161D;
+    border-radius:5px;
+    overflow:hidden;
+  }
+  .ch-track::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;
+    width:1px;background:#3B4552;
+  }
+  .ch-bar{
+    position:absolute;top:5px;height:16px;border-radius:3px;
+  }
+  .ch-bar.up{left:50%;background:linear-gradient(90deg,#DC5D5D 0%,#F87171 100%);}
+  .ch-bar.down{right:50%;background:linear-gradient(270deg,#4A87D6 0%,#60A5FA 100%);}
+  .ch-val{
+    font-size:15px;font-weight:800;text-align:left;
+  }
+  .ch-val.up{color:var(--up);}
+  .ch-val.down{color:var(--down);}
+  .ch-axis{
+    display:grid;grid-template-columns:104px 1fr 78px;gap:10px;
+    margin-top:14px;padding-top:11px;border-top:1px solid var(--line);
+  }
+  .ch-axis .lab{
+    grid-column:2;display:flex;justify-content:space-between;
+    font-size:13.5px;color:var(--muted);font-weight:600;
+  }
+
+  /* ===== 뉴스 카드 ===== */
+  .news-grid{display:grid;gap:14px;}
+  article.news{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 19px;
+  }
+  article.news h3{
+    margin:0 0 9px;font-size:18px;line-height:1.5;font-weight:700;
+    color:#F2F7FC;letter-spacing:-0.02em;
+  }
+  article.news p.body{
+    margin:0 0 13px;font-size:16.5px;line-height:1.75;color:var(--text2);
+  }
+  .why{
+    background:#1E2530;
+    border-radius:9px;
+    padding:11px 13px;
+    font-size:15.5px;line-height:1.65;color:#E2E9F0;
+    display:flex;gap:9px;align-items:flex-start;
+  }
+  .why b{color:var(--accent);font-weight:800;flex:0 0 auto;font-size:14.5px;
+    letter-spacing:0.02em;padding-top:1px;}
+  .src{
+    margin:11px 0 0;font-size:13.8px;color:var(--muted);font-weight:600;
+  }
+  .tag{
+    display:inline-block;font-size:13.5px;font-weight:700;
+    padding:2px 9px;border-radius:6px;margin-bottom:10px;
+    background:#2A3340;color:#B9C6D4;letter-spacing:0.02em;
+  }
+  .tag.hot{background:#3A2226;color:#F8A6A6;}
+  .tag.rate{background:#22303F;color:#93C0F0;}
+
+  /* ===== 지수 카드 ===== */
+  .idx-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:14px;
+  }
+  .idx{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:18px 18px 16px;
+  }
+  .idx .nm{font-size:15px;font-weight:700;color:var(--text2);margin:0 0 6px;}
+  .idx .lv{
+    font-size:29px;font-weight:800;line-height:1.2;letter-spacing:-0.03em;
+    margin:0 0 4px;color:#F2F7FC;
+  }
+  .idx .chg{font-size:17px;font-weight:800;margin:0 0 12px;}
+  .idx .chg.up{color:var(--up);}
+  .idx .chg.down{color:var(--down);}
+  .mini{
+    position:relative;height:9px;background:#11161D;border-radius:4px;overflow:hidden;
+  }
+  .mini::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#3B4552;}
+  .mini i{position:absolute;top:1.5px;height:6px;border-radius:2px;}
+  .mini i.up{left:50%;background:var(--up);}
+  .mini i.down{right:50%;background:var(--down);}
+  .idx .mn{font-size:13.6px;color:var(--muted);margin:9px 0 0;}
+
+  /* ===== 종목 그리드 ===== */
+  .stk-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
+    gap:11px;
+  }
+  .stk{
+    background:var(--card2);border:1px solid var(--line);
+    border-radius:11px;padding:13px 14px;
+  }
+  .stk .t{font-size:14.5px;font-weight:700;color:var(--text2);margin:0 0 3px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .stk .p{font-size:23px;font-weight:800;line-height:1.25;margin:0 0 4px;
+    letter-spacing:-0.02em;}
+  .stk .p.up{color:var(--up);}
+  .stk .p.down{color:var(--down);}
+  .stk .p.na{color:var(--flat);font-size:18px;}
+  .stk .d{font-size:13.6px;color:var(--muted);line-height:1.55;margin:0;}
+
+  /* ===== 매크로 카드 ===== */
+  .mac-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:13px;
+  }
+  .mac{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:17px 17px 15px;
+  }
+  .mac .t{font-size:14.5px;font-weight:700;color:var(--text2);margin:0 0 7px;}
+  .mac .v{font-size:27px;font-weight:800;line-height:1.2;margin:0 0 5px;
+    letter-spacing:-0.03em;color:#F2F7FC;}
+  .mac .c{font-size:16px;font-weight:800;margin:0 0 9px;}
+  .mac .c.up{color:var(--up);}
+  .mac .c.down{color:var(--down);}
+  .mac .c.flat{color:var(--flat);}
+  .mac .n{font-size:13.6px;color:var(--muted);line-height:1.6;margin:0;}
+
+  /* ===== 코멘트 / 일정 ===== */
+  .comment{
+    background:var(--card);border:1px solid var(--line);
+    border-left:4px solid #4A87D6;
+    border-radius:12px;padding:17px 19px;margin-top:14px;
+    font-size:16.5px;line-height:1.78;color:var(--text2);
+  }
+  .comment b{color:#FFFFFF;}
+  ul.watch{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  ul.watch li{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:15px 17px;
+    display:grid;grid-template-columns:112px 1fr;gap:14px;align-items:start;
+  }
+  ul.watch .when{
+    font-size:14px;font-weight:800;color:var(--accent);
+    background:#2A2416;border-radius:7px;padding:6px 8px;text-align:center;
+    line-height:1.45;
+  }
+  ul.watch .what b{display:block;font-size:16.5px;font-weight:700;color:#F2F7FC;
+    margin-bottom:3px;line-height:1.5;}
+  ul.watch .what span{font-size:15.5px;color:var(--text2);line-height:1.7;}
+
+  footer{
+    margin-top:38px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:14px;line-height:1.75;color:var(--muted);
+  }
+  footer b{color:#C2CDD9;font-weight:700;}
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    .wrap{padding:20px 14px 44px;}
+    h1{font-size:26px;}
+    h2.sec{font-size:20px;}
+    .idx-grid,.mac-grid,.stk-grid,.news-grid{grid-template-columns:1fr;}
+    .ch-row,.ch-axis{grid-template-columns:76px 1fr 62px;gap:7px;}
+    .ch-name{font-size:13.6px;}
+    .ch-val{font-size:14px;}
+    ul.watch li{grid-template-columns:1fr;gap:9px;}
+    ul.watch .when{text-align:left;justify-self:start;padding:5px 11px;}
+    .idx .lv{font-size:26px;}
+    .mac .v{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">GLOBAL MORNING BRIEF</p>
+    <h1>글로벌 모닝 브리프</h1>
+    <p class="pubinfo num">2026년 9월 11일 (금) 오전 5시 발행<span class="dot">·</span>한국시간(KST) 기준<span class="dot">·</span>미국 증시 9월 10일 정규장 마감 데이터</p>
+  </header>
+
+  <!-- ① 헤드라인 -->
+  <section>
+    <h2 class="sec"><span class="no">①</span> 오늘의 헤드라인</h2>
+    <p class="sec-sub">3줄로 보는 간밤의 핵심</p>
+    <ol class="head">
+      <li><b class="n">1</b><span><strong>WTI 유가가 배럴당 100달러를 돌파(+8.2%)</strong>했다. 사우디아라비아의 8월 원유 생산이 1990년 걸프전 이후 36년 만의 최저치인 일 623.8만 배럴로 급감했다는 OPEC 보고가 도화선이 됐다.</span></li>
+      <li><b class="n">2</b><span><strong>미국 8월 생산자물가(PPI)가 전년 대비 5.4%</strong>로 예상(4.7%)을 크게 웃돌자 미 10년물 국채금리가 4.9%대, 약 3년 만의 최고치로 뛰었다. 시장은 다음 주 FOMC의 <strong>금리 인상</strong> 확률을 70% 안팎까지 반영했다.</span></li>
+      <li><b class="n">3</b><span>뉴욕 3대 지수는 <strong>4거래일 연속 하락</strong>했다. 유럽중앙은행(ECB)은 이란 전쟁 발발 이후 두 번째 금리 인상을 단행하며 예금금리를 2.50%로 올렸고, 라가르드 총재는 이를 "고민할 필요도 없는(no-brainer) 결정"이라고 표현했다.</span></li>
+    </ol>
+  </section>
+
+  <!-- 다이버징 바 차트 -->
+  <section>
+    <div class="chart-glance">
+      <p class="ch-title">오늘의 시장 한눈에</p>
+      <p class="ch-note num">9월 10일(현지) 종가 기준 등락률 · 상승=빨강 / 하락=파랑 · 막대 길이는 변동폭에 비례</p>
+
+      <div class="ch-row">
+        <div class="ch-name">WTI 원유</div>
+        <div class="ch-track"><div class="ch-bar up" style="width:50%;"></div></div>
+        <div class="ch-val up num">+8.20%</div>
+      </div>
+
+      <div class="ch-row">
+        <div class="ch-name">달러인덱스</div>
+        <div class="ch-track"><div class="ch-bar up" style="width:1.83%;"></div></div>
+        <div class="ch-val up num">+0.30%</div>
+      </div>
+
+      <div class="ch-row">
+        <div class="ch-name">원/달러</div>
+        <div class="ch-track"><div class="ch-bar up" style="width:1.40%;"></div></div>
+        <div class="ch-val up num">+0.23%</div>
+      </div>
+
+      <div class="ch-row">
+        <div class="ch-name">S&amp;P 500</div>
+        <div class="ch-track"><div class="ch-bar down" style="width:3.54%;"></div></div>
+        <div class="ch-val down num">-0.58%</div>
+      </div>
+
+      <div class="ch-row">
+        <div class="ch-name">다우존스</div>
+        <div class="ch-track"><div class="ch-bar down" style="width:3.66%;"></div></div>
+        <div class="ch-val down num">-0.60%</div>
+      </div>
+
+      <div class="ch-row">
+        <div class="ch-name">나스닥 종합</div>
+        <div class="ch-track"><div class="ch-bar down" style="width:3.96%;"></div></div>
+        <div class="ch-val down num">-0.65%</div>
+      </div>
+
+      <div class="ch-row">
+        <div class="ch-name">금 (선물)</div>
+        <div class="ch-track"><div class="ch-bar down" style="width:13.96%;"></div></div>
+        <div class="ch-val down num">-2.29%</div>
+      </div>
+
+      <div class="ch-axis">
+        <div class="lab num"><span>-8%</span><span>0%</span><span>+8%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② 국제 정세 뉴스 -->
+  <section>
+    <h2 class="sec"><span class="no">②</span> 국제 정세 뉴스</h2>
+    <p class="sec-sub">지난 24시간, 시장을 움직인 7가지</p>
+
+    <div class="news-grid">
+
+      <article class="news">
+        <span class="tag hot">에너지</span>
+        <h3>사우디 원유 생산 36년 만의 최저 … WTI 100달러 돌파</h3>
+        <p class="body">사우디아라비아가 OPEC 사무국에 보고한 8월 원유 생산량은 하루 623만 8,000배럴로, 전월 대비 190만 배럴 급감했다. 걸프전이 시작된 1990년 이후 최저 수준이며, 원유 수출도 하루 320만 배럴로 13년 만의 최저치를 기록했다. 호르무즈 해협과 바브엘만데브 해협이 동시에 위협 구역이 되면서 수출 경로 자체가 막힌 결과다.</p>
+        <div class="why"><b>왜 중요한가</b><span>세계 최대 스윙 프로듀서의 공급 여력이 사라졌다는 뜻으로, 유가 상단이 열려 있다는 신호다.</span></div>
+        <p class="src">출처 · Bloomberg, Al-Monitor</p>
+      </article>
+
+      <article class="news">
+        <span class="tag hot">지정학</span>
+        <h3>미·이란 '유조선 전쟁' 장기화 … 호르무즈 봉쇄 6개월째</h3>
+        <p class="body">지난 2월 말 트럼프 대통령이 이란에 대한 '주요 전투작전'을 선언한 이후 전쟁이 6개월을 넘겼다. 최근 24시간에도 미군은 IRGC 연계 유조선 3척을 타격했고, 이란은 호르무즈 인근 미 해군 함정을 향해 탄도미사일을 발사하며 맞대응했다. 미국의 봉쇄로 이란은 7월 이후 원유를 단 한 배럴도 수출하지 못하고 있다. 전쟁 전 이 해협을 통과하던 원유는 하루 약 2,000만 배럴 규모였다.</p>
+        <div class="why"><b>왜 중요한가</b><span>원유 수송의 병목이 군사 충돌 구역이 된 이상, 에너지 가격은 협상 진전 여부에 직결된다.</span></div>
+        <p class="src">출처 · CNN, Al Jazeera, CNBC</p>
+      </article>
+
+      <article class="news">
+        <span class="tag rate">중앙은행</span>
+        <h3>ECB, 2회 연속 인상 … 라가르드 "고민할 것도 없는 결정"</h3>
+        <p class="body">유럽중앙은행이 3개 정책금리를 각각 25bp 인상해 예금금리를 2.50%, 주요 리파이낸싱금리를 2.65%로 올렸다. 이란 전쟁 발발 이후 두 번째 인상이다. ECB는 성명에서 "인플레이션이 상당 기간 목표를 크게 웃돌 것"이라고 명시했고, 라가르드 총재는 만장일치 결정을 두고 "노브레이너"라고 표현했다. 시장은 2027년 10월까지 추가 3회 인상을 반영하기 시작했다.</p>
+        <div class="why"><b>왜 중요한가</b><span>에너지發 물가 충격이 선진국 통화정책을 완화에서 긴축으로 되돌려 놓고 있다.</span></div>
+        <p class="src">출처 · Bloomberg, Euronews, FXStreet</p>
+      </article>
+
+      <article class="news">
+        <span class="tag rate">물가·금리</span>
+        <h3>미 8월 PPI 5.4% … 다음 주 FOMC '인상' 쪽으로 기울다</h3>
+        <p class="body">미국 8월 생산자물가지수는 전월 대비 0.4%, 전년 대비 5.4% 상승해 시장 예상치 4.7%를 크게 상회했다. 에너지 비용이 4.2% 급등한 것이 상승분의 대부분을 설명한다. 연준은 지난 7월 회의에서 9대 3으로 금리를 3.50~3.75%에 동결했으나 3명이 인상 의견을 냈고, 케빈 워시 의장의 잭슨홀 매파 발언 이후 분위기가 바뀌었다. 이날 선물시장은 9월 인상 확률을 70% 안팎까지 끌어올렸다.</p>
+        <div class="why"><b>왜 중요한가</b><span>2026년 내내 '인하'를 전제로 짜였던 포지션이 '인상'으로 되돌려지는 국면이다.</span></div>
+        <p class="src">출처 · CNBC, Chase, Babypips</p>
+      </article>
+
+      <article class="news">
+        <span class="tag rate">채권</span>
+        <h3>미 10년물 4.9%대 … 3년 만의 최고, 모기지 금리 7% 재돌파</h3>
+        <p class="body">벤치마크 10년물 국채금리는 8~9bp 오른 4.91~4.93%로 2023년 이후 최고 수준에 도달했고, 2년물도 약 9bp 상승한 4.52%를 기록했다. 장기 조달금리 급등에 따라 미국 30년 고정 모기지 금리는 1년여 만에 다시 7%를 넘어섰다. 장기 신용비용에 민감한 반도체주가 특히 약세를 보였다.</p>
+        <div class="why"><b>왜 중요한가</b><span>할인율 상승은 성장주 밸류에이션과 주택시장을 동시에 압박하는 가장 직접적인 경로다.</span></div>
+        <p class="src">출처 · Yahoo Finance, Eurasia Business News</p>
+      </article>
+
+      <article class="news">
+        <span class="tag">통상</span>
+        <h3>트럼프-시진핑 백악관 정상회담 임박 … 관세 300억 달러 감축 논의</h3>
+        <p class="body">지난 5월 베이징 회담에 이어 두 정상이 이번 달 백악관에서 다시 만난다. 중국 정부 대변인은 양국이 각각 300억 달러 규모의 관세 철폐를 목표로 하고 있다고 밝혔다. 의제에는 무역·투자와 함께 AI, 이란 전쟁, 대만이 오를 전망이다. 다만 관세 휴전이 11월 10일 만료되는 가운데, 포괄적 합의보다는 품목별 관세 인하에 그칠 것이라는 관측이 우세하다.</p>
+        <div class="why"><b>왜 중요한가</b><span>한국의 반도체·자동차 수출은 미중 관세 구조 변화에 직접 노출돼 있다.</span></div>
+        <p class="src">출처 · CNBC, CSIS</p>
+      </article>
+
+      <article class="news">
+        <span class="tag">유럽·안보</span>
+        <h3>우크라이나 쇼핑센터 피격 … 캐나다, 방공 지원 패키지 발표</h3>
+        <p class="body">러시아군의 파블로흐라드 쇼핑센터 공격으로 4명이 숨지고 13~15세 청소년 3명이 부상했다. 같은 날 젤렌스키 대통령은 카니 캐나다 총리와 만나 방공망 보강을 논의했고, 캐나다는 대규모 방공 지원 패키지를 발표했다. 한편 NATO 동맹국들은 해저 케이블을 겨냥한 러시아의 비공개 무기 훈련을 차단했다고 밝혔다.</p>
+        <div class="why"><b>왜 중요한가</b><span>중동에 쏠린 시장의 시선과 별개로, 유럽 전선의 에너지·물류 리스크는 여전히 진행형이다.</span></div>
+        <p class="src">출처 · Kyiv Independent</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ③ 미국 증시 -->
+  <section>
+    <h2 class="sec"><span class="no">③</span> 미국 증시</h2>
+    <p class="sec-sub">9월 10일(현지) 정규장 마감 · 4거래일 연속 하락</p>
+
+    <div class="idx-grid">
+      <div class="idx">
+        <p class="nm">S&amp;P 500</p>
+        <p class="lv num">7,591.70</p>
+        <p class="chg down num">▼ 44.66 (-0.58%)</p>
+        <div class="mini"><i class="down" style="width:29%;"></i></div>
+        <p class="mn">4거래일 연속 약세</p>
+      </div>
+      <div class="idx">
+        <p class="nm">나스닥 종합</p>
+        <p class="lv num">26,081.72</p>
+        <p class="chg down num">▼ 171.62 (-0.65%)</p>
+        <div class="mini"><i class="down" style="width:32.5%;"></i></div>
+        <p class="mn">반도체·성장주 부진</p>
+      </div>
+      <div class="idx">
+        <p class="nm">다우존스 산업평균</p>
+        <p class="lv num">52,064.10</p>
+        <p class="chg down num">▼ 316.56 (-0.60%)</p>
+        <div class="mini"><i class="down" style="width:30%;"></i></div>
+        <p class="mn">유가·금리 동반 압박</p>
+      </div>
+    </div>
+
+    <p class="sec-sub" style="margin:22px 0 12px;">주요 기업 등락 (9/10 종가 기준)</p>
+    <div class="stk-grid">
+      <div class="stk">
+        <p class="t">애플 AAPL</p>
+        <p class="p up num">+3.0%</p>
+        <p class="d">첫 폴더블 '아이폰 Duo'(1,999달러) 공개 후 반등</p>
+      </div>
+      <div class="stk">
+        <p class="t">알파벳 GOOGL</p>
+        <p class="p up num">+0.6%</p>
+        <p class="d">빅테크 중 드물게 강보합</p>
+      </div>
+      <div class="stk">
+        <p class="t">엔비디아 NVDA</p>
+        <p class="p down num">-2.2%</p>
+        <p class="d">금리 급등에 반도체 섹터 동반 약세</p>
+      </div>
+      <div class="stk">
+        <p class="t">오라클 ORCL</p>
+        <p class="p down num">-3.7%</p>
+        <p class="d">장 마감 후 FY27 1분기 실적 발표 앞두고 경계 매물</p>
+      </div>
+      <div class="stk">
+        <p class="t">마이크로소프트 MSFT</p>
+        <p class="p na">확인 불가</p>
+        <p class="d">개별 등락률 미확인</p>
+      </div>
+      <div class="stk">
+        <p class="t">아마존 AMZN</p>
+        <p class="p na">확인 불가</p>
+        <p class="d">개별 등락률 미확인</p>
+      </div>
+      <div class="stk">
+        <p class="t">메타 META</p>
+        <p class="p na">확인 불가</p>
+        <p class="d">개별 등락률 미확인</p>
+      </div>
+      <div class="stk">
+        <p class="t">테슬라 TSLA</p>
+        <p class="p na">확인 불가</p>
+        <p class="d">개별 등락률 미확인</p>
+      </div>
+    </div>
+
+    <p class="sec-sub" style="margin:22px 0 12px;">오늘의 특징주</p>
+    <div class="stk-grid">
+      <div class="stk">
+        <p class="t">에어로바이런먼트 AVAV</p>
+        <p class="p up num">급등</p>
+        <p class="d">사상 최대 매출과 강력한 수주잔고 발표. 구체적 등락률은 확인 불가</p>
+      </div>
+      <div class="stk">
+        <p class="t">어도비 ADBE</p>
+        <p class="p down num">하락</p>
+        <p class="d">실적 발표 전후 약세. 연초 대비 20%대 하락 상태, 등락률 확인 불가</p>
+      </div>
+      <div class="stk">
+        <p class="t">메이시스 M</p>
+        <p class="p down num">하락</p>
+        <p class="d">실적은 예상 상회했으나 주가는 밀림. 등락률 확인 불가</p>
+      </div>
+    </div>
+
+    <div class="comment">
+      <b>시장 코멘트.</b> 이날 하락은 실적이 아니라 <b>비용</b>에서 나왔다. 유가가 배럴당 100달러를 넘고 PPI가 5.4%로 확인되자, 채권시장이 먼저 '연준 인상'을 가격에 반영했고 주식이 뒤따라 밀렸다.
+      섹터별로는 장기 조달금리에 민감한 반도체(마벨·인텔·램리서치 등 3%대 하락)가 가장 크게 눌렸고, 유틸리티와 경기소비재가 상대적으로 방어했다.
+      주목할 점은 <b>안전자산인 금까지 2% 넘게 밀렸다</b>는 것이다. 지정학 리스크보다 실질금리 상승이 더 강하게 작용했다는 뜻으로, 전형적인 '인플레이션 쇼크형' 조정에 가깝다.
+    </div>
+  </section>
+
+  <!-- ④ 매크로 스냅샷 -->
+  <section>
+    <h2 class="sec"><span class="no">④</span> 원자재 · 환율 · 금리 스냅샷</h2>
+    <p class="sec-sub">9월 10일 기준 · 출처별 집계 시점 차이로 소폭 편차 있음</p>
+
+    <div class="mac-grid">
+      <div class="mac">
+        <p class="t">WTI 원유</p>
+        <p class="v num">$103.93</p>
+        <p class="c up num">▲ +7.88 (+8.20%)</p>
+        <p class="n">100달러 돌파. 5월 19일 이후 최고 종가</p>
+      </div>
+      <div class="mac">
+        <p class="t">브렌트유</p>
+        <p class="v num">$105~107</p>
+        <p class="c up num">▲ 약 +4%</p>
+        <p class="n">7월 이후 최고. 정확한 종가는 확인 불가</p>
+      </div>
+      <div class="mac">
+        <p class="t">원/달러 환율</p>
+        <p class="v num">1,339.2원</p>
+        <p class="c up num">▲ +3.1원 (+0.23%)</p>
+        <p class="n">9/10 서울 주간거래 종가(오후 3시 30분)</p>
+      </div>
+      <div class="mac">
+        <p class="t">달러인덱스 (DXY)</p>
+        <p class="v num">99.1</p>
+        <p class="c up num">▲ +0.30%</p>
+        <p class="n">금리 상승에 달러 강세</p>
+      </div>
+      <div class="mac">
+        <p class="t">미 10년물 국채금리</p>
+        <p class="v num">4.91%</p>
+        <p class="c up num">▲ +8~9bp</p>
+        <p class="n">2023년 이후 최고. 2년물은 4.52%</p>
+      </div>
+      <div class="mac">
+        <p class="t">금 (선물)</p>
+        <p class="v num">$4,358.50</p>
+        <p class="c down num">▼ -102.20 (-2.29%)</p>
+        <p class="n">실질금리·달러 강세에 급락. 현물 호가는 $4,326~4,383으로 출처별 편차</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ 오늘 지켜볼 것 -->
+  <section>
+    <h2 class="sec"><span class="no">⑤</span> 오늘 지켜볼 것</h2>
+    <p class="sec-sub">오늘 밤 ~ 다음 주 초 일정</p>
+
+    <ul class="watch">
+      <li>
+        <div class="when num">오늘 밤<br>21:30 KST</div>
+        <div class="what">
+          <b>미국 8월 소비자물가지수(CPI)</b>
+          <span>현지시각 9월 11일 오전 8시 30분 발표. 전일 PPI가 5.4%로 예상을 웃돈 직후여서, 이번 CPI가 다음 주 FOMC의 인상 여부를 사실상 결정짓는 마지막 지표다. 에너지 항목의 기여도가 관전 포인트.</span>
+        </div>
+      </li>
+      <li>
+        <div class="when num">9/15~16</div>
+        <div class="what">
+          <b>FOMC 정례회의 (결과: 9/16 미 동부시각 오후 2시)</b>
+          <span>현재 기준금리 3.50~3.75%. 25bp <b>인상</b> 확률이 시장에서 57~70%까지 반영됐다. 인하가 아닌 인상을 논의하는 회의라는 점 자체가 올해 시장 내러티브의 전환을 뜻한다. 케빈 워시 의장 기자회견은 오후 2시 30분.</span>
+        </div>
+      </li>
+      <li>
+        <div class="when num">발표 직후</div>
+        <div class="what">
+          <b>오라클 FY27 1분기 · 어도비 실적 소화</b>
+          <span>오라클은 9월 10일 장 마감 후 실적을 발표했다. 옵션시장은 약 10%(시가총액 470억 달러 규모)의 변동을 반영하고 있었고, FY26 잉여현금흐름이 -237억 달러였던 만큼 AI 설비투자 부담에 대한 시장 판단이 갈릴 수 있다. 오늘 아시아 시간대 나스닥 선물에 영향을 줄 변수다.</span>
+        </div>
+      </li>
+      <li>
+        <div class="when num">9월 중</div>
+        <div class="what">
+          <b>트럼프-시진핑 백악관 정상회담</b>
+          <span>무역·투자·AI·이란 전쟁·대만이 의제. 각 300억 달러 규모 관세 철폐가 거론되나, 11월 10일 관세 휴전 만료를 앞두고 품목별 부분 인하에 그칠 가능성이 크다는 관측. 한국 반도체·자동차 업종에 직접 파급된다.</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><b>고지.</b> 본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.</p>
+    <p>주요 출처 · Yahoo Finance, CNBC, Bloomberg, Al Jazeera, CNN, Euronews, FXStreet, Babypips, 머니투데이, The Rio Times, TheStreet</p>
+  </footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/HHiUTDqBPd0" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
