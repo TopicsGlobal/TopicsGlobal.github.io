@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 브리프 — 저녁판 · 2026-09-18 (금)</title>
+<style>
+  :root{
+    --bg:#0E1116;
+    --card:#161B22;
+    --card2:#1B222C;
+    --line:#252D38;
+    --text:#E6EDF3;
+    --text2:#D8DEE6;
+    --muted:#8B949E;
+    --up:#F87171;
+    --down:#60A5FA;
+    --flat:#9AA4B2;
+    --accent:#FBBF24;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:28px 18px 64px;}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum";}
+
+  /* 헤더 */
+  header.top{
+    border:1px solid var(--line);
+    background:linear-gradient(180deg,#171E28 0%,#131922 100%);
+    border-radius:16px;
+    padding:26px 24px;
+    margin-bottom:26px;
+  }
+  .kicker{
+    font-size:14px;letter-spacing:.14em;color:var(--accent);
+    font-weight:700;margin:0 0 8px;text-transform:uppercase;
+  }
+  h1{
+    margin:0 0 12px;
+    font-size:32px;line-height:1.3;font-weight:800;letter-spacing:-.02em;
+  }
+  .stamp{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    font-size:14.5px;color:var(--text2);
+  }
+  .pill{
+    display:inline-block;border:1px solid var(--line);background:#0F141B;
+    border-radius:999px;padding:4px 12px;font-size:14px;color:var(--text2);
+  }
+  .pill.hot{border-color:#5A2E2E;background:#221418;color:#FCA5A5;}
+
+  /* 섹션 */
+  section{margin:0 0 34px;}
+  h2{
+    font-size:21px;font-weight:700;letter-spacing:-.01em;
+    margin:0 0 6px;display:flex;align-items:center;gap:10px;
+  }
+  h2 .no{
+    color:var(--accent);font-size:19px;font-weight:800;
+  }
+  .sub{font-size:14.5px;color:var(--muted);margin:0 0 16px;}
+
+  /* 헤드라인 */
+  ol.heads{list-style:none;margin:0;padding:0;}
+  ol.heads li{
+    background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:12px;padding:15px 18px;margin-bottom:11px;
+    font-size:17.5px;line-height:1.7;color:var(--text2);
+  }
+  ol.heads li b{color:var(--text);font-weight:700;}
+
+  /* 다이버징 차트 */
+  .chart-glance{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 18px 16px;
+  }
+  .chart-glance .ctitle{
+    font-size:18px;font-weight:700;margin:0 0 4px;color:var(--text);
+  }
+  .chart-glance .cnote{font-size:13.8px;color:var(--muted);margin:0 0 18px;}
+  .drow{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+  .dname{
+    flex:0 0 96px;font-size:14.5px;color:var(--text2);text-align:right;
+    font-weight:600;line-height:1.35;
+  }
+  .dtrack{
+    position:relative;flex:1 1 auto;height:26px;
+    background:#11161D;border-radius:5px;overflow:hidden;
+  }
+  .dzero{
+    position:absolute;left:50%;top:0;bottom:0;width:1px;background:#3A4350;z-index:2;
+  }
+  .dbar{position:absolute;top:5px;height:16px;border-radius:3px;}
+  .dbar.up{left:50%;background:linear-gradient(90deg,#B84A4A,#F87171);}
+  .dbar.down{right:50%;background:linear-gradient(270deg,#3A6FA8,#60A5FA);}
+  .dval{
+    flex:0 0 66px;font-size:15px;font-weight:700;text-align:left;
+  }
+  .dval.up{color:var(--up);} .dval.down{color:var(--down);}
+  .daxis{
+    display:flex;justify-content:space-between;
+    font-size:13.5px;color:var(--muted);margin-top:12px;
+    border-top:1px solid var(--line);padding-top:8px;
+  }
+
+  /* 뉴스 카드 */
+  .news{display:grid;gap:14px;}
+  article.n{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 19px;
+  }
+  article.n .tag{
+    display:inline-block;font-size:13.5px;font-weight:700;letter-spacing:.04em;
+    color:#0E1116;background:var(--accent);border-radius:5px;padding:2px 9px;margin-bottom:10px;
+  }
+  article.n .tag.geo{background:#F87171;color:#160E0E;}
+  article.n .tag.cb{background:#60A5FA;color:#0B1520;}
+  article.n .tag.trade{background:#34D399;color:#07201A;}
+  article.n .tag.energy{background:#FBBF24;color:#1B1405;}
+  article.n h3{
+    margin:0 0 9px;font-size:18px;font-weight:700;line-height:1.5;color:var(--text);
+  }
+  article.n p{margin:0 0 12px;font-size:16.5px;line-height:1.75;color:var(--text2);}
+  .why{
+    background:#11161D;border:1px solid var(--line);border-radius:9px;
+    padding:10px 13px;font-size:15.5px;color:var(--text2);margin-bottom:10px;
+  }
+  .why b{color:var(--accent);font-weight:700;}
+  .src{font-size:13.8px;color:var(--muted);}
+  .newmark{
+    display:inline-block;font-size:13.5px;color:#FCA5A5;border:1px solid #5A2E2E;
+    background:#1E1417;border-radius:5px;padding:1px 8px;margin-left:6px;vertical-align:middle;
+  }
+
+  /* 지수 그리드 */
+  .grid{display:grid;gap:13px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .grid.small{grid-template-columns:repeat(auto-fit,minmax(178px,1fr));}
+  .c{
+    background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 17px;
+  }
+  .c .lab{font-size:14.5px;color:var(--muted);font-weight:600;margin-bottom:6px;}
+  .c .val{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;}
+  .c .chg{font-size:16px;font-weight:700;margin-top:3px;}
+  .c .meta{font-size:13.8px;color:var(--muted);margin-top:7px;line-height:1.55;}
+  .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--flat);}
+  .minitrack{
+    position:relative;height:7px;background:#11161D;border-radius:4px;margin-top:11px;overflow:hidden;
+  }
+  .minizero{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#3A4350;}
+  .minibar{position:absolute;top:0;height:7px;border-radius:4px;}
+  .minibar.up{left:50%;background:var(--up);}
+  .minibar.down{right:50%;background:var(--down);}
+
+  .comment{
+    background:var(--card2);border:1px solid var(--line);border-left:3px solid var(--up);
+    border-radius:12px;padding:16px 18px;margin-top:14px;
+    font-size:16.5px;line-height:1.8;color:var(--text2);
+  }
+  .comment b{color:var(--text);}
+
+  /* 오늘 밤 */
+  ul.watch{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  ul.watch li{
+    background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 17px;
+    display:flex;gap:14px;align-items:flex-start;
+  }
+  .time{
+    flex:0 0 96px;font-size:14.5px;font-weight:700;color:var(--accent);
+    line-height:1.5;
+  }
+  .wbody{flex:1 1 auto;}
+  .wbody .wt{font-size:17px;font-weight:700;margin-bottom:4px;color:var(--text);}
+  .wbody .wd{font-size:15.5px;color:var(--text2);line-height:1.7;}
+
+  footer{
+    margin-top:38px;border-top:1px solid var(--line);padding-top:18px;
+    font-size:13.8px;color:var(--muted);line-height:1.75;
+  }
+  .na{color:var(--flat);font-weight:600;}
+
+  @media (max-width:560px){
+    body{font-size:16px;}
+    .wrap{padding:20px 14px 52px;}
+    h1{font-size:27px;}
+    h2{font-size:20px;}
+    .grid,.grid.small{grid-template-columns:1fr;}
+    .dname{flex:0 0 74px;font-size:13.8px;}
+    .dval{flex:0 0 58px;font-size:14.5px;}
+    .c .val{font-size:25px;}
+    ul.watch li{flex-direction:column;gap:6px;}
+    .time{flex:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="kicker">Global Brief · Evening Edition</p>
+  <h1>글로벌 브리프 — 저녁판</h1>
+  <div class="stamp">
+    <span class="pill num">2026-09-18 (금) · KST 오후 6:00 발행</span>
+    <span class="pill">오후 뉴스 + 아시아 마감 정리</span>
+    <span class="pill hot">BOJ 31년 만의 최고 금리</span>
+  </div>
+</header>
+
+<!-- ① 헤드라인 -->
+<section>
+  <h2><span class="no">①</span> 저녁의 헤드라인</h2>
+  <p class="sub">오후(12시 이후) 중 가장 중요한 세 가지</p>
+  <ol class="heads">
+    <li><b>일본은행, 25bp 인상해 정책금리 1.25% — 1995년 이후 31년 만의 최고치.</b> 7 대 2 분열 표결이었고, 우에다 총재 기자회견이 예상보다 덜 매파적으로 해석되며 엔화는 오히려 약세로 돌아섰다.</li>
+    <li><b>코스피 2.66% 급등한 6,894.23 마감.</b> 외국인이 7거래일 연속 순매도를 끝내고 9,773억원 순매수로 복귀했고, SK하이닉스 +6.42%·삼성전자 +3.37%로 반도체가 지수를 끌어올렸다.</li>
+    <li><b>유가 3거래일 연속 하락.</b> 사우디가 피격된 동-서 송유관 용량의 절반을 며칠 내 복구하겠다고 밝히면서 브렌트 $103달러대·WTI $101달러대로 밀렸다. 다만 사우디–후티 교전은 계속되고 있다.</li>
+  </ol>
+</section>
+
+<!-- 다이버징 차트 -->
+<section>
+  <div class="chart-glance">
+    <p class="ctitle">오늘의 시장 한눈에 — 자산별 등락률</p>
+    <p class="cnote">0% 기준선 중심 · 빨강(우)=상승, 파랑(좌)=하락 · 아시아는 마감, 유럽·유가·금은 장중 기준</p>
+
+    <div class="drow">
+      <div class="dname">코스피</div>
+      <div class="dtrack"><div class="dzero"></div><div class="dbar up" style="width:50%;"></div></div>
+      <div class="dval up num">+2.66%</div>
+    </div>
+    <div class="drow">
+      <div class="dname">닛케이225</div>
+      <div class="dtrack"><div class="dzero"></div><div class="dbar up" style="width:25.9%;"></div></div>
+      <div class="dval up num">+1.38%</div>
+    </div>
+    <div class="drow">
+      <div class="dname">금 (현물)</div>
+      <div class="dtrack"><div class="dzero"></div><div class="dbar up" style="width:18.8%;"></div></div>
+      <div class="dval up num">+1.00%</div>
+    </div>
+    <div class="drow">
+      <div class="dname">상하이종합</div>
+      <div class="dtrack"><div class="dzero"></div><div class="dbar up" style="width:17.7%;"></div></div>
+      <div class="dval up num">+0.94%</div>
+    </div>
+    <div class="drow">
+      <div class="dname">코스닥</div>
+      <div class="dtrack"><div class="dzero"></div><div class="dbar up" style="width:11.3%;"></div></div>
+      <div class="dval up num">+0.60%</div>
+    </div>
+    <div class="drow">
+      <div class="dname">유로스톡스50</div>
+      <div class="dtrack"><div class="dzero"></div><div class="dbar down" style="width:5.3%;"></div></div>
+      <div class="dval down num">−0.28%</div>
+    </div>
+    <div class="drow">
+      <div class="dname">WTI 유가</div>
+      <div class="dtrack"><div class="dzero"></div><div class="dbar down" style="width:16.5%;"></div></div>
+      <div class="dval down num">−0.88%</div>
+    </div>
+
+    <div class="daxis">
+      <span class="num">−2.66%</span>
+      <span>0%</span>
+      <span class="num">+2.66%</span>
+    </div>
+  </div>
+</section>
+
+<!-- ② 오후 국제 뉴스 -->
+<section>
+  <h2><span class="no">②</span> 오후 국제 뉴스</h2>
+  <p class="sub">한국시간 오늘 낮 12시 이후 새로 나왔거나 크게 진전된 건</p>
+
+  <div class="news">
+
+    <article class="n">
+      <span class="tag cb">중앙은행</span>
+      <h3>일본은행, 정책금리 1.25%로 인상 — 1995년 이후 최고 <span class="newmark">오후 신규</span></h3>
+      <p>일본은행(BOJ)은 이틀간의 금융정책결정회의를 마치고 정책금리를 25bp 올린 1.25%로 결정했다. 7 대 2 표결로, 아사다 도이치로·사토 아야노 위원이 인상에 반대했다. 우에다 가즈오 총재는 "물가가 2% 목표를 위로 이탈할 위험"을 인상 근거로 들면서 이란 전쟁, AI 수요 확대, 환율 변동을 함께 고려했다고 설명했다.</p>
+      <p>시장 반응은 교과서와 반대였다. 닛케이225는 발표 직후 2% 가까이 뛰며 약 23.6조 엔(약 1,500억 달러)의 시가총액이 늘었고, 엔화는 우에다 총재 회견이 "덜 매파적"으로 읽히며 되레 약세를 보였다. 10년물 국채(JGB) 금리는 3% 부근까지 올라 1996년 9월 이후 최고 수준을 찍었다.</p>
+      <div class="why"><b>왜 중요한가</b> — 2024년 3월 시작된 정상화 사이클이 직전 인상 후 6개월이 아닌 3개월 만에 빨라졌다는 점, 그리고 엔 캐리 트레이드가 청산 대신 오히려 유지되는 쪽으로 반응했다는 점이 글로벌 유동성에 직결된다.</div>
+      <p class="src">출처 — CNBC, Nikkei Asia, Japan Times, Bloomberg</p>
+    </article>
+
+    <article class="n">
+      <span class="tag energy">에너지</span>
+      <h3>유가 3일 연속 하락 — 사우디 "송유관 절반 며칠 내, 완전 복구는 6주" <span class="newmark">새 진전</span></h3>
+      <p>브렌트유는 0.94% 내린 배럴당 103.83달러, WTI는 0.88% 하락한 101.01달러에 거래됐다(장중 기준). 지난주 이라크발 드론 공격으로 폐쇄된 사우디 동-서 송유관(하루 최대 500만 배럴, 호르무즈 우회로)에 대해 사우디가 "수일 내 용량의 절반, 6주 내 완전 복구"를 제시한 것이 하락 재료다.</p>
+      <p>사우디는 추가로 오만 소하르항 인근 호르무즈 해협 바깥에서 선박 간 이송(STS) 방식으로 아시아 정유사에 원유를 공급하고 있다. 미 에너지장관 크리스 라이트는 이번 주 호르무즈를 통과한 원유·석유제품이 1,800만 배럴이라고 밝혔다.</p>
+      <div class="why"><b>왜 중요한가</b> — 브렌트가 한때 110달러까지 뛴 뒤 100달러 초반으로 되밀린 것은 "전쟁 프리미엄 되돌림"의 시작 신호다. 미 연준이 이번 주 인상을 단행한 이유가 바로 유가발 인플레이션이었다.</div>
+      <p class="src">출처 — CNBC, gCaptain, OilPrice</p>
+    </article>
+
+    <article class="n">
+      <span class="tag geo">지정학</span>
+      <h3>사우디–후티 상호 공습 지속…민간인 5명 사망, F-15 격추 주장</h3>
+      <p>사우디와 예멘 후티 반군의 공방이 이어지며 어린이 3명을 포함해 최소 5명이 숨졌다. 사우디 남서부 타이프주에서 후티 드론이 요격되는 과정에서 예멘 국적 거주자 1명이 사망했고, 예멘 타이즈주에서는 통신탑 3곳이 공습을 받았다. 후티 측은 사우디 F-15 전투기를 격추했다며 영상을 공개했다(추락 지점은 예멘 마리브로 지오로케이션).</p>
+      <p>후티는 지난 11일 바브엘만데브 해협 한복판의 홍해 미윤섬을 장악하며 해당 수역 통제를 완성했다.</p>
+      <div class="why"><b>왜 중요한가</b> — 송유관이 복구돼도 홍해 출구(바브엘만데브)가 후티 손에 있으면 사우디의 호르무즈 우회로 자체가 무력화된다. 유가 하락이 되돌려질 수 있는 최대 리스크다.</div>
+      <p class="src">출처 — Al Jazeera, CNN</p>
+    </article>
+
+    <article class="n">
+      <span class="tag trade">통상·외교</span>
+      <h3>베센트–허리펑 주말 회담…9월 24일 트럼프–시진핑 정상회담 최종 조율</h3>
+      <p>스콧 베센트 미 재무장관이 이번 주말 허리펑 중국 부총리와 만난다고 확인했다. 오는 9월 24일 워싱턴에서 열리는 트럼프–시진핑 정상회담 직전 최종 실무 조율 성격이다. 양측은 미국산 에너지·농산물 등에 대한 관세 인하를 논의 중인 것으로 전해졌다.</p>
+      <p>베센트는 이란 전쟁 관련 금융 제재와 중국의 이란 거래 문제를 의제로 올리겠다고 밝혔고, AI 안전·거버넌스에 대한 예비 대화도 시작할 것으로 알려졌다. 중국의 첨단 미국산 반도체 접근권이 핵심 쟁점이다.</p>
+      <div class="why"><b>왜 중요한가</b> — 관세 인하 합의가 나오면 한국 수출주·반도체 밸류체인에 직접적인 호재다. 오늘 상하이종합 반등(+0.94%)도 이 기대가 상당 부분 반영된 결과다.</div>
+      <p class="src">출처 — Bloomberg, SCMP, The National, The Star</p>
+    </article>
+
+    <article class="n">
+      <span class="tag cb">중앙은행</span>
+      <h3>연준 25bp 인상 여진 — 장기금리 안정이 아시아 위험자산 되살렸다</h3>
+      <p>미 연준은 9월 16일 FOMC에서 12 대 0 만장일치로 기준금리를 3.75~4.00%로 25bp 인상했다. 3년여 만의 첫 인상이다. 케빈 워시 의장은 "인플레이션이 너무 오래, 너무 높았다"며 2% 복귀를 앞당기겠다고 밝혔고, 점도표상 18명 중 16명이 연내 추가 인상 가능성을 봤다.</p>
+      <p>우려됐던 장기금리 급등은 나타나지 않았다. 미 10년물 금리는 주 초반 5%를 잠깐 넘긴 뒤 4.93% 수준으로 약 9bp 내려앉았고, 이것이 오늘 아시아 증시 전반의 반등 토대가 됐다.</p>
+      <div class="why"><b>왜 중요한가</b> — "인상했는데 장기금리가 안 뛴다"는 조합은 위험자산에 가장 우호적인 시나리오다. 오늘 외국인의 한국 복귀도 이 흐름과 맞물려 있다.</div>
+      <p class="src">출처 — CNBC, Fortune, Yahoo Finance, CNN Business</p>
+    </article>
+
+    <article class="n">
+      <span class="tag trade">통상</span>
+      <h3>미국, 캐나다 보복관세 대응 조치 9월 29일 발효 예정</h3>
+      <p>9월 8일 발표된 일련의 대통령 포고에 따라 캐나다의 추가 보복에 대응하는 무역조치가 수정됐고, 일부 캐나다산 품목에 대한 금지 조치가 9월 29일부터 효력을 갖는다. 2026년 미국의 실효관세율은 환급 영향을 제외하고 약 7.2%로 추정된다.</p>
+      <p>앞서 2월 미 연방대법원이 IEEPA 근거 관세 일부를 위법으로 판단해 수입업체 환급이 진행 중인 가운데, 행정부는 다른 법적 근거로 관세 체계를 재구축해 왔다.</p>
+      <div class="why"><b>왜 중요한가</b> — 미중 협상이 해빙 기류인 것과 달리 북미 내부 갈등은 오히려 격화 중이다. 발효일(9/29)이 가까워질수록 북미 공급망을 쓰는 기업의 비용 변수로 부각된다.</div>
+      <p class="src">출처 — USTR, Tax Foundation, Wiley</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ③ 아시아 증시 마감 -->
+<section>
+  <h2><span class="no">③</span> 아시아 증시 마감</h2>
+  <p class="sub">한국·일본은 확정 마감치, 중화권은 마감 또는 장 후반 기준</p>
+
+  <div class="grid">
+    <div class="c">
+      <div class="lab">코스피 (KOSPI)</div>
+      <div class="val num up">6,894.23</div>
+      <div class="chg num up">▲ 178.82 (+2.66%)</div>
+      <div class="minitrack"><div class="minizero"></div><div class="minibar up" style="width:50%;"></div></div>
+      <div class="meta">외국인 +9,773억 / 기관 +1조7,168억 / 개인 −4조3,719억</div>
+    </div>
+    <div class="c">
+      <div class="lab">코스닥 (KOSDAQ)</div>
+      <div class="val num up">827.12</div>
+      <div class="chg num up">▲ 4.94 (+0.60%)</div>
+      <div class="minitrack"><div class="minizero"></div><div class="minibar up" style="width:11.3%;"></div></div>
+      <div class="meta">대형 반도체 쏠림에 상대적 부진</div>
+    </div>
+    <div class="c">
+      <div class="lab">닛케이225 (일본)</div>
+      <div class="val num up">65,540</div>
+      <div class="chg num up">▲ 882.70 (+1.38%)</div>
+      <div class="minitrack"><div class="minizero"></div><div class="minibar up" style="width:25.9%;"></div></div>
+      <div class="meta">BOJ 인상에도 상승 · 어드밴테스트·레이저텍·소프트뱅크 주도</div>
+    </div>
+    <div class="c">
+      <div class="lab">항셍 (홍콩) <span style="color:#8B949E;font-weight:500;">장중</span></div>
+      <div class="val num up">24,751</div>
+      <div class="chg num up">▲ 146.49 (+0.60%)</div>
+      <div class="minitrack"><div class="minizero"></div><div class="minibar up" style="width:11.3%;"></div></div>
+      <div class="meta">레노버 +9.5%, 미니맥스 +18.9%, SMIC +4.4%</div>
+    </div>
+    <div class="c">
+      <div class="lab">상하이종합 (중국)</div>
+      <div class="val num up">3,911.87</div>
+      <div class="chg num up">▲ 36.27 (+0.94%)</div>
+      <div class="minitrack"><div class="minizero"></div><div class="minibar up" style="width:17.7%;"></div></div>
+      <div class="meta">주간 +0.61% · SMIC·하이곤·나우라 등 기술주 주도</div>
+    </div>
+    <div class="c">
+      <div class="lab">10년물 JGB 금리 (일본)</div>
+      <div class="val num up">3.0% 부근</div>
+      <div class="chg num up">▲ 1996년 9월 이후 최고</div>
+      <div class="meta">커브 베어 플래트닝 · BOJ 인상 선반영</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <b>한국 시장 마감 코멘트</b> — 코스피는 전 거래일 6,715.41(−0.04%)의 지지부진을 하루 만에 뒤집고 178.82p 뛴 6,894.23으로 마감, 6,900선을 눈앞에 뒀다. 젠슨 황 엔비디아 CEO가 "내년 칩 판매량이 올해의 2배"라는 취지로 발언하면서 AI 반도체 투자심리가 살아났고, 미 10년물(4.93~4.94%)·30년물(5.29%) 장기금리가 안정된 데다 중동 지정학 우려까지 완화되며 <b>외국인이 7거래일 연속 순매도를 끊고 9,773억원 순매수로 돌아선 것</b>이 결정적이었다.<br><br>
+    <b>특징 업종·종목</b> — 반도체 독주였다. SK하이닉스가 6.42% 급등한 185만7,000원, 삼성전자는 3.37% 오른 26만1,000원에 마쳤고, SK스퀘어(+7.04%)·삼성전기(+4.36%)까지 동반 강세를 보였다. 반면 KB금융(−2.40%), 삼성물산(−1.27%) 등 금융·지주는 차익실현에 밀렸다. 개인이 4조3,719억원을 대규모 순매도하며 반등 구간에서 차익을 실현한 점은 체력 측면의 부담 요인이다.
+  </div>
+</section>
+
+<!-- ④ 유럽 개장·미 선물 -->
+<section>
+  <h2><span class="no">④</span> 유럽 개장 · 미 지수 선물</h2>
+  <p class="sub">모두 한국시간 오후 6시 무렵 장중 기준</p>
+
+  <div class="grid small">
+    <div class="c">
+      <div class="lab">유로스톡스50 <span style="color:#8B949E;font-weight:500;">장중</span></div>
+      <div class="val num down">6,307.30</div>
+      <div class="chg num down">▼ 17.95 (−0.28%)</div>
+      <div class="minitrack"><div class="minizero"></div><div class="minibar down" style="width:5.3%;"></div></div>
+      <div class="meta">통신·에너지·보험·자동차 약세, 기술주만 강세</div>
+    </div>
+    <div class="c">
+      <div class="lab">STOXX 600 <span style="color:#8B949E;font-weight:500;">장중</span></div>
+      <div class="val num down">−0.1%</div>
+      <div class="chg num down">▼ 소폭 하락</div>
+      <div class="minitrack"><div class="minizero"></div><div class="minibar down" style="width:2%;"></div></div>
+      <div class="meta">ASML +2.1%, ST마이크로 +2.2% / 오랑주 −4%</div>
+    </div>
+    <div class="c">
+      <div class="lab">독일 DAX <span style="color:#8B949E;font-weight:500;">장중</span></div>
+      <div class="val num flat">확인 불가</div>
+      <div class="chg num flat">— 확인 불가</div>
+      <div class="meta">전일(9/17) 25,700선 위로 +0.7%대 마감</div>
+    </div>
+    <div class="c">
+      <div class="lab">영국 FTSE 100 <span style="color:#8B949E;font-weight:500;">장중</span></div>
+      <div class="val num flat">확인 불가</div>
+      <div class="chg num flat">— 확인 불가</div>
+      <div class="meta">전일(9/17) 14,433.21로 +0.93% 마감</div>
+    </div>
+    <div class="c">
+      <div class="lab">S&amp;P 500 선물</div>
+      <div class="val num flat">보합권</div>
+      <div class="chg num flat">— 수치 확인 불가</div>
+      <div class="meta">전일 현물 +1.14% 급등 뒤 숨고르기</div>
+    </div>
+    <div class="c">
+      <div class="lab">나스닥100 선물</div>
+      <div class="val num flat">보합권</div>
+      <div class="chg num flat">— 수치 확인 불가</div>
+      <div class="meta">전일 나스닥종합 +1.69% / US100 29,580선</div>
+    </div>
+  </div>
+
+  <div class="comment" style="border-left-color:var(--down);">
+    유럽은 <b>아시아만큼 달리지 못했다</b>. 중앙은행 주간(연준 인상 → BoE 동결 → BOJ 인상)을 소화한 뒤 관망세가 짙고, 유가 하락이 셸 등 에너지주에 직접 타격을 주면서 지수를 눌렀다. 미 선물은 전일 랠리 이후 <b>"little changed"</b>, 즉 방향성 없는 보합권이다 — 오늘 밤이 트리플 위칭(선물·옵션 동시만기)이라는 점이 관망을 더 키우고 있다.
+  </div>
+</section>
+
+<!-- ⑤ 매크로 스냅샷 -->
+<section>
+  <h2><span class="no">⑤</span> 원자재 · 환율 · 금리 스냅샷</h2>
+  <p class="sub">한국시간 오후 6시 전후 확인 기준</p>
+
+  <div class="grid small">
+    <div class="c">
+      <div class="lab">WTI 원유</div>
+      <div class="val num down">$101.01</div>
+      <div class="chg num down">▼ −0.88%</div>
+      <div class="meta">3거래일 연속 하락 · 송유관 복구 기대</div>
+    </div>
+    <div class="c">
+      <div class="lab">브렌트유</div>
+      <div class="val num down">$103.83</div>
+      <div class="chg num down">▼ −0.94%</div>
+      <div class="meta">한때 $110 → 전쟁 프리미엄 되돌림</div>
+    </div>
+    <div class="c">
+      <div class="lab">원/달러 환율</div>
+      <div class="val num up">1,383.3원</div>
+      <div class="chg num up">▲ +1.1원 (+0.08%)</div>
+      <div class="meta">주간거래 종가 · 전일 1,382.2원(+13.6원) 급등 이어 추가 상승</div>
+    </div>
+    <div class="c">
+      <div class="lab">미 10년물 국채</div>
+      <div class="val num down">4.93%</div>
+      <div class="chg num down">▼ 약 9bp</div>
+      <div class="meta">주 초 5% 돌파 후 되돌림 · 30년물 5.29%</div>
+    </div>
+    <div class="c">
+      <div class="lab">금 (현물)</div>
+      <div class="val num up">$4,384.78</div>
+      <div class="chg num up">▲ +1.00%</div>
+      <div class="meta">$4,400 재접근 · 사상 최고는 1월 $5,589.38</div>
+    </div>
+    <div class="c">
+      <div class="lab">달러/엔</div>
+      <div class="val num up">156.2 부근</div>
+      <div class="chg num up">▲ 엔 약세</div>
+      <div class="meta">BOJ 인상에도 우에다 회견 실망 · 159 상단 경계</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 오늘 밤 지켜볼 것 -->
+<section>
+  <h2><span class="no">⑥</span> 오늘 밤 지켜볼 것</h2>
+  <p class="sub">오늘 밤 ~ 내일 새벽, 다음 오전 브리핑 전까지</p>
+
+  <ul class="watch">
+    <li>
+      <div class="time">밤 10시대<br><span style="color:#8B949E;font-weight:500;">(09:15 ET)</span></div>
+      <div class="wbody">
+        <div class="wt">미국 8월 산업생산 (연준 G.17)</div>
+        <div class="wd">제조업·광업·유틸리티의 실질 생산 변화. 워시 의장이 "경기는 오히려 강해졌다"고 한 판단을 확인·반박할 이번 주 마지막 실물지표다. 강하게 나오면 연내 추가 인상 베팅이 더 굳어진다.</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">밤 10:30<br>~ 새벽 5:00</div>
+      <div class="wbody">
+        <div class="wt">트리플 위칭 (선물·옵션 동시만기)</div>
+        <div class="wd">9월 18일은 분기 만기일. 8월 말 시티델증권 추산 기준 약 <b class="num">6.2조 달러</b> 규모의 미국 옵션 익스포저가 만기를 맞는다. 개장 직후(special opening rotation)와 마감 직전에 펀더멘털과 무관한 변동성이 몰릴 수 있어, 내일 새벽 종가만 보고 시장 심리를 단정하면 안 된다.</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">밤중<br><span style="color:#8B949E;font-weight:500;">(시간 미정)</span></div>
+      <div class="wbody">
+        <div class="wt">연준 위원 연설 (복수 예정)</div>
+        <div class="wd">FOMC 블랙아웃 해제 후 첫 금요일. 워시 의장이 두 번째로 점도표 참여를 거부한 상황이라, 위원들이 제시하는 "연내 추가 인상" 강도가 장기금리와 달러 방향을 좌우한다. 개별 연사·시간은 <span class="na">확인 불가</span>.</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">주말<br><span style="color:#8B949E;font-weight:500;">(장 마감 후)</span></div>
+      <div class="wbody">
+        <div class="wt">베센트 ↔ 허리펑 회담 · 사우디 송유관 복구 진척</div>
+        <div class="wd">9월 24일 트럼프–시진핑 정상회담을 앞둔 마지막 실무 협상. 관세 인하 윤곽이 새어 나오면 월요일 아시아 개장에 즉시 반영된다. 동시에 사우디가 예고한 "수일 내 절반 복구"의 실제 진척 여부가 다음 주 유가의 출발점을 정한다. 주말 뉴스 리스크가 양방향으로 열려 있다.</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<footer>
+  본 보고서는 AI가 자동 생성한 요약이며 투자 판단의 근거로 사용할 수 없습니다. 수치는 검색 시점 기준입니다.<br>
+  아시아 지수는 마감치, 유럽·미 선물·원자재·금리는 한국시간 2026-09-18 오후 6시 전후의 장중 수치입니다. 확인되지 않은 항목은 "확인 불가"로 표기했으며 차트에서도 제외했습니다.<br>
+  주요 출처 — CNBC · Bloomberg · Nikkei Asia · Japan Times · Al Jazeera · CNN · Reuters 계열 · Trading Economics · Saxo Markets · 뉴스핌 · 이데일리 · Businesskorea · 24/7 Wall St.
+</footer>
+
+</div>
+<div style="max-width:860px;margin:28px auto 10px;padding:0 16px;font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif;">
+  <a href="https://youtu.be/UDe4MIo0Nwg" style="display:block;text-align:center;background:#161B22;border:1px solid #F87171;border-radius:12px;padding:14px 18px;color:#E6EDF3;text-decoration:none;font-weight:600;">
+    &#9654; 이 브리핑을 60초 쇼츠 영상으로 보기
+  </a>
+  <p style="text-align:center;color:#8B949E;font-size:0.8rem;margin-top:8px;">
+    매일 아침&middot;점심&middot;저녁 쇼츠로도 올라옵니다 &mdash; YouTube
+    <a href="https://www.youtube.com/@dailytopicskorea" style="color:#4F8CFF;text-decoration:none;">@dailytopicskorea</a>
+  </p>
+</div>
+
+<!-- gc-v2 -->
+<script data-goatcounter="https://sylee0215.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var total = location.pathname === '/' || location.pathname === '/index.html';
+  var path = total ? 'TOTAL' : location.pathname;
+  fetch('https://sylee0215.goatcounter.com/counter/' + path + '.json')
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      if (!d || !d.count) return;
+      var el = document.createElement('div');
+      el.style.cssText = 'max-width:860px;margin:14px auto 28px;padding:0 16px;text-align:center;color:#8B949E;font-size:0.8rem;font-family:-apple-system,"Segoe UI","Malgun Gothic",sans-serif;';
+      el.textContent = (total ? '전체 방문 ' : '이 브리핑 조회 ') + d.count.trim() + '회';
+      document.body.appendChild(el);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
